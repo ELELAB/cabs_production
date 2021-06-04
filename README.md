@@ -10,7 +10,7 @@ Here you can find a snakemake-based pipeline for protein-peptide docking with CA
 
 The protein-peptide docking is a procedure which consists in the search for near-native peptide conformations and orientations (docking poses) with respect to a target protein, where at least the structure of the target protein is known. Scoring functions are then used to rank the docking poses based on estimations of the goodness of the conformations obtained and of the binding affinity estimate of the two interacting entities. 
 
-In general, the conformational space that both the peptide and the target protein can assume is huge. Then, a reduced representation is employed to speed up teh process. 
+In general, the conformational space that both the peptide and the target protein can assume is huge. Then, a reduced representation is employed to speed up the process. 
 
 ### CABS-dock
 
@@ -43,9 +43,24 @@ snakemake [--cores NCORES]
 
 It is the file that contains all the instractions to be executed. 
 
+#### Table
+
+It is a CSV file **;** separated in which the following information must be added:
+
+|Entry|Meaning|Example|
+|---|---|---|
+|peptide_name|It is the protein of the LIR|p62|
+|template|It is the name of the LC3 protein|lc3b|
+|aa_protein|It is the first-last sequence residue numbers corresponding to the residues in the structure of the receptor|1-120|
+|aa_peptide|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the LIR|330-349|
+|run_type|It is the type of CABS-dock run, i.e. which restraints we will be using|blind|
+|pdb_file|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
+|chain|It is the chain identifier of the LIR in the original pdb_file complex|a|
+|model|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
+
 #### Configuration file
 
-A YAML fiule containing the script configuration. 
+A YAML file containing the script configuration. 
 
 The following options and parameters must be set within the configuration file:
 
