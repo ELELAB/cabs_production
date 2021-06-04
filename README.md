@@ -24,4 +24,15 @@ Snakemake is a python-based tool useful to create reproducible and scalable pipe
 
 The user must have python v3.7 or higher installed, togheter with Modeller and DSSP softwares.
 
+## Usage
+
+# Command line
+
+snakemake [--cores NCORES]
+
+# Options
+
+|Option   |Meaning   |
+|---|---|
+|--cores   |Number of cores to be used   |
 
