@@ -26,13 +26,38 @@ The user must have python v3.7 or higher installed, togheter with Modeller and D
 
 ## Usage
 
-# Command line
+### Command line
 
 snakemake [--cores NCORES]
 
-# Options
+### Options
 
 |Option   |Meaning   |
 |---|---|
 |--cores   |Number of cores to be used   |
 
+
+### Input files
+
+#### Snakefile
+
+It is the file that contains all the instractions to be executed. 
+
+#### Configuration file
+
+A YAML fiule containing the script configuration. 
+
+The following options and parameters must be set within the configuration file:
+
+|Option|Meaning|
+|---|---|
+|models_file.csv|It is a file ";" separated containing all the input names|
+|apo_dir|Path of the folder containing the apo structures|
+|lir_dir|Path of the folder containing the lir files in fasta format|
+|out_dir|Path of the folder where the ouputs will be written|
+|mc_runs|Number of Monte Carlo cycles (NUM>0)|
+|k-medoids|Number of medoids in k-medoids clustering algorithm|
+|clustering-iterations|Number of iterations of the clustering k-medoids algorithm|
+|saved_pdb|Select structures to be saved in the pdb format|
+|dssp_location|Path for the DSSP program|
+|verbose|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
