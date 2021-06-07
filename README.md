@@ -2,7 +2,7 @@
 
 ## Overview
 
-Here you can find a snakemake-based pipeline for protein-peptide docking with CABS-dock.   
+The CABS-dock pipeline is a snakemake-based rigorous method [^Mölder2021] for protein-peptide docking which uses CABS-dock [^Kurcinski2019] for the poses generation.
 
 ## Background
 
@@ -43,19 +43,40 @@ snakemake [--cores NCORES]
 
 It is the file that contains all the instractions to be executed. 
 
+#### Apo structures
+
+The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. They must be all collected in a specific folder whose path is requested within the configuration file. 
+
+The apo structures must be provided in PDB format. 
+
+#### Peptides
+
+The peptides are provided as strings in a fasta format. One file for each peptide is required with the following name structure:
+
+[name of the peptide]_[first-last sequence residue numbers of the FASTA sequence].fasta
+
+For example:
+
+PLEKHM1_627-646.fasta
+
+The file content is:
+
+>PLEKHM1_627-646
+VRPQQEDEWVNVQYPDQPEE
+
 #### Table
 
 It is a CSV file **;** separated in which the following information must be added:
 
 |Entry|Meaning|Example|
 |---|---|---|
-|peptide_name|It is the protein of the LIR|p62|
-|template|It is the name of the LC3 protein|lc3b|
+|peptide_name|It is the protein of the peptide|p62|
+|template|It is the name of the receptor protein|lc3b|
 |aa_protein|It is the first-last sequence residue numbers corresponding to the residues in the structure of the receptor|1-120|
-|aa_peptide|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the LIR|330-349|
+|aa_peptide|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
 |run_type|It is the type of CABS-dock run, i.e. which restraints we will be using|blind|
 |pdb_file|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
-|chain|It is the chain identifier of the LIR in the original pdb_file complex|a|
+|chain|It is the chain identifier of the peptide in the original pdb_file complex|a|
 |model|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
 #### Configuration file
@@ -76,3 +97,24 @@ The following options and parameters must be set within the configuration file:
 |saved_pdb|Select structures to be saved in the pdb format|
 |dssp_location|Path for the DSSP program|
 |verbose|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
+
+### Outputs
+
+The typical CABS-dock outputs are attended for each line within the table. The folders containing the output will be built and named with the information provided in the table.
+
+For example, if a line appears like this:
+
+p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb
+
+the expected output will be located in the following path:
+
+lc3b/lir_complexes/p62/p62_2ZJDa_1-120_330-349/blind/
+
+N.B. The lir_complexes folder will be created since this protocol was built for the docking of proteins containing LC3 interacting region (LIRs). This can be easily changed within the snakefile by adapting the folder name to the peptides under study.
+
+ 
+### References
+
+[^Mölder2021]: Mölder, F., Jablonski, K.P., Letcher, B., Hall, M.B., Tomkins-Tinch, C.H., Sochat, V., Forster, J., Lee, S., Twardziok, S.O., Kanitz, A., Wilm, A., Holtgrewe, M., Rahmann, S., Nahnsen, S., Köster, J., 2021. Sustainable data analysis with Snakemake. F1000Res 10, 33.
+
+[^Kurcinski2019]: Mateusz Kurcinski, Maciej Pawel Ciemny, Tymoteusz Oleniecki, Aleksander Kuriata, Aleksandra E Badaczewska-Dawid, Andrzej Kolinski, Sebastian Kmiecik, CABS-dock standalone: a toolbox for flexible protein–peptide docking, Bioinformatics, Volume 35, Issue 20, 15 October 2019, Pages 4170–4172.
