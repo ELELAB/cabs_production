@@ -61,9 +61,9 @@ For example:
 
 The file content is:
 
-`>PLEKHM1_627-646
+`>PLEKHM1_627-646`
 
-VRPQQEDEWVNVQYPDQPEE`
+`VRPQQEDEWVNVQYPDQPEE`
 
 #### Table
 
