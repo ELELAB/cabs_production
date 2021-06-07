@@ -80,6 +80,9 @@ It is a CSV file **;** separated in which the following information must be adde
 |`chain`|It is the chain identifier of the peptide in the original pdb_file complex|a|
 |`model`|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
+N.B. The first line within the table must be: `peptide_name;template;aa_protein;aa_peptide;run_type;pdb_file;chain;model`.
+The following lines can contain the information for the runs: `p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`, etc.
+
 #### Configuration file
 
 A YAML file containing the script configuration. 
