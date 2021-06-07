@@ -22,19 +22,19 @@ Snakemake is a python-based tool useful to create reproducible and scalable pipe
 
 ## Requiremets
 
-The user must have python v3.7 or higher installed, togheter with Modeller and DSSP softwares.
+The user must have python v3.7 or higher installed, togheter with Modeller[^Webb2016] and DSSP[^Kabsch1983] softwares.
 
 ## Usage
 
 ### Command line
 
-snakemake [--cores NCORES]
+`snakemake [--cores NCORES]`
 
 ### Options
 
 |Option   |Meaning   |
 |---|---|
-|--cores   |Number of cores to be used   |
+|`--cores`   |Number of cores to be used   |
 
 
 ### Input files
@@ -45,24 +45,24 @@ It is the file that contains all the instractions to be executed.
 
 #### Apo structures
 
-The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. They must be all collected in a specific folder whose path is requested within the configuration file. 
+The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. All the structures needed for the docking procedure must be collected in a specific folder whose path is requested within the configuration file. 
 
 The apo structures must be provided in PDB format. 
 
 #### Peptides
 
-The peptides are provided as strings in a fasta format. One file for each peptide is required with the following name structure:
+The peptides are provided as strings in a fasta format. One file for each peptide is required and they must be located in a folder. Each file name must be stored with the following name structure:
 
-[name of the peptide]_[first-last sequence residue numbers of the FASTA sequence].fasta
+`[name of the peptide]_[first-last sequence residue numbers of the FASTA sequence].fasta`
 
 For example:
 
-PLEKHM1_627-646.fasta
+`PLEKHM1_627-646.fasta`
 
 The file content is:
 
->PLEKHM1_627-646
-VRPQQEDEWVNVQYPDQPEE
+`>PLEKHM1_627-646`
+`VRPQQEDEWVNVQYPDQPEE`
 
 #### Table
 
@@ -70,14 +70,14 @@ It is a CSV file **;** separated in which the following information must be adde
 
 |Entry|Meaning|Example|
 |---|---|---|
-|peptide_name|It is the protein of the peptide|p62|
-|template|It is the name of the receptor protein|lc3b|
-|aa_protein|It is the first-last sequence residue numbers corresponding to the residues in the structure of the receptor|1-120|
-|aa_peptide|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
-|run_type|It is the type of CABS-dock run, i.e. which restraints we will be using|blind|
-|pdb_file|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
-|chain|It is the chain identifier of the peptide in the original pdb_file complex|a|
-|model|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
+|`peptide_name`|It is the protein of the peptide|p62|
+|`template`|It is the name of the receptor protein|lc3b|
+|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the receptor|1-120|
+|`aa_peptide`|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
+|`run_type`|It is the type of CABS-dock run, i.e. which restraints we will be using|blind|
+|`pdb_file`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
+|`chain`|It is the chain identifier of the peptide in the original pdb_file complex|a|
+|`model`|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
 #### Configuration file
 
@@ -87,16 +87,18 @@ The following options and parameters must be set within the configuration file:
 
 |Option|Meaning|
 |---|---|
-|models_file.csv|It is a file ";" separated containing all the input names|
-|apo_dir|Path of the folder containing the apo structures|
-|lir_dir|Path of the folder containing the lir files in fasta format|
-|out_dir|Path of the folder where the ouputs will be written|
-|mc_runs|Number of Monte Carlo cycles (NUM>0)|
-|k-medoids|Number of medoids in k-medoids clustering algorithm|
-|clustering-iterations|Number of iterations of the clustering k-medoids algorithm|
-|saved_pdb|Select structures to be saved in the pdb format|
-|dssp_location|Path for the DSSP program|
-|verbose|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
+|`models_file.csv`|It is a file ";" separated containing all the input names|
+|`apo_dir`|Path of the folder containing the apo structures|
+|`lir_dir`|Path of the folder containing the peptide files in fasta format|
+|`out_dir`|Path of the folder where the ouputs will be written|
+|`mc_runs`|Number of Monte Carlo cycles (NUM>0)|
+|`k-medoids`|Number of medoids in k-medoids clustering algorithm|
+|`clustering-iterations`|Number of iterations of the clustering k-medoids algorithm|
+|`saved_pdb`|Select structures to be saved in the pdb format|
+|`dssp_location`|Path for the DSSP program|
+|`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
+
+N.B. The `lir_dir` name depends on the fact that this protocol was built for the docking of proteins containing LC3 interacting region (LIRs).
 
 ### Outputs
 
@@ -118,3 +120,7 @@ N.B. The lir_complexes folder will be created since this protocol was built for 
 [^Mölder2021]: Mölder, F., Jablonski, K.P., Letcher, B., Hall, M.B., Tomkins-Tinch, C.H., Sochat, V., Forster, J., Lee, S., Twardziok, S.O., Kanitz, A., Wilm, A., Holtgrewe, M., Rahmann, S., Nahnsen, S., Köster, J., 2021. Sustainable data analysis with Snakemake. F1000Res 10, 33.
 
 [^Kurcinski2019]: Mateusz Kurcinski, Maciej Pawel Ciemny, Tymoteusz Oleniecki, Aleksander Kuriata, Aleksandra E Badaczewska-Dawid, Andrzej Kolinski, Sebastian Kmiecik, CABS-dock standalone: a toolbox for flexible protein–peptide docking, Bioinformatics, Volume 35, Issue 20, 15 October 2019, Pages 4170–4172.
+
+[^Webb2016]: Webb, B.; Sali, A. Comparative protein structure modeling using MODELLER. Curr. Protoc. Bioinforma.2016, 54, 5.6.1-5.6.37.
+
+[^Kabsch] : Kabsch W, Sander C. Dictionary of protein secondary structure: pattern recognition of hydrogen-bonded and geometrical features. Biopolymers. 1983 Dec;22(12):2577-637.
