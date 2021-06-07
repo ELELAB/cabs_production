@@ -14,11 +14,11 @@ In general, the conformational space that both the peptide and the target protei
 
 ### CABS-dock
 
-CABS-dock is an efficient and fast multiscale modeling procedure based on CABS model (a coarse-grained model representation). Each amino acid is represented by up to four interaction centers, simulation dynamics are controlled by the Monte Carlo scheme, and the force field is based on statistical potentials.
+CABS-dock [^Kurcinski2019] is an efficient and fast multiscale modeling procedure based on CABS model (a coarse-grained model representation). Each amino acid is represented by up to four interaction centers, simulation dynamics are controlled by the Monte Carlo scheme, and the force field is based on statistical potentials.
 
 ### Snakemake
 
-Snakemake is a python-based tool useful to create reproducible and scalable pipelines for data analyses. It is ideal for cases in which both reproducibility and generalizability of the same study and its application to several case studies are important.
+Snakemake [^Mölder2021] is a python-based tool useful to create reproducible and scalable pipelines for data analyses. It is ideal for cases in which both reproducibility and generalizability of the same study and its application to several case studies are important.
 
 ## Requiremets
 
