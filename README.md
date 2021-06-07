@@ -8,7 +8,7 @@ The CABS-dock pipeline is a snakemake-based rigorous method [^Mölder2021] for p
 
 ### Protein-peptide docking
 
-The protein-peptide docking is a procedure which consists in the search for near-native peptide conformations and orientations (docking poses) with respect to a target protein, where at least the structure of the target protein is known. Scoring functions are then used to rank the docking poses based on estimations of the goodness of the conformations obtained and of the binding affinity estimate of the two interacting entities. 
+The protein-peptide docking is a procedure which consists in the search for near-native peptide conformations and orientations (docking poses) with respect to a target protein, where at least the structure of the target protein is known. Scoring functions are then used to rank the docking poses and assess the quality of the predicted complexes. 
 
 In general, the conformational space that both the peptide and the target protein can assume is huge. Then, a reduced representation is employed to speed up the process. 
 
@@ -22,7 +22,7 @@ Snakemake [^Mölder2021] is a python-based tool useful to create reproducible an
 
 ## Requiremets
 
-The user must have python v3.7 or higher installed, togheter with Modeller[^Webb2016] and DSSP[^Kabsch1983] softwares.
+The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher installed, togheter with `Modeller` [^Webb2016] and `DSSP` [^Kabsch1983] softwares.
 
 ## Usage
 
@@ -39,19 +39,19 @@ The user must have python v3.7 or higher installed, togheter with Modeller[^Webb
 
 ### Input files
 
-#### Snakefile
+#### snakefile
 
 It is the file that contains all the instractions to be executed. 
 
 #### Apo structures
 
-The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. All the structures needed for the docking procedure must be collected in a specific folder whose path is requested within the configuration file. 
+The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. All the structures needed for the docking procedure must be collected in a folder whose path is specified within the configuration file. 
 
 The apo structures must be provided in PDB format. 
 
 #### Peptides
 
-The peptides are provided as strings in a fasta format. One file for each peptide is required and they must be located in a folder. Each file name must be stored with the following name structure:
+The peptides are provided as strings in FASTA format. One file for each peptide is required and they must be located in a folder. Each file name must be stored with the following name structure:
 
 `[name of the peptide]_[first-last sequence residue numbers of the FASTA sequence].fasta`
 
@@ -61,13 +61,12 @@ For example:
 
 The file content is:
 
-`>PLEKHM1_627-646`
-
-`VRPQQEDEWVNVQYPDQPEE`
+```>PLEKHM1_627-646
+VRPQQEDEWVNVQYPDQPEE```
 
 #### Table
 
-It is a CSV file **;** separated in which the following information must be added:
+It is a CSV file which uses semicolon as a column delimiter. The following information must be added:
 
 |Entry|Meaning|Example|
 |---|---|---|
@@ -89,12 +88,15 @@ A YAML file containing the script configuration.
 
 The following options and parameters must be set within the configuration file:
 
-|Option|Meaning|
+|Generic options|Meaning|
 |---|---|
 |`models_file.csv`|It is a file ";" separated containing all the input names|
 |`apo_dir`|Path of the folder containing the apo structures|
 |`lir_dir`|Path of the folder containing the peptide files in fasta format|
 |`out_dir`|Path of the folder where the ouputs will be written|
+
+|CABS-dock options|Meaning|
+|---|---|
 |`mc_runs`|Number of Monte Carlo cycles (NUM>0)|
 |`k-medoids`|Number of medoids in k-medoids clustering algorithm|
 |`clustering-iterations`|Number of iterations of the clustering k-medoids algorithm|
@@ -106,7 +108,7 @@ N.B. The `lir_dir` name depends on the fact that this protocol was built for the
 
 ### Outputs
 
-The typical CABS-dock outputs are attended for each line within the table. The folders containing the output will be built and named with the information provided in the table.
+The typical CABS-dock outputs are expected for each line within the table. The folders containing the output will be built and named with the information provided in the table.
 
 For example, if a line appears like this:
 
