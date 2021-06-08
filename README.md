@@ -41,7 +41,7 @@ The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher instal
 
 #### snakefile
 
-It is the file that contains all the instractions to be executed. 
+It is the file that contains all the instructions to be executed. 
 
 #### Apo structures
 
@@ -114,11 +114,11 @@ The typical CABS-dock outputs are expected for each line within the table. The f
 
 For example, if a line appears like this:
 
-p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb
+`p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`
 
 the expected output will be located in the following path:
 
-lc3b/lir_complexes/p62/p62_2ZJDa_1-120_330-349/blind/
+`lc3b/lir_complexes/p62/p62_2ZJDa_1-120_330-349/blind/`
 
 N.B. The lir_complexes folder will be created since this protocol was built for the docking of proteins containing LC3 interacting region (LIRs). This can be easily changed within the snakefile by adapting the folder name to the peptides under study.
 
