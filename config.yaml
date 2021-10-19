@@ -1,9 +1,8 @@
 models_file.csv: "models.csv"
 
-apo_dir:  "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
-slim_dir: "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files"
-#out_dir: "/data/user/shared_projects/cabsdock_data/lir_atg8"
-out_dir: "my_test"
+apo_dir:  "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
+slim_dir: "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files/"
+out_dir:  "my_test"
 
 cabsdock:
     mc_runs: 300
@@ -14,29 +13,28 @@ cabsdock:
     dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
     run_types:
         blind:
-            ss_def : null
-            restraints : null
-        blind_2D :
-            ss_def : 'CCCCCCCCCCCCCCCCCCCC'
-            restraints : null
-        D-R :
-            ss_def : 'CCCCCCCCCCCCCCCCCCCC'
-            restraints :
+            ss_def: null
+            restraints: null
+        blind_2D:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints: null
+        D-R:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
-        D-R_D-N :
-            ss_def : 'CCCCCCCCCCCCCCCCCCCC'
-            restraints :
+        D-R_D-N:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
-        D-R_D-N_D2N :
-            ss_def : 'CCCCCCCCCCCCCCCCCCCC'
-            restraints :
+        D-R_D-N_D2N:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
                 - '--ca-rest-add 99:A 17:PEP 4.0 1.0'
-        D-R_D-N_no2D :
-            ss_def : 'CCCCCCCCCCCCCCCCCCCCC'
-            restraints :
+        D-R_D-N_no2D:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCCC'
+            restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A  14:PEP 5.0 1.0'
-
