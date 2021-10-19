@@ -1,9 +1,9 @@
 models_file.csv: "models.csv"
 
-apo_dir: "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
-lir_dir: "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files"
+apo_dir:  "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
+slim_dir: "/data/user/shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files"
 #out_dir: "/data/user/shared_projects/cabsdock_data/lir_atg8"
-out_dir: "/data/user/morlandi/CABS-dock_snakefile"
+out_dir: "my_test"
 
 cabsdock:
     mc_runs: 300
