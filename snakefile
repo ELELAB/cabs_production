@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import os
 
-
 configfile: 'config.yaml'
 
 models = pd.read_csv(config['models_file.csv'], sep=';')
@@ -61,9 +60,6 @@ rule cabs_run:
         cp {input.apo} $working_dir/
         cp {input.slim} $working_dir/
 
-        apo_file=$(basename {input.apo})
-        slim_file=$(basename {input.slim})
-
         cd $working_dir
 
         cat <<EOF > README
@@ -83,20 +79,23 @@ a log file called "CABS.log" contaning the output of CABS-dock has also
 been written.
 EOF
 
-        cat <<EOF > run.sh
-        CABSdock\\
-            -i $apo_file\\
-            -p $(tail -n 1 $slim_file){params.ss}\\
-            -y {config[cabsdock][mc_runs]}\\
-            -k {config[cabsdock][k-medoids]}\\
-            --clustering-iterations {config[cabsdock][clustering-iterations]}\\
-            {params.restraints}\\
-            -A\\
-            -o {config[cabsdock][saved_pdb]}\\
-            -v {config[cabsdock][verbose]}\\
-            --dssp-command {config[cabsdock][dssp_location]}\\
-            --log
+        cat <<"EOF" > run.sh
+export slim_seq=$(tail -n 1 $(basename {input.apo}))
+export apo_file=$(basename {input.apo})
+
+CABSdock\\
+    -i $apo_file\\
+    -p $(tail -n 1 $slim_file){params.ss}\\
+    -y {config[cabsdock][mc_runs]}\\
+    -k {config[cabsdock][k-medoids]}\\
+    --clustering-iterations {config[cabsdock][clustering-iterations]}\\
+    {params.restraints}\\
+    -A\\
+    -o {config[cabsdock][saved_pdb]}\\
+    -v {config[cabsdock][verbose]}\\
+    --dssp-command {config[cabsdock][dssp_location]}\\
+    --log
 EOF
 
-            bash run.sh
-       """
+        bash run.sh
+        """
