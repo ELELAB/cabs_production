@@ -2,58 +2,72 @@
 
 ## Overview
 
-The CABS-dock pipeline is a snakemake-based rigorous method [^Mölder2021] for protein-peptide docking which uses CABS-dock [^Kurcinski2019] for the poses generation.
+This snakemake[^Mölder2021]-based pipeline [^Mölder2021] is designed to perform in-silico protein-peptide docking using CABS-dock [^Kurcinski2019].
 
 ## Background
 
 ### Protein-peptide docking
 
-The protein-peptide docking is a procedure which consists in the search for near-native peptide conformations and orientations (docking poses) with respect to a target protein, where at least the structure of the target protein is known. Scoring functions are then used to rank the docking poses and assess the quality of the predicted complexes. 
+The protein-peptide docking is a procedure which consists in the search for near-native peptide conformations and orientations (docking poses) with respect to a target protein, where at least the structure of the target protein is known. Scoring functions are then used to rank the docking poses and assess the quality of the predicted complexes.
 
-In general, the conformational space that both the peptide and the target protein can assume is huge. Then, a reduced representation is employed to speed up the process. 
+In general, the conformational space that both the peptide and the target protein can assume is huge. Then, a reduced representation is employed to speed up the process.
 
 ### CABS-dock
 
 CABS-dock [^Kurcinski2019] is an efficient and fast multiscale modeling procedure based on CABS model (a coarse-grained model representation). Each amino acid is represented by up to four interaction centers, simulation dynamics are controlled by the Monte Carlo scheme, and the force field is based on statistical potentials.
 
-### Snakemake
+## Requirements
 
-Snakemake [^Mölder2021] is a python-based tool useful to create reproducible and scalable pipelines for data analyses. It is ideal for cases in which both reproducibility and generalizability of the same study and its application to several case studies are important.
-
-## Requiremets
-
-The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher installed, togheter with `Modeller` [^Webb2016] and `DSSP` [^Kabsch1983] softwares.
+The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher installed, togheter with `CABS-dock` [^Kurcinski2019], `Modeller` [^Webb2016] and `DSSP` [^Kabsch1983].
 
 ## Usage
 
 ### Command line
 
+1) clone this repository where you would like to run to the pipeline:
+
+git clone https://github.com/ELELAB/cabsdock_production.git
+cd cabsdock_production
+
+2) edit the config.yaml and models.csv files appropriately for your system
+
+3) run snakemake:
+
 `snakemake [--cores NCORES]`
 
 ### Options
 
+some widely-used snakemake options:
+
 |Option   |Meaning   |
 |---|---|
 |`--cores`   |Number of cores to be used   |
+|`-p`        |Print out all actions that are being performed   |
+|`--dry-run` |Generate DAG but don't run rules - for testing purposes   |
 
 
 ### Input files
 
 #### snakefile
 
-It is the file that contains all the instructions to be executed. 
+It is the file that contains all the instructions to be executed. Usually, it doesn't need to be changed.
 
 #### Apo structures
 
-The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide. All the structures needed for the docking procedure must be collected in a folder whose path is specified within the configuration file. 
+The apo structure is, by definition, the structure of the receptor protein in an unbound state with respect the interacting peptide.
 
-The apo structures must be provided in PDB format. 
+All the structures that are going to be used for the docking procedure need to be collected in a folder whose path is specified in the configuration file. File names can be arbitrary.
+
+The apo structures must be provided in PDB format.
 
 #### Peptides
 
-The peptides are provided as strings in FASTA format. One file for each peptide is required and they must be located in a folder. Each file name must be stored with the following name structure:
+The SLiM sequences are provided in FASTA format, one file for each peptide and they need to be located in a single folder.
+Each file must be named as such follows:
 
-`[name of the peptide]_[first-last sequence residue numbers of the FASTA sequence].fasta`
+`[name of the peptide]_[first residue number in the FASTA sequence using the numbering of the full protein]-[last residue number, defined as per first].fasta`
+
+Each file must contain a single entry. The content of the header can be arbitrary.
 
 For example:
 
@@ -72,15 +86,14 @@ It is a CSV file which uses semicolon as a column delimiter. The following infor
 
 |Entry|Meaning|Example|
 |---|---|---|
-|`peptide_name`|It is the protein of the peptide|p62|
-|`template`|It is the name of the protein|lc3b|
-|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the protein|1-120|
+|`peptide_name`|It is the protein of the SLiM|p62|
+|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein|1-120|
 |`aa_peptide`|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
 |`pdb_file`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
 |`chain`|It is the chain identifier of the peptide in the original pdb_file complex|a|
 |`model`|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
-N.B. The first line within the table must be: `peptide_name;template;aa_protein;aa_peptide;pdb_file;chain;model`.
+N.B. The first line within the table must be: `peptide_name;aa_protein;aa_peptide;pdb_file;chain;model`.
 The following lines can contain the information for the runs: `p62;lc3b;1-120;330-349;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`, etc.
 
 #### Configuration file
