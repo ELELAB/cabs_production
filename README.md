@@ -73,16 +73,15 @@ It is a CSV file which uses semicolon as a column delimiter. The following infor
 |Entry|Meaning|Example|
 |---|---|---|
 |`peptide_name`|It is the protein of the peptide|p62|
-|`template`|It is the name of the receptor protein|lc3b|
-|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the receptor|1-120|
+|`template`|It is the name of the protein|lc3b|
+|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the protein|1-120|
 |`aa_peptide`|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
-|`run_type`|It is the type of CABS-dock run, i.e. which restraints we will be using|blind|
 |`pdb_file`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
 |`chain`|It is the chain identifier of the peptide in the original pdb_file complex|a|
 |`model`|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
-N.B. The first line within the table must be: `peptide_name;template;aa_protein;aa_peptide;run_type;pdb_file;chain;model`.
-The following lines can contain the information for the runs: `p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`, etc.
+N.B. The first line within the table must be: `peptide_name;template;aa_protein;aa_peptide;pdb_file;chain;model`.
+The following lines can contain the information for the runs: `p62;lc3b;1-120;330-349;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`, etc.
 
 #### Configuration file
 
@@ -94,7 +93,7 @@ The following options and parameters must be set within the configuration file:
 |---|---|
 |`models_file.csv`|It is a file ";" separated containing all the input names|
 |`apo_dir`|Path of the folder containing the apo structures|
-|`lir_dir`|Path of the folder containing the peptide files in fasta format|
+|`slim_dir`|Path of the folder containing the peptide files in fasta format|
 |`out_dir`|Path of the folder where the ouputs will be written|
 
 |CABS-dock options|Meaning|
@@ -105,8 +104,26 @@ The following options and parameters must be set within the configuration file:
 |`saved_pdb`|Select structures to be saved in the pdb format|
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
+|`run_types`|The secondary structure of the peptide (`ss_def`) or the spatial restarints (`restraints`) can be added onto six differents run types (`blind`, `blind_2D`, `D-R`, `D-R_D-N`, `D-R_D-N_D2N`, `D-R_D-N_no2D`)|
 
-N.B. The `lir_dir` name depends on the fact that this protocol was built for the docking of proteins containing LC3 interacting region (LIRs).
+N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
+
+    run_types:
+        blind:
+            ss_def: null
+            restraints: null
+        blind_2D:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints: null
+        D-R:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints:
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+        D-R_D-N:
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            restraints:
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+                - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
 
 ### Outputs
 
@@ -114,14 +131,13 @@ The typical CABS-dock outputs are expected for each line within the table. The f
 
 For example, if a line appears like this:
 
-`p62;lc3b;1-120;330-349;blind;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`
+`p62;lc3b;1-120;330-349;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`
 
 the expected output will be located in the following path:
 
-`lc3b/lir_complexes/p62/p62_2ZJDa_1-120_330-349/blind/`
+`lc3b/p62/p62_2ZJDa_1-120_330-349/run_types`
 
-N.B. The lir_complexes folder will be created since this protocol was built for the docking of proteins containing LC3 interacting region (LIRs). This can be easily changed within the snakefile by adapting the folder name to the peptides under study.
-
+N.B., The `run_types` folder will be created depending on which CABS-dock's rentsraints are selected. 
  
 ### References
 
@@ -131,4 +147,4 @@ N.B. The lir_complexes folder will be created since this protocol was built for 
 
 [^Webb2016]: Webb, B.; Sali, A. Comparative protein structure modeling using MODELLER. Curr. Protoc. Bioinforma.2016, 54, 5.6.1-5.6.37.
 
-[^Kabsch] : Kabsch W, Sander C. Dictionary of protein secondary structure: pattern recognition of hydrogen-bonded and geometrical features. Biopolymers. 1983 Dec;22(12):2577-637.
+[^Kabsch1983]: Kabsch W, Sander C. Dictionary of protein secondary structure: pattern recognition of hydrogen-bonded and geometrical features. Biopolymers. 1983 Dec;22(12):2577-637.
