@@ -1,8 +1,8 @@
-models_file.csv: "models.csv"
+models_csv: "models.csv"
 
 apo_dir:  "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
 slim_dir: "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files/"
-out_dir:  "my_test"
+out_dir:  "."
 
 cabsdock:
     mc_runs: 300
