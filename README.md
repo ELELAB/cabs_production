@@ -23,34 +23,34 @@ The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher instal
 
 The user will also need to provide:
 
-1) a directory with PDB files of the apo structure for the docking. These need also to be specified in the models.csv file
-2) a directory with FASTA files contaning the sequence of the SLiM of interest
-3) an appriopriately formatted csv and config.yaml file
+- a directory with PDB files of the apo structure for the docking. These need also to be specified in the models.csv file;
+- a directory with FASTA files contaning the sequence of the SLiM of interest;
+- an appriopriately formatted csv and config.yaml file.
 
-more details to follow
+More details to follow.
 
 ## Usage
 
-1) clone this repository where you would like to run to the pipeline:
+1. Clone this repository where you would like to run to the pipeline:
 
-git clone https://github.com/ELELAB/cabsdock_production.git
-cd cabsdock_production
+`git clone https://github.com/ELELAB/cabsdock_production.git`
+`cd cabsdock_production`
 
-2) edit the config.yaml and models.csv files appropriately for your system
+2. Edit the config.yaml and models.csv files appropriately for your system.
 
-3) run snakemake:
+3. run snakemake:
 
 `snakemake [--cores NCORES]`
 
 ### Options
 
-some widely-used snakemake options that might come useful:
+Some widely-used snakemake options that might come useful:
 
 |Option   |Meaning   |
 |---|---|
-|`--cores`   |Number of cores to be used   |
-|`-p`        |Print out all actions that are being performed   |
-|`--dry-run` |Generate DAG but don't run rules - for testing purposes   |
+|`--cores`   |Number of cores to be used|
+|`-p`        |Print out all actions that are being performed|
+|`--dry-run` |Generate DAG but don't run rules - for testing purposes|
 
 
 ### Design of input files
@@ -91,7 +91,7 @@ VRPQQEDEWVNVQYPDQPEE
 
 It is a CSV file which uses semicolon as a column delimiter which specifies the docking runs to be performed. For each line, all the run types defined in the config file will be performed (see below for more details).
 
-The following information must be added, one line
+The following information must be added, one line:
 
 |Entry|Meaning|Example|
 |---|---|---|
@@ -156,15 +156,15 @@ Run types can be specified a specific structure, for instance:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
 
-for each run type (in this example, "blind" and "D-R_D-N"), both a secondary structure definition and restraints can be defined.
+For each run type (in this example, "blind" and "D-R_D-N"), both a secondary structure definition and restraints can be defined.
 
-secondary structure definition (ss_def) can be either a string of letters, as specified by CABSdock, or null to indicate no secondary structure defined.
+Secondary structure definition (ss_def) can be either a string of letters, as specified by CABSdock, or null to indicate no secondary structure defined.
 
-restraints can either be null, if none need to be applied, or a list of command line options to define restraints. These are passed directly to the CABSdock command line.
+Restraints can either be null, if none need to be applied, or a list of command line options to define restraints. These are passed directly to the CABSdock command line.
 
 ### Outputs
 
-directories of typical CABS-dock outputs, one per run type, are expected for each line within the table.
+Directories of typical CABS-dock outputs, one per run type, are expected for each line within the table.
 The folders containing the output will be built and named with the information provided in the table.
 
 For example, if a line appears like this:
