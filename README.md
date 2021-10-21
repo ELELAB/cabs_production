@@ -86,15 +86,18 @@ It is a CSV file which uses semicolon as a column delimiter. The following infor
 
 |Entry|Meaning|Example|
 |---|---|---|
-|`peptide_name`|It is the protein of the SLiM|p62|
-|`aa_protein`|It is the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein|1-120|
-|`aa_peptide`|It is the first-last sequence residue numbers of the FASTA sequence we will be using for the peptide|330-349|
-|`pdb_file`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
-|`chain`|It is the chain identifier of the peptide in the original pdb_file complex|a|
-|`model`|It is the name of the pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
+|`slim_name`|It is the protein name in which the SLiM is present|p62|
+|`slim_seq`|It is the first-last sequence residue numbers of the SLiM, in the main isoform Uniprot sequence of the protein it was taken from|330-349|
+|`apo_structure_source`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
+|`apo_chain_in_source`|chain name corresponding to the apo structure that is in `apo_structure_source`|a|
+|`apo_seq`|the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein, Uniprot main isoform numbering|1-120|
+|`apo_model_name`|name of the model we are going to use for the apo, in case e.g. we needed to do some work on the `apo_structure_source` to reconstruct missing parts|model0|
+|`apo_pdb`|name of the final pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
 
-N.B. The first line within the table must be: `peptide_name;aa_protein;aa_peptide;pdb_file;chain;model`.
-The following lines can contain the information for the runs: `p62;lc3b;1-120;330-349;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`, etc.
+N.B. The first line within the table must be: 
+slim_name;slim_seq;apo_structure_source;apo_chain_in_source;apo_seq;apo_model_name;apo_pdb
+The following lines can contain the information for the runs: 
+`p62;330-349;2ZJD;a;1-120;model0;apo_lc3B_p62AB.B99990001.pdb`
 
 #### Configuration file
 
@@ -104,7 +107,7 @@ The following options and parameters must be set within the configuration file:
 
 |Generic options|Meaning|
 |---|---|
-|`models_file.csv`|It is a file ";" separated containing all the input names|
+|`models_csv`|It is a file ";" separated containing all the input names|
 |`apo_dir`|Path of the folder containing the apo structures|
 |`slim_dir`|Path of the folder containing the peptide files in fasta format|
 |`out_dir`|Path of the folder where the ouputs will be written|
