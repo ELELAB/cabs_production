@@ -3,6 +3,7 @@
 ## Overview
 
 This snakemake[^Mölder2021]-based pipeline [^Mölder2021] is designed to perform in-silico protein-peptide docking using CABS-dock [^Kurcinski2019].
+In particular, it focuses on docking peptides harboring short linear motifs (SLiMs) on apo structures of proteins of interest.
 
 ## Background
 
@@ -20,9 +21,15 @@ CABS-dock [^Kurcinski2019] is an efficient and fast multiscale modeling procedur
 
 The user must have `Snakemake` [^Mölder2021] and `python` v3.7 or higher installed, togheter with `CABS-dock` [^Kurcinski2019], `Modeller` [^Webb2016] and `DSSP` [^Kabsch1983].
 
-## Usage
+The user will also need to provide:
 
-### Command line
+1) a directory with PDB files of the apo structure for the docking. These need also to be specified in the models.csv file
+2) a directory with FASTA files contaning the sequence of the SLiM of interest
+3) an appriopriately formatted csv and config.yaml file
+
+more details to follow
+
+## Usage
 
 1) clone this repository where you would like to run to the pipeline:
 
@@ -37,7 +44,7 @@ cd cabsdock_production
 
 ### Options
 
-some widely-used snakemake options:
+some widely-used snakemake options that might come useful:
 
 |Option   |Meaning   |
 |---|---|
@@ -46,7 +53,7 @@ some widely-used snakemake options:
 |`--dry-run` |Generate DAG but don't run rules - for testing purposes   |
 
 
-### Input files
+### Design of input files
 
 #### snakefile
 
@@ -62,10 +69,10 @@ The apo structures must be provided in PDB format.
 
 #### Peptides
 
-The SLiM sequences are provided in FASTA format, one file for each peptide and they need to be located in a single folder.
+The sequences of SLiMs are provided in FASTA format, one file for each peptide and they need to be located in a single folder.
 Each file must be named as such follows:
 
-`[name of the peptide]_[first residue number in the FASTA sequence using the numbering of the full protein]-[last residue number, defined as per first].fasta`
+`[name of the peptide]_[first residue number in the FASTA sequence of the SLiM using the numbering of the full protein]-[last residue number, defined as per first].fasta`
 
 Each file must contain a single entry. The content of the header can be arbitrary.
 
@@ -80,9 +87,11 @@ The file content is:
 VRPQQEDEWVNVQYPDQPEE
 ```
 
-#### Table
+#### models.csv
 
-It is a CSV file which uses semicolon as a column delimiter. The following information must be added:
+It is a CSV file which uses semicolon as a column delimiter which specifies the docking runs to be performed. For each line, all the run types defined in the config file will be performed (see below for more details).
+
+The following information must be added, one line
 
 |Entry|Meaning|Example|
 |---|---|---|
@@ -96,8 +105,12 @@ It is a CSV file which uses semicolon as a column delimiter. The following infor
 
 N.B. The first line within the table must be: 
 slim_name;slim_seq;apo_structure_source;apo_chain_in_source;apo_seq;apo_model_name;apo_pdb
+
 The following lines can contain the information for the runs: 
 `p62;330-349;2ZJD;a;1-120;model0;apo_lc3B_p62AB.B99990001.pdb`
+
+In this example, we are considering the SLiM LIR of p62, residues 330-349; this will be docked using CABS-dock on the apo structure contained in apo_lc3B_p62AB.B99990001.pdb.
+This apo structure is the model called "model0" that was derived starting from the protein complex with PDB ID 2ZJD, chain A, residues 1-120. 
 
 #### Configuration file
 
@@ -107,53 +120,62 @@ The following options and parameters must be set within the configuration file:
 
 |Generic options|Meaning|
 |---|---|
-|`models_csv`|It is a file ";" separated containing all the input names|
+|`models_csv`|It is a file ";" separated containing all the input names, as described above|
 |`apo_dir`|Path of the folder containing the apo structures|
 |`slim_dir`|Path of the folder containing the peptide files in fasta format|
 |`out_dir`|Path of the folder where the ouputs will be written|
 
 |CABS-dock options|Meaning|
 |---|---|
-|`mc_runs`|Number of Monte Carlo cycles (NUM>0)|
+|`mc_runs`|Number of Monte Carlo cycles (>0)|
 |`k-medoids`|Number of medoids in k-medoids clustering algorithm|
 |`clustering-iterations`|Number of iterations of the clustering k-medoids algorithm|
-|`saved_pdb`|Select structures to be saved in the pdb format|
+|`saved_pdb`|which type of pdb output should be saved by CABSdock (default is "A" for all; see https://bitbucket.org/lcbio/cabsdock/wiki/Home#markdown-header--o-pdb-output-selection)|
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
-|`run_types`|The secondary structure of the peptide (`ss_def`) or the spatial restarints (`restraints`) can be added onto six differents run types (`blind`, `blind_2D`, `D-R`, `D-R_D-N`, `D-R_D-N_D2N`, `D-R_D-N_no2D`)|
+|`run_types`|this section controls the run types to be performed for each protein-SLiM combination specified in the models.csv file|
 
 N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
+
+#### Specifying run types
+
+A run type is a specific combination of CABSdock restraints and input secondary structure definition. One or more run type
+must be specified in the config.yaml configuration file.
+
+For each apo-SLiM combination (i.e. each line models.csv), all the defined run types are performed separately.
+
+Run types can be specified a specific structure, for instance:
 
     run_types:
         blind:
             ss_def: null
             restraints: null
-        blind_2D:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
-            restraints: null
-        D-R:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
-            restraints:
-                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
         D-R_D-N:
             ss_def: 'CCCCCCCCCCCCCCCCCCCC'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
 
+for each run type (in this example, "blind" and "D-R_D-N"), both a secondary structure definition and restraints can be defined.
+
+secondary structure definition (ss_def) can be either a string of letters, as specified by CABSdock, or null to indicate no secondary structure defined.
+
+restraints can either be null, if none need to be applied, or a list of command line options to define restraints. These are passed directly to the CABSdock command line.
+
 ### Outputs
 
-The typical CABS-dock outputs are expected for each line within the table. The folders containing the output will be built and named with the information provided in the table.
+directories of typical CABS-dock outputs, one per run type, are expected for each line within the table.
+The folders containing the output will be built and named with the information provided in the table.
 
 For example, if a line appears like this:
 
-`p62;lc3b;1-120;330-349;2ZJD;a;apo_lc3B_p62AB.B99990001.pdb`
+`p62;330-349;2ZJD;a;1-120;model0;apo_lc3B_p62AB.B99990001.pdb`
 
 the expected output will be located in the following path:
 
-`lc3b/p62/p62_2ZJDa_1-120_330-349/run_types`
-
-N.B., The `run_types` folder will be created depending on which CABS-dock's rentsraints are selected. 
+`p62/p62_2ZJDa_1-120_330-349/model0/blind`
+`p62/p62_2ZJDa_1-120_330-349/model0/D_R-D_N`
+...
  
 ### References
 
