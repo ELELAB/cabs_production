@@ -2,7 +2,6 @@ import pandas as pd
 import numpy as np
 import os
 
-
 configfile: 'config.yaml'
 
 models = pd.read_csv(config['models_file.csv'], sep=';')
@@ -56,20 +55,47 @@ rule cabs_run:
                allow_missing=True)
     shell:
         """
-	working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.run_type}
+        working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.run_type}
+
         cp {input.apo} $working_dir/
         cp {input.slim} $working_dir/
-	cp config.yaml $working_dir/
-        CABSdock\
-		-i {input.apo}\
-		-p $(tail -n 1 {input.slim}){params.ss}\
-		-y {config[cabsdock][mc_runs]}\
-		-k {config[cabsdock][k-medoids]}\
-		--clustering-iterations {config[cabsdock][clustering-iterations]}\
-                {params.restraints}\
-		-A\
-		-o {config[cabsdock][saved_pdb]}\
-		-v {config[cabsdock][verbose]}\
-		--dssp-command {config[cabsdock][dssp_location]}\
-		-w $working_dir/
-       """
+
+        cd $working_dir
+
+        cat <<EOF > README
+This directory contains a CABS-dock run to model the structure of a complex
+between a SLIM peptide and a protein:
+
+    apo structure: {wildcards.pdb_file}, chain {wildcards.chain}, {wildcards.aa_protein}
+    slim fasta: {wildcards.peptide_name}, {wildcards.aa_peptide}
+    run type: {wildcards.run_type}
+
+This has been performed by running the
+run.sh script:
+
+    bash run.sh
+
+a log file called "CABS.log" contaning the output of CABS-dock has also
+been written.
+EOF
+
+        cat <<"EOF" > run.sh
+export slim_seq=$(tail -n 1 $(basename {input.slim}))
+export apo_file=$(basename {input.apo})
+
+CABSdock\\
+    -i $apo_file\\
+    -p $slim_seq{params.ss}\\
+    -y {config[cabsdock][mc_runs]}\\
+    -k {config[cabsdock][k-medoids]}\\
+    --clustering-iterations {config[cabsdock][clustering-iterations]}\\
+    {params.restraints}\\
+    -A\\
+    -o {config[cabsdock][saved_pdb]}\\
+    -v {config[cabsdock][verbose]}\\
+    --dssp-command {config[cabsdock][dssp_location]}\\
+    --log
+EOF
+
+        bash run.sh
+        """

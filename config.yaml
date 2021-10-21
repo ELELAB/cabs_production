@@ -34,7 +34,7 @@ cabsdock:
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
                 - '--ca-rest-add 99:A 17:PEP 4.0 1.0'
         D-R_D-N_no2D:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCCC'
+            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A  14:PEP 5.0 1.0'
