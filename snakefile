@@ -4,7 +4,7 @@ import os
 
 configfile: 'config.yaml'
 
-models = pd.read_csv(config['models_file.csv'], sep=';')
+models = pd.read_csv(config['models_csv'], sep=';')
 
 def get_ss(wildcards):
 
@@ -28,13 +28,14 @@ rule all:
     input:
         expand(
             expand(
-                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
                     zip,
-                    peptide_name=models['peptide_name'],
-                    pdb_file=models['pdb_file'],
-                    chain=models['chain'],
-                    aa_protein=models['aa_protein'],
-                    aa_peptide=models['aa_peptide'], 
+                    peptide_name=models['slim_name'],
+                    pdb_file=models['apo_structure_source'],
+                    chain=models['apo_chain_in_source'],
+                    aa_protein=models['apo_seq'],
+                    aa_peptide=models['slim_seq'],
+                    apo_model_name=models['apo_model_name'],
                     allow_missing=True),
                 run_type=list(config['cabsdock']['run_types'].keys()),
                 allow_missing=True),
@@ -42,7 +43,7 @@ rule all:
 
 rule cabs_run:
     input:
-        apo=lambda wildcards: os.path.join(config['apo_dir'], models[(models['pdb_file'] == wildcards.pdb_file) & (models['peptide_name'] == wildcards.peptide_name)]['model'].to_list()[0]),
+        apo=lambda wildcards: os.path.join(config['apo_dir'], models[(models['apo_structure_source'] == wildcards.pdb_file) & (models['slim_name'] == wildcards.peptide_name)]['apo_pdb'].to_list()[0]),
         slim=os.path.join(config['slim_dir'], "{peptide_name}_{aa_peptide}.fasta")
 
     params:
@@ -50,12 +51,12 @@ rule cabs_run:
         restraints = get_restraints
 
     output:
-        expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+        expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
                n=np.arange(config['cabsdock']['k-medoids']),
                allow_missing=True)
     shell:
         """
-        working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.run_type}
+        working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.apo_model_name}/{wildcards.run_type}
 
         cp {input.apo} $working_dir/
         cp {input.slim} $working_dir/
@@ -80,12 +81,12 @@ been written.
 EOF
 
         cat <<"EOF" > run.sh
-export slim_seq=$(tail -n 1 $(basename {input.apo}))
+export slim_seq=$(tail -n 1 $(basename {input.slim}))
 export apo_file=$(basename {input.apo})
 
 CABSdock\\
     -i $apo_file\\
-    -p $(tail -n 1 $slim_file){params.ss}\\
+    -p $slim_seq{params.ss}\\
     -y {config[cabsdock][mc_runs]}\\
     -k {config[cabsdock][k-medoids]}\\
     --clustering-iterations {config[cabsdock][clustering-iterations]}\\
