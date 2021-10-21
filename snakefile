@@ -80,12 +80,12 @@ been written.
 EOF
 
         cat <<"EOF" > run.sh
-export slim_seq=$(tail -n 1 $(basename {input.apo}))
+export slim_seq=$(tail -n 1 $(basename {input.slim}))
 export apo_file=$(basename {input.apo})
 
 CABSdock\\
     -i $apo_file\\
-    -p $(tail -n 1 $slim_file){params.ss}\\
+    -p $slim_seq{params.ss}\\
     -y {config[cabsdock][mc_runs]}\\
     -k {config[cabsdock][k-medoids]}\\
     --clustering-iterations {config[cabsdock][clustering-iterations]}\\
