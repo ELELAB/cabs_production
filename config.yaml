@@ -1,7 +1,7 @@
 models_csv: "models.csv"
 
-apo_dir:  "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/after_modeller/apo_from_complexes/apo_extracted/"
-slim_dir: "../../../shared_projects/lir_ambra_paper_2020/curation_complexes/lc3b/fasta_lirs/fasta_files/"
+apo_dir:  "/data/raw_data/computational_data/curations_data/bh3_bcl/bcl2/apo_from_complexes"
+slim_dir: "/data/raw_data/computational_data/curations_data/bh3_bcl/bcl2/fasta_slim"
 out_dir:  "."
 
 cabsdock:
@@ -16,25 +16,26 @@ cabsdock:
             ss_def: null
             restraints: null
         blind_2D:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints: null
         D-R:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
         D-R_D-N:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
         D-R_D-N_D2N:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
                 - '--ca-rest-add 99:A 17:PEP 4.0 1.0'
         D-R_D-N_no2D:
-            ss_def: 'CCCCCCCCCCCCCCCCCCCC'
+            ss_def: null
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
                 - '--ca-rest-add 99:A  14:PEP 5.0 1.0'
+

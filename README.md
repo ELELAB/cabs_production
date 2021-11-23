@@ -99,6 +99,7 @@ The following information must be added, one line:
 |`slim_seq`|It is the first-last sequence residue numbers of the SLiM, in the main isoform Uniprot sequence of the protein it was taken from|330-349|
 |`apo_structure_source`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
 |`apo_chain_in_source`|chain name corresponding to the apo structure that is in `apo_structure_source`|a|
+|`slim_chain`|chain name corresponding to the slim chain name in the original structure|b|
 |`apo_seq`|the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein, Uniprot main isoform numbering|1-120|
 |`apo_model_name`|name of the model we are going to use for the apo, in case e.g. we needed to do some work on the `apo_structure_source` to reconstruct missing parts|model0|
 |`apo_pdb`|name of the final pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|

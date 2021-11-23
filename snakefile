@@ -28,11 +28,12 @@ rule all:
     input:
         expand(
             expand(
-                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
                     zip,
                     peptide_name=models['slim_name'],
                     pdb_file=models['apo_structure_source'],
-                    chain=models['apo_chain_in_source'],
+                    apo_chain=models['apo_chain_in_source'],
+                    slim_chain=models['slim_chain'],
                     aa_protein=models['apo_seq'],
                     aa_peptide=models['slim_seq'],
                     apo_model_name=models['apo_model_name'],
@@ -51,12 +52,12 @@ rule cabs_run:
         restraints = get_restraints
 
     output:
-        expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+        expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
                n=np.arange(config['cabsdock']['k-medoids']),
                allow_missing=True)
     shell:
         """
-        working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.apo_model_name}/{wildcards.run_type}
+        working_dir={config[out_dir]}/{wildcards.peptide_name}/{wildcards.peptide_name}_{wildcards.pdb_file}{wildcards.apo_chain}{wildcards.slim_chain}_{wildcards.aa_protein}_{wildcards.aa_peptide}/{wildcards.apo_model_name}/{wildcards.run_type}
 
         cp {input.apo} $working_dir/
         cp {input.slim} $working_dir/
@@ -67,8 +68,8 @@ rule cabs_run:
 This directory contains a CABS-dock run to model the structure of a complex
 between a SLIM peptide and a protein:
 
-    apo structure: {wildcards.pdb_file}, chain {wildcards.chain}, {wildcards.aa_protein}
-    slim fasta: {wildcards.peptide_name}, {wildcards.aa_peptide}
+    apo structure: {wildcards.pdb_file}, apo_chain {wildcards.apo_chain}, {wildcards.aa_protein}
+    slim fasta: {wildcards.peptide_name}, slim_chain {wildcards.slim_chain}, {wildcards.aa_peptide}
     run type: {wildcards.run_type}
 
 This has been performed by running the
