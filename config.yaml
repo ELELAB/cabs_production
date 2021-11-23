@@ -16,17 +16,26 @@ cabsdock:
             ss_def: null
             restraints: null
         blind_2D:
-            ss_def: 'CCCCCCCCCCCCCCCCCHHCHHHCCCCCCCC'
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints: null
-        Q-R_Q-N:
-            ss_def: 'CCCCCCCCCCCCCCCCCHHCHHHCCCCCCCC'
+        D-R:
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
-                - '--ca-rest-add 102:A 20:PEP 6.5 1.0'
-                - '--ca-rest-add 99:A 20:PEP 5.0 1.0'
-        Q-R_Q-N_E-N:
-            ss_def: 'CCCCCCCCCCCCCCCCCHHCHHHCCCCCCCC'
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+        D-R_D-N:
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
-                - '--ca-rest-add 102:A 20:PEP 6.5 1.0'
-                - '--ca-rest-add 99:A 20:PEP 5.0 1.0'
-                - '--ca-rest-add 99:A 23:PEP 6.5 1.0'
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+                - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
+        D-R_D-N_D2N:
+            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
+            restraints:
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+                - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
+                - '--ca-rest-add 99:A 17:PEP 4.0 1.0'
+        D-R_D-N_no2D:
+            ss_def: null
+            restraints:
+                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
+                - '--ca-rest-add 99:A  14:PEP 5.0 1.0'
 
