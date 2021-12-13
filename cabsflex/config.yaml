@@ -1,3 +1,6 @@
+#configuration file
+
+#name of variants file in directory.
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
@@ -19,8 +22,9 @@ cabsflex:
         metal_bound:
             ss_def: null
             restraints: 
-               #test restraint
-               - '--log'
-               #expected restraints
-               #- '--ca-rest-add'
-               #- '--sc-rest-add' 
+               - '--ca-rest-add'
+               - '--sc-rest-add' 
+        backbone_flex:
+            ss_def: null
+            restraints: 
+               - '-f 0' 
