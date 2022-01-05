@@ -91,7 +91,9 @@ for v in variants['source_structure'].index:
             runtype=list(config['cabsflex']['run_types'].keys()),
             n=np.arange(config['cabsflex']['k-medoids'])))
 
-variants = variants.set_index('source_structure')
+variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
+
+print(variants)
 
 rule all:
     input:
@@ -99,7 +101,7 @@ rule all:
 
 rule run_cabsflex:
     input:
-        lambda wcs: f"{config['pdb_dir']}/{variants.loc[wcs.name, 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
+        lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
     wildcard_constraints:
