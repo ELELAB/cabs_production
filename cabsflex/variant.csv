@@ -1,3 +1,2 @@
 source_structure,chain_in_source,aa_num_start,aa_num_end,source_type,pdb_dir
-2XWR;A;91;289;model;2XWRa_91-289/test
-
+2XWRa,A,91,289,model,2XWRa_91-289/test
