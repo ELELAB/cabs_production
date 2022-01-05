@@ -1,13 +1,8 @@
-#configuration file
-
 #name of variants file in directory.
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
 pdb_dir: "/data/raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
-
-#testdir
-#pdb_dir: "/data/user/krde/CABSflex_snakemake/prelim_test_teo/input_pdbs"
 
 out_dir: "./results" 
 
