@@ -82,8 +82,8 @@ for v in variants['source_structure'].index:
                 f"{variants.loc[v, 'source_type']}/" +
                  "{runtype}/output_pdbs/model_{n}.pdb",
                  zip,
-                 name=wcs.name,
-                 chain=wcs.chain,
+                 name=wcs_wt.name,
+                 chain=wcs_wt.chain,
                  wt=wt_sl,
                  resnum=wcs.resnum,
                  alt=alt_sl,
