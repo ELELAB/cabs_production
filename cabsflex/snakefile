@@ -119,7 +119,6 @@ rule run_cabsflex:
         
         cd $working_dir
         
-        #create a read me file
         cat <<EOF > README.txt
         
         Read me
@@ -147,4 +146,7 @@ EOF
             {params.restraints}\\
             --log
 EOF
-        
+
+        bash run.sh  
+        """
+
