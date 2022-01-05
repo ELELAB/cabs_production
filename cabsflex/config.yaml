@@ -11,15 +11,19 @@ cabsflex:
    verbose: 3
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
    run_types:
-        default:
-            ss_def: null
-            restraints: null
+        #default:
+        #    ss_def: null
+        #    restraints: null
         metal_bound:
             ss_def: null
             restraints: 
-               - '--ca-rest-add'
-               - '--sc-rest-add' 
-        backbone_flex:
-            ss_def: null
-            restraints: 
-               - '-f 0' 
+               - '--ca-rest-add 179:A 176:A 5.5 1.0'
+               - '--ca-rest-add 179:A 238:A 6.6 1.0'
+               - '--ca-rest-add 179:A 242:A 8.1 1.0'
+               - '--ca-rest-add 176:A 238:A 7.1 1.0'
+               - '--ca-rest-add 176:A 242:A 6.5 1.0'
+               - '--ca-rest-add 238:A 242:A 6.7 1.0'
+        #backbone_flex:
+        #    ss_def: null
+        #    restraints: 
+        #       - '-f 0'
