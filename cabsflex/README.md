@@ -3,6 +3,7 @@
 ## Overview
 
 This snakemake[^Mölder2021]-based pipeline [^Mölder2021] is designed to perform in-silico modeling of protein flexibility with CABSflex [^Kurcinski2019]. 
+In particular, it is designed to run CABSflex on a set of structural variants of a given protein, each one stored in a separate PDB file.
 
 ### CABSflex
 
@@ -18,8 +19,19 @@ The user must have `Snakemake` [^Mölder2021], `python` v3.7 or higher, `CABS-fl
 
 The user will also need to provide:
 
-- A directory containing one or more PDB files
-- An appropriately formatted variants.csv and config.yaml file
+- A directory containing one or more PDB files. PDB files should be named as follows:
+
+`{identifier}_{chain}_{WT residue type}{residue number}{variant residue type}.pdb`
+
+so for instance:
+
+`2XWRa_A_ALA129ASP.pdb`
+
+the corresponding wild-type structure is also identified and used as:
+
+`{identifier}_{chain}_WT.pdb`
+
+- An appropriately formatted variants.csv and config.yaml file (see below)
 
 
 ## Usage
@@ -27,13 +39,13 @@ The user will also need to provide:
 1. Clone this repository where you would like to run to the pipeline:
 
 `git clone https://github.com/ELELAB/cabs_production.git`
-`cd cabsflex`
+`cd cabs_production/cabsflex`
 
 2. Edit the config.yaml and variants.csv files appropriately for your system.
 
 3. run snakemake:
 
-`snakemake [--cores NCORES]`
+`snakemake --cores NCORES`
 
 
 ### Options
@@ -55,24 +67,24 @@ Some widely-used snakemake options that might come useful:
 It is the file that contains all the instructions to be executed. Usually, it doesn't need to be changed.
 
 #### variants.csv
-It is a CSV file that uses a comma as a column delimiter which specifies the structures that should undergo flexibility modeling. For each line, all the run types defined in the config file will be performed (see below for more details).
+It is a CSV file that uses a comma as a column delimiter which specifies the structures that should undergo flexibility modeling. Each line specifies a set of mutants (i.e. a set of PDB files). For each line, all the run types defined in the config file will be performed (see below for more details).
 
 The following information must be added:
 
 |Column name|Meaning|Example|
 |---|---|---|
-|`source_structure`|The PDB id|2XWRa|
+|`source_structure`|The identifier of the original structure, in this case PDB ID and original chain identifier|2XWRa|
 |`chain_in_source`|It is the chain of interest in the source structure|A|
 |`aa_num_start`|It is the numbering of the first amino acid in the structure|91|
 |`aa_num_end`|It is the numbering of the last amino acid in the structure|289|
 |`source_type`|The type of structure in question, e.g., X-ray, NMR or model|model|
-|`pdb_dir`|the directory in which the structure can be found|2XWRa_91-289/test/|
+|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_dir` directory specified in the config file|2XWRa_91-289/test/|
 
 Example:
 source_structure,chain_in_source,aa_num_start,aa_num_end;source_type,pdb_dir
 2XWRa,A,91,289,model,2XWRa_91-289/test/
 
- N.B. The first line within the table must be kept.
+ N.B. The header line within the table must be kept.
 
 In this example, we are considering chain A on the X-ray structure with PDB id 2XWR, which has undergone computational mutations. Each model of a mutation is available in `2XWRa_91-289/test/`
 
