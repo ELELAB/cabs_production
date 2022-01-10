@@ -104,12 +104,18 @@ rule run_cabsflex:
         lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+        
     wildcard_constraints:
         wt="[A-Z]",
         resnum="[0-9]+",
         alt="[A-Z]"
     params:
-        restraints=get_restraints
+        restraints=get_restraints,
+        mc_cycles = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-cycles'],
+        mc_steps = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-steps'],
+        mc_annealing = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-annealing'],
+        rebuilding = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['rebuilding'],
+        random_seed = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['random-seed']
         
     shell:
         """
@@ -141,6 +147,11 @@ EOF
             -i input.pdb\\
             -k {config[cabsflex][k-medoids]}\\
             -v {config[cabsflex][verbose]}\\
+            -s {params.mc_steps}\\
+            -y {params.mc_cycles}\\
+            -a {params.mc_annealing}\\
+            -A {params.rebuilding}\\
+            -z {params.random_seed}\\
             -C \\
             --dssp-command {config[cabsflex][dssp_location]}\\
             {params.restraints}\\
@@ -149,4 +160,3 @@ EOF
 
         bash run.sh  
         """
-

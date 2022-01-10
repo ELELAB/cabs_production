@@ -12,9 +12,19 @@ cabsflex:
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
    run_types:
         #default:
+        #    mc-cycles: 50
+        #    mc-steps: 50
+        #    mc-annealing: 20
+        #    random-seed: 10 
+        #    rebuilding: True
         #    ss_def: null
         #    restraints: null
         metal_bound:
+            mc-cycles: 50
+            mc-steps: 50
+            mc-annealing: 20
+            random-seed: 10 
+            rebuilding: True 
             ss_def: null
             restraints: 
                - '--ca-rest-add 179:A 176:A 5.5 1.0'
@@ -24,6 +34,11 @@ cabsflex:
                - '--ca-rest-add 176:A 242:A 6.5 1.0'
                - '--ca-rest-add 238:A 242:A 6.7 1.0'
         #backbone_flex:
+        #    mc-cycles: 50
+        #    mc-steps: 50
+        #    mc-annealing: 20
+        #    random-seed: 10
+        #    rebuilding: True 
         #    ss_def: null
         #    restraints: 
         #       - '-f 0'
