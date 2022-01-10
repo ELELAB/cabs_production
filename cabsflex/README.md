@@ -109,6 +109,7 @@ The following options and parameters must be set within the configuration file:
 |`mc-steps`| This option, (-s, --mc-steps NUM) sets number of Monte Carlo cycles between trajectory frames to NUM (NUM > 0, default value = 50). |
 |`mc-annealing`| This option, (-a, --mc-annealing NUM) sets number of Monte Carlo temperature annealing cycles to NUM (NUM > 0, default value = 20, changing default value is recommended only for advanced users). |
 |`rebuilding`| Rebuild final models to all-atom representation (requires MODELLER installed), the default value is True |
+|`Random Seed`| Setting a random seed for the run. As a default all random seeds are set to 10, which ensures reproducibility of runs. |
 
 N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
 
