@@ -99,13 +99,17 @@ The following options and parameters must be set within the configuration file:
 |`pdb_dir`|Path of the directory containing the PDB structures|
 |`out_dir`|Path of the folder where the outputs will be written, per default is “./results”|
 
-
 |CABS-flex options|Meaning|
 |---|---|
 |`k-medoids`|Number of medoids in k-medoids clustering algorithm|
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
 |`run_types`|this section controls the run types to be performed |
+|`mc-cycles`| This option,(-y, --mc-cycles NUM) sets the number of Monte Carlo cycles to NUM (NUM>0, default value = 50).|
+|`mc-steps`| This option, (-s, --mc-steps NUM) sets number of Monte Carlo cycles between trajectory frames to NUM (NUM > 0, default value = 50). |
+|`mc-annealing`| This option, (-a, --mc-annealing NUM) sets number of Monte Carlo temperature annealing cycles to NUM (NUM > 0, default value = 20, changing default value is recommended only for advanced users). |
+|`rebuilding`| Rebuild final models to all-atom representation (requires MODELLER installed), the default value is True |
+|`Random Seed`| Setting a random seed for the run. As a default all random seeds are set to 10, which ensures reproducibility of runs. |
 
 N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
 
