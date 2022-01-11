@@ -51,7 +51,7 @@ for v in variants['source_structure'].index:
 
     wt_sl = [ three_to_one(r) for r in wcs.wt ]
     alt_sl = [ three_to_one(r) for r in wcs.alt ]
-    
+
     #for mutations
     targets.extend(
         expand(
@@ -114,7 +114,6 @@ rule run_cabsflex:
         mc_cycles = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-cycles'],
         mc_steps = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-steps'],
         mc_annealing = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-annealing'],
-        rebuilding = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['rebuilding'],
         random_seed = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['random-seed']
         
     shell:
@@ -150,7 +149,7 @@ EOF
             -s {params.mc_steps}\\
             -y {params.mc_cycles}\\
             -a {params.mc_annealing}\\
-            -A {params.rebuilding}\\
+            -A \\
             -z {params.random_seed}\\
             -C \\
             --dssp-command {config[cabsflex][dssp_location]}\\
