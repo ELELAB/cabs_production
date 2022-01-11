@@ -18,12 +18,14 @@ cabsflex:
         #    random-seed: 10 
         #    ss_def: null
         #    restraints: null
-        metal_bound:
+        #    rebuild-models: true
+           metal_bound:
             mc-cycles: 50
             mc-steps: 50
             mc-annealing: 20
             random-seed: 10 
             ss_def: null
+            rebuild-models: true
             restraints: 
                - '--ca-rest-add 179:A 176:A 5.5 1.0'
                - '--ca-rest-add 179:A 238:A 6.6 1.0'
@@ -39,3 +41,4 @@ cabsflex:
         #    ss_def: null
         #    restraints: 
         #       - '-f 0'
+        #    rebuild-models: true

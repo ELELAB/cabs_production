@@ -23,12 +23,21 @@ from Bio.PDB.Polypeptide import three_to_one, one_to_three
 
 def get_ss(wildcards):
 
-    this_ss_def = config['cabsflex']['run_types'][wildcards.runtype]['ss_def']
+    this_ss_def = config['cabsflex']['run_types'][wildcards.runtype]['ss-def']
 
     if this_ss_def is None:
         return ""
     else:
         return f":{this_ss_def}"
+
+def get_rebuild_models(wildcards):
+
+    this_rebuild = config['cabsflex']['run_types'][wildcards.runtype]['rebuild-models']
+
+    if this_rebuild == True:
+        return "-A"
+    else:
+        return ""
 
 def get_restraints(wildcards):
 
@@ -114,6 +123,7 @@ rule run_cabsflex:
         mc_cycles = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-cycles'],
         mc_steps = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-steps'],
         mc_annealing = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-annealing'],
+        rebuild_models = get_rebuild_models,
         random_seed = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['random-seed']
         
     shell:
@@ -126,8 +136,6 @@ rule run_cabsflex:
         
         cat <<EOF > README.txt
         
-        Read me
-            
         This directory contains a CABSflex run to model the flexibility of a structure.
 
         Structure: {input}
@@ -149,7 +157,7 @@ EOF
             -s {params.mc_steps}\\
             -y {params.mc_cycles}\\
             -a {params.mc_annealing}\\
-            -A \\
+            {params.rebuild_models}\\
             -z {params.random_seed}\\
             -C \\
             --dssp-command {config[cabsflex][dssp_location]}\\
