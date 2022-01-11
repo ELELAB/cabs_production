@@ -16,7 +16,6 @@ cabsflex:
         #    mc-steps: 50
         #    mc-annealing: 20
         #    random-seed: 10 
-        #    rebuilding: True
         #    ss_def: null
         #    restraints: null
         metal_bound:
@@ -24,7 +23,6 @@ cabsflex:
             mc-steps: 50
             mc-annealing: 20
             random-seed: 10 
-            rebuilding: True 
             ss_def: null
             restraints: 
                - '--ca-rest-add 179:A 176:A 5.5 1.0'
@@ -38,7 +36,6 @@ cabsflex:
         #    mc-steps: 50
         #    mc-annealing: 20
         #    random-seed: 10
-        #    rebuilding: True 
         #    ss_def: null
         #    restraints: 
         #       - '-f 0'
