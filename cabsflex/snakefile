@@ -118,7 +118,7 @@ rule run_cabsflex:
         
     shell:
         """
-        working_dir={config[out_dir]}/{wildcards.name}_{wildcards.chain}_{wildcards.start}-{wildcards.end}_{wildcards.wt}{wildcards.resnum}{wildcards.alt}/{wildcards.source}/{wildcards.runtype}
+        working_dir=$(dirname $(dirname {output[0]}))
         
         cp {input} $working_dir/
         
@@ -130,7 +130,7 @@ rule run_cabsflex:
             
         This directory contains a CABSflex run to model the flexibility of a structure.
 
-        Structure: {wildcards.name}_{wildcards.chain}_{wildcards.start}-{wildcards.end}_{wildcards.wt}{wildcards.resnum}{wildcards.alt}.pdb
+        Structure: {input}
         Run type: {wildcards.runtype}
 
         This has been performed by running run.sh script, command: bash run.sh 
@@ -159,3 +159,9 @@ EOF
 
         bash run.sh  
         """
+
+use rule run_cabsflex as run_cabsflex_wt with:
+    input:
+        lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_WT.pdb"
+    output:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
