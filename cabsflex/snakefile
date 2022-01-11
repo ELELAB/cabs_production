@@ -102,8 +102,6 @@ for v in variants['source_structure'].index:
 
 variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
 
-print(variants)
-
 rule all:
     input:
         targets
