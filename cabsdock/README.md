@@ -1,4 +1,4 @@
-# CABS-dock pipline
+# CABS-dock pipeline
 
 ## Overview
 
