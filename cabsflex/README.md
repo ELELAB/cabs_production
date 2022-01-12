@@ -1,3 +1,6 @@
+Cancer Structural Biology, Danish Cancer Society Research Center, 2100, Copenhagen, Denmark 
+Cancer Systems Biology, Health and Technology Department, Section for Bioinformatics, 2800, Lyngby, Denmark
+
 # CABS-flex pipeline
 
 ## Overview
@@ -25,7 +28,7 @@ The user will also need to provide:
 
 so for instance:
 
-`2XWRa_A_ALA129ASP.pdb`
+`2XWR_A_ALA129ASP.pdb`
 
 the corresponding wild-type structure is also identified and used as:
 
@@ -73,20 +76,20 @@ The following information must be added:
 
 |Column name|Meaning|Example|
 |---|---|---|
-|`source_structure`|The identifier of the original structure, in this case PDB ID and original chain identifier|2XWRa|
+|`source_structure`|The identifier of the original structure, in this case PDB ID and original chain identifier|2XWR|
 |`chain_in_source`|It is the chain of interest in the source structure|A|
 |`aa_num_start`|It is the numbering of the first amino acid in the structure|91|
 |`aa_num_end`|It is the numbering of the last amino acid in the structure|289|
 |`source_type`|The type of structure in question, e.g., X-ray, NMR or model|model|
-|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_dir` directory specified in the config file|2XWRa_91-289/test/|
+|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_dir` directory specified in the config file|2XWR_91-289/test/|
 
 Example:
 source_structure,chain_in_source,aa_num_start,aa_num_end;source_type,pdb_dir
-2XWRa,A,91,289,model,2XWRa_91-289/test/
+2XWR,A,91,289,model,2XWRa_91-289/test/
 
  N.B. The header line within the table must be kept.
 
-In this example, we are considering chain A on the X-ray structure with PDB id 2XWR, which has undergone computational mutations. Each model of a mutation is available in `2XWRa_91-289/test/`
+In this example, we are considering chain A on the X-ray structure with PDB id 2XWR, which has undergone computational mutations. Each model of a mutation is available in `2XWR_91-289/test/`
 
 #### config.yaml
 A YAML file containing the script configuration. 
@@ -149,13 +152,13 @@ Example:
 
 [source_structure]_[chain_in_source]_[aa_num_start]-[aa_num_end]_[WT_amino_acid][AA_num][Mutated_amino_acid]
 
-	2XWRa_A_91-289_A129D
+	2XWR_A_91-289_A129D
  		- model
 			- default
-				- 2XWRa_A_ALA129ASP.pdb
+				- 2XWR_A_ALA129ASP.pdb
 				- CABS.log
 				- config.ini
-				- input.pdb -> 2XWRa_A_ALA129ASP.pdb
+				- input.pdb -> 2XWR_A_ALA129ASP.pdb
 				- output_data
 				- output_pdbs
 					- model_0.pdb
@@ -170,10 +173,10 @@ Example:
 				- README.txt
 				- run.sh
 			- metal_bound
-				- 2XWRa_A_ALA129ASP.pdb
+				- 2XWR_A_ALA129ASP.pdb
 				- CABS.log
 				- config.ini
-				- input.pdb -> 2XWRa_A_ALA129ASP.pdb
+				- input.pdb -> 2XWR_A_ALA129ASP.pdb
 				- output_data
 				- output_pdbs
 					- model_0.pdb
@@ -187,11 +190,11 @@ Example:
 				- plots
 				- README.txt
 				- run.sh
-	2XWRa_A_91-289_A129E
+	2XWR_A_91-289_A129E
 		- model
 			- default
 			- metal_bound
-	2XWRa_A_91-289_A129S
+	2XWR_A_91-289_A129S
 		- model
 			- default
 			- metal_bound
