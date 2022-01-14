@@ -20,6 +20,9 @@ import pandas as pd
 import numpy as np
 import os
 from Bio.PDB.Polypeptide import three_to_one, one_to_three
+import MDAnalysis as mda
+from MDAnalysis.analysis import align
+
 
 def get_ss(wildcards):
 
@@ -48,6 +51,23 @@ def get_restraints(wildcards):
     else:
         return " ".join(this_restr)
 
+def select_final_structures(wildcards):
+    if config['cabsflex']['run_types'][wildcards.runtype]['ligand']['place_ligand'] == True:
+        model_fname = "model_ligand"
+    else:
+        model_fname = "model"
+
+    return [ f"{config['out_dir']}/{wildcards.name}_{wildcards.chain}_{wildcards.start}-{wildcards.end}_{wildcards.wt}{wildcards.resnum}{wildcards.alt}/{wildcards.source}/{wildcards.runtype}/output_pdbs/{model_fname}_{n}.pdb" for n in range(config['cabsflex']['k-medoids']) ]
+
+
+def select_final_structures_wt(wildcards):
+    if config['cabsflex']['run_types'][wildcards.runtype]['ligand']['place_ligand'] == True:
+        model_fname = "model_ligand"
+    else:
+        model_fname = "model"
+
+    return [ f"{config['out_dir']}/{wildcards.name}_{wildcards.chain}_{wildcards.start}-{wildcards.end}_WT/{wildcards.source}/{wildcards.runtype}/output_pdbs/{model_fname}_{n}.pdb" for n in range(config['cabsflex']['k-medoids']) ]
+
 configfile: 'config.yaml'
 
 variants = pd.read_csv(config['variant_csv'])
@@ -70,7 +90,7 @@ for v in variants['source_structure'].index:
                 f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_" +
                  "{wt}{resnum}{alt}/" +
                 f"{variants.loc[v, 'source_type']}/" +
-                 "{runtype}/output_pdbs/model_{n}.pdb", 
+                 "{runtype}/theseus/theseus_sup.pdb",
                  zip,
                  name=wcs.name,
                  chain=wcs.chain,
@@ -78,8 +98,7 @@ for v in variants['source_structure'].index:
                  resnum=wcs.resnum,
                  alt=alt_sl,
                  allow_missing=True),
-            runtype=list(config['cabsflex']['run_types'].keys()),
-            n=np.arange(config['cabsflex']['k-medoids'])))
+            runtype=list(config['cabsflex']['run_types'].keys())))
     
     #for WT
     targets.extend(
@@ -89,7 +108,7 @@ for v in variants['source_structure'].index:
                  "{name}_{chain}_" +
                 f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_WT/" +
                 f"{variants.loc[v, 'source_type']}/" +
-                 "{runtype}/output_pdbs/model_{n}.pdb",
+                 "{runtype}/theseus/theseus_sup.pdb",
                  zip,
                  name=wcs_wt.name,
                  chain=wcs_wt.chain,
@@ -97,8 +116,7 @@ for v in variants['source_structure'].index:
                  resnum=wcs.resnum,
                  alt=alt_sl,
                  allow_missing=True),
-            runtype=list(config['cabsflex']['run_types'].keys()),
-            n=np.arange(config['cabsflex']['k-medoids'])))
+            runtype=list(config['cabsflex']['run_types'].keys())))
 
 variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
 
@@ -171,3 +189,28 @@ use rule run_cabsflex as run_cabsflex_wt with:
         lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_WT.pdb"
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+
+
+rule make_ensemble:
+    input:
+        select_final_structures
+
+    output:
+         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/theseus/theseus_sup.pdb"
+
+    wildcard_constraints:
+        wt="[A-Z]",
+        resnum="[0-9]+",
+        alt="[A-Z]"
+
+    shell:
+         """
+         cd $(dirname {output})
+
+         {config[theseus_location]} $(for i in {input}; do echo ../output_pdbs/$(basename $i); done)
+         """
+use rule make_ensemble as make_ensemble_wt with:
+    input:
+        select_final_structures_wt
+    output:
+         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/theseus/theseus_sup.pdb"
