@@ -20,6 +20,9 @@ import pandas as pd
 import numpy as np
 import os
 from Bio.PDB.Polypeptide import three_to_one, one_to_three
+import MDAnalysis as mda
+from MDAnalysis.analysis import align
+
 
 def get_ss(wildcards):
 
