@@ -20,9 +20,6 @@ import pandas as pd
 import numpy as np
 import os
 from Bio.PDB.Polypeptide import three_to_one, one_to_three
-import MDAnalysis as mda
-from MDAnalysis.analysis import align
-
 
 def get_ss(wildcards):
 
@@ -214,3 +211,48 @@ use rule make_ensemble as make_ensemble_wt with:
         select_final_structures_wt
     output:
          f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/theseus/theseus_sup.pdb"
+
+rule add_ligand:
+    input:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+    output:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_ligand_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+    params:
+        ligand_structure = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['ligand']['ligand_structure'],
+        model_fit_selection = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['ligand']['model_fit_selection'],
+        ligand_fit_selection = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['ligand']['ligand_fit_selection'],
+        ligand_selection = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['ligand']['ligand_selection']
+
+    run:
+        # load reference structure as universe
+        ref_u = mda.Universe(params.ligand_structure)
+
+        for f, o in zip(input, output):
+
+            # load model as universe
+            u = mda.Universe(f)
+
+            # least square fit the reference structure universe to the model universe
+            # using CA of both proteins only. Note that I have removed the alternate
+            # conformations from the original 2XWR to make this work.
+            align.alignto(u,
+                          ref_u,
+                          select={'mobile'   : params.model_fit_selection,
+                                  'reference': params.ligand_fit_selection},
+                          strict=True)
+
+            # select atoms of ligand
+            ligand = ref_u.select_atoms(params.ligand_selection)
+
+            # create a new universe containing the model universe and the selected
+            # ligand
+            u_ligand = mda.Merge(u.atoms, ligand.atoms)
+
+            # write this to PDB
+            u_ligand.atoms.write(o)
+
+use rule add_ligand as rule_add_ligand_wt with:
+    input:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+    output:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_ligand_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
