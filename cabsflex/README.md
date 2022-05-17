@@ -222,6 +222,11 @@ Example:
 
 Notice that there is only "model" in this example, however, experimental inputs are also applicable defined by the method, e.g., xray.
 
+### Example
+
+See the directory example_run to see an example of input files, one type of configuration and the resulting output. This directory also 
+contains a small readme to explain the example run. 
+
 ### References
 
 [^Mölder2021]: Mölder, F., Jablonski, K.P., Letcher, B., Hall, M.B., Tomkins-Tinch, C.H., Sochat, V., Forster, J., Lee, S., Twardziok, S.O., Kanitz, A., Wilm, A., Holtgrewe, M., Rahmann, S., Nahnsen, S., Köster, J., 2021. Sustainable data analysis with Snakemake. F1000Res 10, 33.
