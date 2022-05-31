@@ -2,9 +2,11 @@
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
-pdb_dir: "/data/raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
+pdb_dir: "/../cabs_production/cabsflex" #add correct input file path here.
 
 out_dir: "." 
+
+theseus_location: '/usr/local/theseus-3.3.0/theseus' #input correct path here.
 
 cabsflex:
    k-medoids: 20
@@ -40,7 +42,7 @@ cabsflex:
                - '--ca-rest-add 176:A 242:A 6.5 1.0'
                - '--ca-rest-add 238:A 242:A 6.7 1.0'
             ligand:
-                place_ligand: false
+                place_ligand: true
                 ligand_structure: '2XWR.pdb'
                 model_fit_selection: "protein and name CA and segid A"
                 ligand_fit_selection: "protein and name CA and segid A"
@@ -66,7 +68,7 @@ cabsflex:
                - '--sc-rest-add 176:A 238:A 6.7 1.0'
                - '--sc-rest-add 238:A 242:A 5.1 1.0' 
             ligand:
-                place_ligand: false
+                place_ligand: true
                 ligand_structure: '2XWR.pdb'
                 model_fit_selection: "protein and name CA and segid A"
                 ligand_fit_selection: "protein and name CA and segid A"
