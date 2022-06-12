@@ -75,8 +75,8 @@ variants = pd.read_csv(config['variant_csv'])
 targets = []
 for v in variants['source_structure'].index:
 
-    wcs = glob_wildcards(f"{config['pdb_dir']}/{variants.loc[v, 'pdb_dir']}/" + "{name}_{chain}_{wt,[A-Z]{3}}{resnum,[0-9]+}{alt,[A-Z]{3}}.pdb")
-    wcs_wt = glob_wildcards(f"{config['pdb_dir']}/{variants.loc[v, 'pdb_dir']}/" + "{name}_{chain}_WT.pdb")
+    wcs = glob_wildcards(f"{config['pdb_input_dir']}/{variants.loc[v, 'pdb_dir']}/" + "{name}_{chain}_{wt,[A-Z]{3}}{resnum,[0-9]+}{alt,[A-Z]{3}}.pdb")
+    wcs_wt = glob_wildcards(f"{config['pdb_input_dir']}/{variants.loc[v, 'pdb_dir']}/" + "{name}_{chain}_WT.pdb")
 
     wt_sl = [ three_to_one(r) for r in wcs.wt ]
     alt_sl = [ three_to_one(r) for r in wcs.alt ]
@@ -126,7 +126,7 @@ rule all:
 
 rule run_cabsflex:
     input:
-        lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
+        lambda wcs: f"{config['pdb_input_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
         
@@ -186,7 +186,7 @@ EOF
 
 use rule run_cabsflex as run_cabsflex_wt with:
     input:
-        lambda wcs: f"{config['pdb_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_WT.pdb"
+        lambda wcs: f"{config['pdb_input_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_WT.pdb"
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
 

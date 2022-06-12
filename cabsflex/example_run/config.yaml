@@ -2,7 +2,7 @@
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
-pdb_dir: "/data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/"
+pdb_input_dir: "."
 
 out_dir: "." 
 

@@ -2,7 +2,8 @@
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
-pdb_dir: "/../cabs_production/cabsflex" #add correct input file path here.
+pdb_input_dir: "../../../../../raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
+#Example# pdb_input_dir: "/data/raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
 
 out_dir: "." 
 
