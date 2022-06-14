@@ -41,7 +41,6 @@ the corresponding wild-type structure is also identified and used as:
 the complex to be used as reference to place the ligand in the model structures. This can have any name
 and must be specified in the configuration file (see below).
 
-
 ## Usage
 
 1. Clone this repository where you would like to run to the pipeline:
@@ -54,7 +53,6 @@ and must be specified in the configuration file (see below).
 3. run snakemake:
 
 `snakemake --cores NCORES`
-
 
 ### Options
 
@@ -86,7 +84,7 @@ The following information must be added:
 |`aa_num_start`|It is the numbering of the first amino acid in the structure|91|
 |`aa_num_end`|It is the numbering of the last amino acid in the structure|289|
 |`source_type`|The type of structure in question, e.g., X-ray, NMR or model|model|
-|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_dir` directory specified in the config file|2XWR_91-289/test/|
+|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_input_dir` directory specified in the config file|2XWR_91-289/test/|
 
 Example:
 source_structure,chain_in_source,aa_num_start,aa_num_end;source_type,pdb_dir
@@ -104,7 +102,7 @@ The following options and parameters must be set within the configuration file:
 |Generic options|Meaning|
 |---|---|
 |`variant_csv`|It is a file “,” separated containing all the input names, as described above|
-|`pdb_dir`|Path of the directory containing the PDB structures|
+|`pdb_input_dir`|Path of the directory containing the folders with the PDB structures (as specified in the `pdb_dir` column of the csv file)|
 |`out_dir`|Path of the folder where the outputs will be written, per default is “./results”|
 
 |CABS-flex options|Meaning|
@@ -221,6 +219,11 @@ Example:
             └── theseus_variances.txt
 
 Notice that there is only "model" in this example, however, experimental inputs are also applicable defined by the method, e.g., xray.
+
+### Example
+
+See the directory example_run to see an example of input files, one type of configuration and the resulting output. This directory also 
+contains a small readme to explain the example run. 
 
 ### References
 

@@ -1,0 +1,44 @@
+##############################################################################################################
+[INFO]       Logger:   Verbosity set to: 3 - [OUT FILES]                                           (00:00:07)
+[WARNING]    JOB:      /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XW 
+                       R_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs already exists. Output data will   
+                       be overwritten.                                                             (00:00:07)
+[INFO]       Protein:  Loading input.pdb as input protein                                          (00:00:07)
+[WARNING]    PDB:      Unknown residue ZN at 300:A in input.pdb                                    (00:00:07)
+[OUT FILES]  Logger:   Saving DSSP output to /data/user/krde/CABSflex_snakemake/cabs_production/ca 
+                       bsflex/example_run/2XWR_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs/output_data/ 
+                       DSSP_output_input.txt                                                       (00:00:08)
+[WARNING]    Protein:  Could not read weights file: gauss                                          (00:00:08)
+[WARNING]    Protein:  Using default weights(1.0) for all atoms.                                   (00:00:08)
+[INFO]       CABS:     Setting up CABS simulation.                                                 (00:00:08)
+[CRITICAL]   CABSflex: Interrupted by user.                                                        (00:16:22)
+##############################################################################################################
+[INFO]       Logger:   Verbosity set to: 3 - [OUT FILES]                                           (00:00:02)
+[WARNING]    JOB:      /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XW 
+                       R_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs already exists. Output data will   
+                       be overwritten.                                                             (00:00:02)
+[INFO]       Protein:  Loading input.pdb as input protein                                          (00:00:02)
+[WARNING]    PDB:      Unknown residue ZN at 300:A in input.pdb                                    (00:00:02)
+[OUT FILES]  Logger:   Overwriting /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/exa 
+                       mple_run/2XWR_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs/output_data/DSSP_outpu 
+                       t_input.txt                                                                 (00:00:02)
+[OUT FILES]  Logger:   Saving DSSP output to /data/user/krde/CABSflex_snakemake/cabs_production/ca 
+                       bsflex/example_run/2XWR_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs/output_data/ 
+                       DSSP_output_input.txt                                                       (00:00:02)
+[WARNING]    Protein:  Could not read weights file: gauss                                          (00:00:02)
+[WARNING]    Protein:  Using default weights(1.0) for all atoms.                                   (00:00:02)
+[INFO]       CABS:     Setting up CABS simulation.                                                 (00:00:03)
+[WARNING]    CABS:     Note: The following floating-point exceptions are signalling: IEEE_DENORMAL 
+                       Note: The following floating-point exceptions are signalling: IEEE_DENORMAL (00:22:40)
+[INFO]       JOB:      Trajectories loaded successfully                                            (00:22:42)
+[INFO]       JOB:      Input loaded as reference.                                                  (00:22:42)
+[OUT FILES]  JOB:      Saving pdb files to /data/user/krde/CABSflex_snakemake/cabs_production/cabs 
+                       flex/example_run/2XWR_A_91-289_N239Y/xray/ca_sc_rest_zinc_bs/output_pdbs    (00:23:10)
+[WARNING]    JOB:      Possibly overwriting previous pdb files. Use --work-dir <DIR> to avoid      
+                       that.                                                                       (00:23:10)
+[OUT FILES]  JOB:      Saving replicas...                                                          (00:23:10)
+[OUT FILES]  JOB:      Saving clusters...                                                          (00:23:39)
+[OUT FILES]  JOB:      Saving starting structure...                                                (00:24:00)
+[OUT FILES]  JOB:      Saving final models (in AA representation)                                  (00:24:00)
+[INFO]       JOB:      RMSD successfully saved                                                     (00:55:24)
+[INFO]       JOB:      Simulation completed successfully                                           (00:55:29)
