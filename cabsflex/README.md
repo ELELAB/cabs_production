@@ -86,7 +86,7 @@ The following information must be added:
 |`aa_num_start`|It is the numbering of the first amino acid in the structure|91|
 |`aa_num_end`|It is the numbering of the last amino acid in the structure|289|
 |`source_type`|The type of structure in question, e.g., X-ray, NMR or model|model|
-|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_dir` directory specified in the config file|2XWR_91-289/test/|
+|`pdb_dir`|the directory in which the structure can be found. This path starts from the `pdb_input_dir` directory specified in the config file|2XWR_91-289/test/|
 
 Example:
 source_structure,chain_in_source,aa_num_start,aa_num_end;source_type,pdb_dir
@@ -104,7 +104,7 @@ The following options and parameters must be set within the configuration file:
 |Generic options|Meaning|
 |---|---|
 |`variant_csv`|It is a file “,” separated containing all the input names, as described above|
-|`pdb_dir`|Path of the directory containing the PDB structures|
+|`pdb_input_dir`|Path of the directory containing the PDB structures|
 |`out_dir`|Path of the folder where the outputs will be written, per default is “./results”|
 
 |CABS-flex options|Meaning|
