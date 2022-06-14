@@ -41,7 +41,6 @@ the corresponding wild-type structure is also identified and used as:
 the complex to be used as reference to place the ligand in the model structures. This can have any name
 and must be specified in the configuration file (see below).
 
-
 ## Usage
 
 1. Clone this repository where you would like to run to the pipeline:
@@ -54,7 +53,6 @@ and must be specified in the configuration file (see below).
 3. run snakemake:
 
 `snakemake --cores NCORES`
-
 
 ### Options
 
@@ -104,7 +102,7 @@ The following options and parameters must be set within the configuration file:
 |Generic options|Meaning|
 |---|---|
 |`variant_csv`|It is a file “,” separated containing all the input names, as described above|
-|`pdb_input_dir`|Path of the directory containing the PDB structures|
+|`pdb_input_dir`|Path of the directory containing the folders with the PDB structures (as specified in the `pdb_dir` column of the csv file)|
 |`out_dir`|Path of the folder where the outputs will be written, per default is “./results”|
 
 |CABS-flex options|Meaning|
