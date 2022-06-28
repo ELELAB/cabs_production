@@ -1,13 +1,13 @@
 models_csv: "models.csv"
 
-apo_dir:  "/data/raw_data/computational_data/curations_data/bh3_bcl/bcl2/apo_from_complexes"
-slim_dir: "/data/raw_data/computational_data/curations_data/bh3_bcl/bcl2/fasta_slim"
+apo_dir:  "../../../../../raw_data/computational_data/curations_data/bh3_bcl/bcl2/apo_from_complexes"
+slim_dir: "../../../../../raw_data/computational_data/curations_data/bh3_bcl/bcl2/fasta_slim"
 out_dir:  "."
 
 cabsdock:
-    mc_runs: 300
+    mc_runs: 200
     k-medoids: 20
-    clustering-iterations: 250
+    clustering-iterations: 200
     saved_pdb: "A"
     verbose: 4
     dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
@@ -18,24 +18,9 @@ cabsdock:
         blind_2D:
             ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints: null
+                
         D-R:
             ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
             restraints:
                 - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
-        D-R_D-N:
-            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
-            restraints:
-                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
-                - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
-        D-R_D-N_D2N:
-            ss_def: 'HHHHHHHHHHHHHHHHHHHHH'
-            restraints:
-                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
-                - '--ca-rest-add 99:A 14:PEP 5.0 1.0'
-                - '--ca-rest-add 99:A 17:PEP 4.0 1.0'
-        D-R_D-N_no2D:
-            ss_def: null
-            restraints:
-                - '--ca-rest-add 102:A 14:PEP 6.5 1.0'
-                - '--ca-rest-add 99:A  14:PEP 5.0 1.0'
-
+                

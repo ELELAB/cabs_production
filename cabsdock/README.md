@@ -76,15 +76,15 @@ Each file must be named as such follows:
 
 Each file must contain a single entry. The content of the header can be arbitrary.
 
-For example:
+For example, provided in this folder:
 
-`PLEKHM1_627-646.fasta`
+`beclin1_108-128.fasta`
 
 The file content is:
 
 ```
->PLEKHM1_627-646
-VRPQQEDEWVNVQYPDQPEE
+>beclin1_108-128
+TMENLSRRLKVTGDLFDIMSG
 ```
 
 #### models.csv

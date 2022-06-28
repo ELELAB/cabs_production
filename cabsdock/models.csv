@@ -1,6 +1,2 @@
 slim_name;slim_seq;apo_structure_source;apo_chain_in_source;slim_chain;apo_seq;apo_model_name;apo_pdb
-beclin1;108-128;5FCG;a;c;1-206;model6;5fcg_AC_mod6.A.pdb
 beclin1;108-128;5VAU;a;e;1-206;model2;5vau_AE_mod2.A.pdb
-beclin1;108-128;5VAU;b;f;1-206;model8;5vau_BF_mod_loop.B99990009.B.pdb
-beclin1;108-128;5VAU;c;g;1-206;model6;5vau_CG_mod_loop.B99990006._C.pdb
-beclin1;108-128;5VAU;d;h;1-206;model8;5vau_DH_mod_loop.B99990008.D.pdb
