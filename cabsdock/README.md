@@ -95,23 +95,23 @@ The following information must be added, one line:
 
 |Entry|Meaning|Example|
 |---|---|---|
-|`slim_name`|It is the protein name in which the SLiM is present|p62|
-|`slim_seq`|It is the first-last sequence residue numbers of the SLiM, in the main isoform Uniprot sequence of the protein it was taken from|330-349|
-|`apo_structure_source`|It is the PDB ID of the complex from which the apo structure under model was taken|2ZJD|
+|`slim_name`|It is the protein name in which the SLiM is present|beclin1|
+|`slim_seq`|It is the first-last sequence residue numbers of the SLiM, in the main isoform Uniprot sequence of the protein it was taken from|108-128|
+|`apo_structure_source`|It is the PDB ID of the complex from which the apo structure under model was taken|5VAU|
 |`apo_chain_in_source`|chain name corresponding to the apo structure that is in `apo_structure_source`|a|
-|`slim_chain`|chain name corresponding to the slim chain name in the original structure|b|
-|`apo_seq`|the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein, Uniprot main isoform numbering|1-120|
-|`apo_model_name`|name of the model we are going to use for the apo, in case e.g. we needed to do some work on the `apo_structure_source` to reconstruct missing parts|model0|
-|`apo_pdb`|name of the final pdb file corresponding to the apo model that will be used by CABS-dock|apo_lc3B_p62AB.B99990001.pdb|
+|`slim_chain`|chain name corresponding to the slim chain name in the original structure|e|
+|`apo_seq`|the first-last sequence residue numbers corresponding to the residues in the structure of the apo protein, Uniprot main isoform numbering|1-206|
+|`apo_model_name`|name of the model we are going to use for the apo, in case e.g. we needed to do some work on the `apo_structure_source` to reconstruct missing parts|model2|
+|`apo_pdb`|name of the final pdb file corresponding to the apo model that will be used by CABS-dock|5vau_AE_mod2.A.pdb|
 
 N.B. The first line within the table must be: 
 slim_name;slim_seq;apo_structure_source;apo_chain_in_source;apo_seq;apo_model_name;apo_pdb
 
 The following lines can contain the information for the runs: 
-`p62;330-349;2ZJD;a;1-120;model0;apo_lc3B_p62AB.B99990001.pdb`
+`beclin1;108-128;5VAU;a;e;1-206;model2;5vau_AE_mod2.A.pdb`
 
-In this example, we are considering the SLiM LIR of p62, residues 330-349; this will be docked using CABS-dock on the apo structure contained in apo_lc3B_p62AB.B99990001.pdb.
-This apo structure is the model called "model0" that was derived starting from the protein complex with PDB ID 2ZJD, chain A, residues 1-120. 
+In this example, we are considering the SLiM BH3 of beclin1, residues 108-128; this will be docked using CABS-dock on the apo structure contained in apo_from_complexes/5vau_AE_mod2.A.pdb.
+This apo structure is the model called "model2" that was derived starting from the protein complex with PDB ID 5VAU, chain A, residues 1-206. 
 
 #### Configuration file
 
@@ -170,12 +170,12 @@ The folders containing the output will be built and named with the information p
 
 For example, if a line appears like this:
 
-`p62;330-349;2ZJD;a;1-120;model0;apo_lc3B_p62AB.B99990001.pdb`
+`beclin1;108-128;5VAU;a;e;1-206;model2;5vau_AE_mod2.A.pdb`
 
 the expected output will be located in the following path:
 
-`p62/p62_2ZJDa_1-120_330-349/model0/blind`
-`p62/p62_2ZJDa_1-120_330-349/model0/D_R-D_N`
+`beclin1/beclin1_5VAUa_1-206_108-128/model2/blind`
+`beclin1/beclin1_5VAUa_1-206_108-128/model2/D_R-D_N`
 ...
  
 ### References
