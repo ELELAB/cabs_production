@@ -134,6 +134,7 @@ The following options and parameters must be set within the configuration file:
 |`saved_pdb`|which type of pdb output should be saved by CABSdock (default is "A" for all; see https://bitbucket.org/lcbio/cabsdock/wiki/Home#markdown-header--o-pdb-output-selection)|
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
+|`random_seed`|A random seed number can be specified, otherwise `False` must be provided|
 |`run_types`|this section controls the run types to be performed for each protein-SLiM combination specified in the models.csv file|
 
 N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
