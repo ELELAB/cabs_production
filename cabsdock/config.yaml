@@ -1,9 +1,7 @@
 models_csv: "models.csv"
 
 apo_dir:  "./apo_from_complexes"
-#apo_dir:  "../../../../../raw_data/computational_data/curations_data/bh3_bcl/bcl2/apo_from_complexes"
 slim_dir: "./"
-#slim_dir: "../../../../../raw_data/computational_data/curations_data/bh3_bcl/bcl2/fasta_slim"
 out_dir:  "."
 
 cabsdock:
@@ -12,7 +10,7 @@ cabsdock:
     clustering-iterations: 200
     saved_pdb: "A"
     verbose: 4
-    random_seed:
+    random_seed: False
     dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
     run_types:
         blind:
