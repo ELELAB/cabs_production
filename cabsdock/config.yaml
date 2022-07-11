@@ -1,6 +1,6 @@
 models_csv: "models.csv"
 
-apo_dir:  "./apo_from_complexes"
+apo_dir:  "../apo"
 slim_dir: "./"
 out_dir:  "."
 
