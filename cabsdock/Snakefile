@@ -18,10 +18,14 @@
 import pandas as pd
 import numpy as np
 import os
+from pymol import cmd
+from Bio import PDB
+from Bio.PDB.PDBIO import PDBIO
 
 configfile: 'config.yaml'
 
 models = pd.read_csv(config['models_csv'], sep=';')
+references = pd.read_csv(config['references_csv'])
 
 def get_ss(wildcards):
 
@@ -44,8 +48,7 @@ def get_restraints(wildcards):
 rule all:
     input:
         expand(
-            expand(
-                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+            expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir'],
                     zip,
                     peptide_name=models['slim_name'],
                     pdb_file=models['apo_structure_source'],
@@ -56,8 +59,7 @@ rule all:
                     apo_model_name=models['apo_model_name'],
                     allow_missing=True),
                 run_type=list(config['cabsdock']['run_types'].keys()),
-                allow_missing=True),
-            n=np.arange(config['cabsdock']['k-medoids']))
+                allow_missing=True)
 
 rule cabs_run:
     input:
@@ -120,3 +122,41 @@ EOF
 
         bash run.sh
         """
+
+rule pymol_aln:
+    input:
+        ref=expand("references/{pdb_ref}", pdb_ref=references["references"]),
+        mod=expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'], n=np.arange(config['cabsdock']['k-medoids']), allow_missing=True)
+    output:
+        aln="%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir']
+    run:
+        ref_list=[]
+        model_list=[]
+        for ref in input.ref:
+            cmd.load(ref, os.path.basename(ref))
+            ref_list.append(os.path.basename(ref))
+        for mod in input.mod:
+             cmd.load(mod, os.path.basename(mod))
+             model_list.append(os.path.basename(mod))
+        tot_list=ref_list+model_list
+        parser = PDB.PDBParser()
+        io = PDBIO()
+        structure = parser.get_structure(config["align_ref"], config["align_ref"])
+        pdb_chains = structure.get_chains()
+        for chain in pdb_chains:
+            if len(list(structure[0].get_chains())) > 1:
+                if chain.get_id() == config["align_ref_protein_id"]:
+                    io.set_structure(chain)
+                    ref_single_chain=structure.get_id()[:-4]+"_"+chain.get_id()+".pdb"
+                    io.save(ref_single_chain)
+                    cmd.load(ref_single_chain, os.path.basename(ref_single_chain))
+            else:
+                ref_single_chain=config["align_ref"]
+                cmd.load(ref_single_chain, os.path.basename(ref_single_chain))
+        for k in range(len(tot_list)):
+            cmd.align(tot_list[k], os.path.basename(ref_single_chain))
+        with open(wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
+            readme.write("\n")
+            readme.write("The output_pdbs/ folder contains the output models and a .pse file with the structural alignment of the models and the reference structures.") 
+        cmd.save(output.aln)
+                                                               
