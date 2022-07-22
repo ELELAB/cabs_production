@@ -155,7 +155,7 @@ rule pymol_aln:
                 cmd.load(ref_single_chain, os.path.basename(ref_single_chain))
         for k in range(len(tot_list)):
             cmd.align(tot_list[k], os.path.basename(ref_single_chain))
-        with open(wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
+        with open(config['out_dir'] + wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
             readme.write("\n")
             readme.write("The output_pdbs/ folder contains the output models and a .pse file with the structural alignment of the models and the reference structures.") 
         cmd.save(output.aln)
