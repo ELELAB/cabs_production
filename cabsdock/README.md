@@ -119,13 +119,6 @@ The following lines can contain the information for the runs:
 In this example, we are considering the SLiM BH3 of beclin1, residues 108-128; this will be docked using CABS-dock on the apo structure contained in apo_from_complexes/5vau_AE_mod2.A.pdb.
 This apo structure is the model called "model2" that was derived starting from the protein complex with PDB ID 5VAU, chain A, residues 1-206. 
 
-#### references.csv
-
-It is a CSV file where the reference structure names must be specified. 
-
-|Entry|Meaning|Example|
-|`references`|It is the pdb name of the references|5vau_AE_mod2.pdb|
-
 #### Configuration file
 
 A YAML file containing the script configuration. 
