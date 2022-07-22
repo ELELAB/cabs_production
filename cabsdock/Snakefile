@@ -112,6 +112,7 @@ CABSdock\\
     -k {config[cabsdock][k-medoids]}\\
     --clustering-iterations {config[cabsdock][clustering-iterations]}\\
     {params.exclude}\\
+    -f {config[cabsdock][flexibility]}\\
     {params.random_seed}\\
     {params.restraints}\\
     -A\\
