@@ -144,9 +144,46 @@ The following options and parameters must be set within the configuration file:
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
 |`random_seed`|A random seed number can be specified, otherwise `False` must be provided|
+|`exclude_res`|A residue or set of residues can be excluded from the docking search|
 |`run_types`|This section controls the run types to be performed for each protein-SLiM combination specified in the models.csv file|
 
-N.B., The restraints can be specified in the following way. If none of those are needed, just write `null`.
+N.B.,
+
+- The excluded residues can be specified in the following forms:
+
+```
+123:A
+```
+to exlude a single residue from chain A,
+
+```
+123:A+125:A
+```
+to exlude two residues from chain A,
+
+```
+123:A-125:A
+```
+to exclude residues 123, 124 and 125 from chain A,
+
+```
+A
+```
+to exlude whole chain A,
+
+```
+A+C
+```
+to exlude chains A and C,
+
+```
+A-C
+```
+to exlude chains A, B, C.
+
+To not exclude residues or chains enter "False".
+
+- The restraints can be specified as explained in the following pharagraph. If none of those are needed, just write `null`.
 
 #### Specifying run types
 
