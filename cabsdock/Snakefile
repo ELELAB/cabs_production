@@ -25,7 +25,8 @@ from Bio.PDB.PDBIO import PDBIO
 configfile: 'config.yaml'
 
 models = pd.read_csv(config['models_csv'], sep=';')
-references = pd.read_csv(config['references_csv'])
+
+ref_wcs = glob_wildcards(config['ref_dir'] + "/{pdb_ref}")
 
 def get_ss(wildcards):
 
@@ -69,7 +70,7 @@ rule cabs_run:
     params:
         ss = get_ss,
         restraints = get_restraints,
-        random_seed = "" if config['cabsdock']['random_seed'] == False else "-z "+str(config['cabsdock']['random_seed'])
+        random_seed = "" if config['cabsdock']['random_seed'] is False else "-z "+str(config['cabsdock']['random_seed'])
 
     output:
         expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
@@ -125,38 +126,23 @@ EOF
 
 rule pymol_aln:
     input:
-        ref=expand(config['ref_dir'] + "/{pdb_ref}", pdb_ref=references["references"]),
+        ref=expand(config['ref_dir'] + "/{pdb_ref}", pdb_ref=ref_wcs.pdb_ref),
         mod=expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'], n=np.arange(config['cabsdock']['k-medoids']), allow_missing=True)
     output:
         aln="%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir']
     run:
-        ref_list=[]
-        model_list=[]
-        for ref in input.ref:
-            cmd.load(ref, os.path.basename(ref))
-            ref_list.append(os.path.basename(ref))
-        for mod in input.mod:
-             cmd.load(mod, os.path.basename(mod))
-             model_list.append(os.path.basename(mod))
-        tot_list=ref_list+model_list
-        parser = PDB.PDBParser()
-        io = PDBIO()
-        structure = parser.get_structure(config["align_ref"], config["align_ref"])
-        pdb_chains = structure.get_chains()
-        for chain in pdb_chains:
-            if len(list(structure[0].get_chains())) > 1:
-                if chain.get_id() == config["align_ref_protein_id"]:
-                    io.set_structure(chain)
-                    ref_single_chain=structure.get_id()[:-4]+"_"+chain.get_id()+".pdb"
-                    io.save(ref_single_chain)
-                    cmd.load(ref_single_chain, os.path.basename(ref_single_chain))
-            else:
-                ref_single_chain=config["align_ref"]
-                cmd.load(ref_single_chain, os.path.basename(ref_single_chain))
-        for k in range(len(tot_list)):
-            cmd.align(tot_list[k], os.path.basename(ref_single_chain))
-        with open(config['out_dir'] + wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
+        pdb_name=[]
+        pdb_list=input.ref+input.mod
+        for pdb in pdb_list:
+            cmd.load(pdb, os.path.basename(pdb))
+            if os.path.basename(pdb) != config["align_ref"]:
+                pdb_name.append(os.path.basename(pdb))
+        cmd.select(config["align_ref"][:-4]+"_chain_A.pdb", config["align_ref"]+" and chain "+config["align_ref_protein_chain"])
+        for name in pdb_name:
+            cmd.align(name, config["align_ref"][:-4]+"_chain_A.pdb")
+        with open(config['out_dir'] +"/"+ wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
             readme.write("\n")
             readme.write("The output_pdbs/ folder contains the output models and a .pse file with the structural alignment of the models and the reference structures.") 
+        cmd.deselect()
         cmd.save(output.aln)
                                                                
