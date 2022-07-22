@@ -68,7 +68,8 @@ rule cabs_run:
     params:
         ss = get_ss,
         restraints = get_restraints,
-        random_seed = "" if config['cabsdock']['random_seed'] is False else "-z "+str(config['cabsdock']['random_seed'])
+        random_seed = "" if config['cabsdock']['random_seed'] is False else "-z "+str(config['cabsdock']['random_seed']),
+        exclude = "" if config['cabsdock']['exclude_res'] is False else "-e "+str(config['cabsdock']['exclude_res'])
 
     output:
         expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
@@ -110,6 +111,7 @@ CABSdock\\
     -y {config[cabsdock][mc_runs]}\\
     -k {config[cabsdock][k-medoids]}\\
     --clustering-iterations {config[cabsdock][clustering-iterations]}\\
+    {params.exclude}\\
     {params.random_seed}\\
     {params.restraints}\\
     -A\\
