@@ -19,8 +19,6 @@ import pandas as pd
 import numpy as np
 import os
 from pymol import cmd
-from Bio import PDB
-from Bio.PDB.PDBIO import PDBIO
 
 configfile: 'config.yaml'
 
