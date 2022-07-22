@@ -18,10 +18,13 @@
 import pandas as pd
 import numpy as np
 import os
+from pymol import cmd
 
 configfile: 'config.yaml'
 
 models = pd.read_csv(config['models_csv'], sep=';')
+
+ref_wcs = glob_wildcards(config['ref_dir'] + "/{pdb_ref}")
 
 def get_ss(wildcards):
 
@@ -44,8 +47,7 @@ def get_restraints(wildcards):
 rule all:
     input:
         expand(
-            expand(
-                expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
+            expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir'],
                     zip,
                     peptide_name=models['slim_name'],
                     pdb_file=models['apo_structure_source'],
@@ -56,8 +58,7 @@ rule all:
                     apo_model_name=models['apo_model_name'],
                     allow_missing=True),
                 run_type=list(config['cabsdock']['run_types'].keys()),
-                allow_missing=True),
-            n=np.arange(config['cabsdock']['k-medoids']))
+                allow_missing=True)
 
 rule cabs_run:
     input:
@@ -67,7 +68,7 @@ rule cabs_run:
     params:
         ss = get_ss,
         restraints = get_restraints,
-        random_seed = "" if config['cabsdock']['random_seed'] == False else "-z "+str(config['cabsdock']['random_seed'])
+        random_seed = "" if config['cabsdock']['random_seed'] is False else "-z "+str(config['cabsdock']['random_seed'])
 
     output:
         expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'],
@@ -120,3 +121,26 @@ EOF
 
         bash run.sh
         """
+
+rule pymol_aln:
+    input:
+        ref=expand(config['ref_dir'] + "/{pdb_ref}", pdb_ref=ref_wcs.pdb_ref),
+        mod=expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'], n=np.arange(config['cabsdock']['k-medoids']), allow_missing=True)
+    output:
+        aln="%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir']
+    run:
+        pdb_name=[]
+        pdb_list=input.ref+input.mod
+        for pdb in pdb_list:
+            cmd.load(pdb, os.path.basename(pdb))
+            if os.path.basename(pdb) != config["align_ref"]:
+                pdb_name.append(os.path.basename(pdb))
+        cmd.select(config["align_ref"][:-4]+"_chain_A.pdb", config["align_ref"]+" and chain "+config["align_ref_protein_chain"])
+        for name in pdb_name:
+            cmd.align(name, config["align_ref"][:-4]+"_chain_A.pdb")
+        with open(config['out_dir'] +"/"+ wildcards.peptide_name+"/"+wildcards.peptide_name+"_"+wildcards.pdb_file+""+wildcards.apo_chain+""+wildcards.slim_chain+"_"+wildcards.aa_protein+"_"+wildcards.aa_peptide+"/"+wildcards.apo_model_name+"/"+wildcards.run_type+"/README", "a") as readme:
+            readme.write("\n")
+            readme.write("The output_pdbs/ folder contains the output models and a .pse file with the structural alignment of the models and the reference structures.") 
+        cmd.deselect()
+        cmd.save(output.aln)
+                                                               
