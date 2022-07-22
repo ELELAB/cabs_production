@@ -1,12 +1,11 @@
 models_csv: "models.csv"
-references_csv: "references.csv"
 
 apo_dir:  "./apo"
 slim_dir: "./"
 out_dir:  "."
 ref_dir: "references"
-align_ref: "references/5vau_AE_mod2.pdb"
-align_ref_protein_id: "A"
+align_ref: "5vau_AE_mod2.pdb"
+align_ref_protein_chain: "A"
 
 cabsdock:
     mc_runs: 200
