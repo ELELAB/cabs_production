@@ -125,7 +125,7 @@ EOF
 
 rule pymol_aln:
     input:
-        ref=expand("references/{pdb_ref}", pdb_ref=references["references"]),
+        ref=expand(config['ref_dir'] + "/{pdb_ref}", pdb_ref=references["references"]),
         mod=expand("%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/model_{n}.pdb" % config['out_dir'], n=np.arange(config['cabsdock']['k-medoids']), allow_missing=True)
     output:
         aln="%s/{peptide_name}/{peptide_name}_{pdb_file}{apo_chain}{slim_chain}_{aa_protein}_{aa_peptide}/{apo_model_name}/{run_type}/output_pdbs/structural_alignment.pse" % config['out_dir']
