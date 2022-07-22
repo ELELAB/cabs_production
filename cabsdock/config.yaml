@@ -13,6 +13,7 @@ cabsdock:
     clustering-iterations: 200
     saved_pdb: "A"
     verbose: 4
+    exclude_res: False
     random_seed: False
     dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
     run_types:
