@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.wsGPn@1
+         model_@1.eJKtk@1
 model_@1      199     199
-.wsGPn@1      100     199
+.eJKtk@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -164,7 +164,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .wsGPnd.V99990001
+# Heavy relative violation of each residue is written to: .eJKtk4.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31112.3574
@@ -495,7 +495,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .wsGPnd.V99990002
+# Heavy relative violation of each residue is written to: .eJKtk4.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31099.0137
@@ -835,7 +835,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .wsGPnd.V99990003
+# Heavy relative violation of each residue is written to: .eJKtk4.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30968.7402
@@ -1061,9 +1061,9 @@ FREQUENCY:     0    0    0    0    0   15   41  132  118  152  162  198  212  23
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.wsGPnd.B99990001.pdb         1772.69104   -16385.10742
-.wsGPnd.B99990002.pdb         1717.45947   -16574.90625
-.wsGPnd.B99990003.pdb         1758.84741   -16387.22070
+.eJKtk4.B99990001.pdb         1772.69104   -16385.10742
+.eJKtk4.B99990002.pdb         1717.45947   -16574.90625
+.eJKtk4.B99990003.pdb         1758.84741   -16387.22070
 
 
 
@@ -1074,10 +1074,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.wsGPnd.pdb
-  2  .wsGPnd_9999000  .wsGPnd.B99990001.pdb
-  3  .wsGPnd_9999000  .wsGPnd.B99990002.pdb
-  4  .wsGPnd_9999000  .wsGPnd.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.eJKtk4.pdb
+  2  .eJKtk4_9999000  .eJKtk4.B99990001.pdb
+  3  .eJKtk4_9999000  .eJKtk4.B99990002.pdb
+  4  .eJKtk4_9999000  .eJKtk4.B99990003.pdb
 
 
 
@@ -1099,11 +1099,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.410   0.415   0.436
-.wsGPnd_     199   0.000   0.412   0.417
-.wsGPnd_     199     199   0.000   0.381
-.wsGPnd_     199     199     198   0.000
+.eJKtk4_     199   0.000   0.412   0.417
+.eJKtk4_     199     199   0.000   0.381
+.eJKtk4_     199     199     198   0.000
 
 
 
@@ -1113,22 +1113,22 @@ model_ca   0.000   0.410   0.415   0.436
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.291   0.301   0.330
-.wsGPnd_   19701   0.000   0.287   0.291
-.wsGPnd_   19701   19701   0.000   0.337
-.wsGPnd_   19701   19701   19699   0.000
+.eJKtk4_   19701   0.000   0.287   0.291
+.eJKtk4_   19701   19701   0.000   0.337
+.eJKtk4_   19701   19701   19699   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+         model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca      199     199     199     199
-.wsGPnd_      100     199     199     199
-.wsGPnd_      100     100     199     199
-.wsGPnd_      100     100     100     199
+.eJKtk4_      100     199     199     199
+.eJKtk4_      100     100     199     199
+.eJKtk4_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1138,11 +1138,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000  11.869  12.629  11.639
-.wsGPnd_     187   0.000  12.228  12.816
-.wsGPnd_     183     191   0.000  12.162
-.wsGPnd_     183     190     186   0.000
+.eJKtk4_     187   0.000  12.228  12.816
+.eJKtk4_     183     191   0.000  12.162
+.eJKtk4_     183     190     186   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1152,11 +1152,11 @@ model_ca   0.000  11.869  12.629  11.639
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000  22.289  18.770
-.wsGPnd_       0     165   0.000  18.730
-.wsGPnd_       0     166     161   0.000
+.eJKtk4_       0   0.000  22.289  18.770
+.eJKtk4_       0     165   0.000  18.730
+.eJKtk4_       0     166     161   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1166,11 +1166,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000   7.564   6.988
-.wsGPnd_       0     117   0.000   6.902
-.wsGPnd_       0     125     112   0.000
+.eJKtk4_       0   0.000   7.564   6.988
+.eJKtk4_       0     117   0.000   6.902
+.eJKtk4_       0     125     112   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1180,11 +1180,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000   6.860   6.337
-.wsGPnd_       0     195   0.000   6.369
-.wsGPnd_       0     196     195   0.000
+.eJKtk4_       0   0.000   6.860   6.337
+.eJKtk4_       0     195   0.000   6.369
+.eJKtk4_       0     196     195   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1194,11 +1194,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000  15.223  15.224
-.wsGPnd_       0      91   0.000  15.331
-.wsGPnd_       0      85      90   0.000
+.eJKtk4_       0   0.000  15.223  15.224
+.eJKtk4_       0      91   0.000  15.331
+.eJKtk4_       0      85      90   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1208,11 +1208,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   8.789  15.446  14.874
-.wsGPnd_       6   0.000  28.655  26.253
-.wsGPnd_       9      61   0.000  20.863
-.wsGPnd_      11      70      67   0.000
+.eJKtk4_       6   0.000  28.655  26.253
+.eJKtk4_       9      61   0.000  20.863
+.eJKtk4_      11      70      67   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1222,11 +1222,11 @@ model_ca   0.000   8.789  15.446  14.874
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000  27.499  45.309  41.403
-.wsGPnd_       4   0.000  30.185  31.532
-.wsGPnd_       6      34   0.000  25.708
-.wsGPnd_       2      35      34   0.000
+.eJKtk4_       4   0.000  30.185  31.532
+.eJKtk4_       6      34   0.000  25.708
+.eJKtk4_       2      35      34   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1236,11 +1236,11 @@ model_ca   0.000  27.499  45.309  41.403
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000  30.274  36.948
-.wsGPnd_       0       8   0.000  29.377
-.wsGPnd_       0       8       7   0.000
+.eJKtk4_       0   0.000  30.274  36.948
+.eJKtk4_       0       8   0.000  29.377
+.eJKtk4_       0       8       7   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1250,11 +1250,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.wsGPnd_.wsGPnd_.wsGPnd_
+        model_ca.eJKtk4_.eJKtk4_.eJKtk4_
 model_ca   0.000   0.000   0.000   0.000
-.wsGPnd_       0   0.000   0.000   0.000
-.wsGPnd_       0       0   0.000   0.000
-.wsGPnd_       0       0       0   0.000
+.eJKtk4_       0   0.000   0.000   0.000
+.eJKtk4_       0       0   0.000   0.000
+.eJKtk4_       0       0       0   0.000
 
 
 
@@ -1500,7 +1500,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .wsGPn .wsGPn .wsGPn 
+#  N av ds st dv   model_ .eJKtk .eJKtk .eJKtk 
 # =============================================
    1 0.277 0.123 * W  91  W   1  W   1  W   1  
    2 0.290 0.131 * P  92  P   2  P   2  P   2  

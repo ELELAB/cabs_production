@@ -1,4 +1,4 @@
-==== Secondary Structure Definition by the program DSSP, CMBI version 3.0.10                          ==== DATE=2022-05-17     .
+==== Secondary Structure Definition by the program DSSP, CMBI version 3.0.10                          ==== DATE=2022-10-16     .
 REFERENCE W. KABSCH AND C.SANDER, BIOPOLYMERS 22 (1983) 2577-2637                                                              .
                                                                                                                                .
 COMPND                                                                                                                         .

@@ -2,14 +2,14 @@
 variant_csv: "variant.csv"
 
 #PDB input and Output directories
-pdb_input_dir: "../../../../../raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
-#Example# pdb_input_dir: "/data/raw_data/computational_data/curations_data/tcga_3d/p53/zinc_bound/"
+pdb_input_dir: "."
 
 out_dir: "." 
 
-theseus_location: '/usr/local/theseus-3.3.0/theseus' #input correct path here.
+theseus_location: "/usr/local/theseus-3.3.0/theseus"
 
 cabsflex:
+   env: "source /usr/local/envs/cabsflex/bin/activate"
    k-medoids: 20
    verbose: 3
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
@@ -74,12 +74,4 @@ cabsflex:
                 model_fit_selection: "protein and name CA and segid A"
                 ligand_fit_selection: "protein and name CA and segid A"
                 ligand_selection: "segid A and resname ZN"
-           #backbone_flex:
-        #    mc-cycles: 50
-        #    mc-steps: 50
-        #    mc-annealing: 20
-        #    random-seed: 10
-        #    ss_def: null
-        #    restraints: 
-        #       - '-f 0'
-        #    rebuild-models: true
+

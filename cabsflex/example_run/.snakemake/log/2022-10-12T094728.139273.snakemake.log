@@ -1,0 +1,3 @@
+ModuleNotFoundError in line 23 of /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/snakefile:
+No module named 'MDAnalysis'
+  File "/data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/snakefile", line 23, in <module>

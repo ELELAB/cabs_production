@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.N_H90@1
+         model_@1.0ZjG4@1
 model_@1      199     199
-.N_H90@1      100     199
+.0ZjG4@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -162,7 +162,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .N_H90H.V99990001
+# Heavy relative violation of each residue is written to: .0ZjG4G.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30615.8887
@@ -485,7 +485,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .N_H90H.V99990002
+# Heavy relative violation of each residue is written to: .0ZjG4G.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29253.7578
@@ -812,7 +812,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .N_H90H.V99990003
+# Heavy relative violation of each residue is written to: .0ZjG4G.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29910.5430
@@ -1026,9 +1026,9 @@ FREQUENCY:     0    0    0    0    0   23   31  140  113  164  167  219  228  24
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.N_H90H.B99990001.pdb         1797.05786   -16341.24121
-.N_H90H.B99990002.pdb         1615.47021   -16683.45312
-.N_H90H.B99990003.pdb         1710.29895   -16497.44531
+.0ZjG4G.B99990001.pdb         1797.05786   -16341.24121
+.0ZjG4G.B99990002.pdb         1615.47021   -16683.45312
+.0ZjG4G.B99990003.pdb         1710.29895   -16497.44531
 
 
 
@@ -1039,10 +1039,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.N_H90H.pdb
-  2  .N_H90H_9999000  .N_H90H.B99990001.pdb
-  3  .N_H90H_9999000  .N_H90H.B99990002.pdb
-  4  .N_H90H_9999000  .N_H90H.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.0ZjG4G.pdb
+  2  .0ZjG4G_9999000  .0ZjG4G.B99990001.pdb
+  3  .0ZjG4G_9999000  .0ZjG4G.B99990002.pdb
+  4  .0ZjG4G_9999000  .0ZjG4G.B99990003.pdb
 
 
 
@@ -1064,11 +1064,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.407   0.427   0.490
-.N_H90H_     199   0.000   0.448   0.492
-.N_H90H_     199     199   0.000   0.413
-.N_H90H_     199     199     199   0.000
+.0ZjG4G_     199   0.000   0.448   0.492
+.0ZjG4G_     199     199   0.000   0.413
+.0ZjG4G_     199     199     199   0.000
 
 
 
@@ -1078,22 +1078,22 @@ model_ca   0.000   0.407   0.427   0.490
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.310   0.309   0.359
-.N_H90H_   19701   0.000   0.322   0.367
-.N_H90H_   19701   19701   0.000   0.291
-.N_H90H_   19701   19701   19701   0.000
+.0ZjG4G_   19701   0.000   0.322   0.367
+.0ZjG4G_   19701   19701   0.000   0.291
+.0ZjG4G_   19701   19701   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.N_H90H_.N_H90H_.N_H90H_
+         model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca      199     199     199     199
-.N_H90H_      100     199     199     199
-.N_H90H_      100     100     199     199
-.N_H90H_      100     100     100     199
+.0ZjG4G_      100     199     199     199
+.0ZjG4G_      100     100     199     199
+.0ZjG4G_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1103,11 +1103,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000  11.679  13.387  12.705
-.N_H90H_     186   0.000  12.809  14.012
-.N_H90H_     192     192   0.000  12.336
-.N_H90H_     183     182     189   0.000
+.0ZjG4G_     186   0.000  12.809  14.012
+.0ZjG4G_     192     192   0.000  12.336
+.0ZjG4G_     183     182     189   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1117,11 +1117,11 @@ model_ca   0.000  11.679  13.387  12.705
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000  20.708  17.140
-.N_H90H_       0     166   0.000  16.323
-.N_H90H_       0     162     170   0.000
+.0ZjG4G_       0   0.000  20.708  17.140
+.0ZjG4G_       0     166   0.000  16.323
+.0ZjG4G_       0     162     170   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1131,11 +1131,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000   7.094   6.696
-.N_H90H_       0     104   0.000   6.819
-.N_H90H_       0     101     126   0.000
+.0ZjG4G_       0   0.000   7.094   6.696
+.0ZjG4G_       0     104   0.000   6.819
+.0ZjG4G_       0     101     126   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1145,11 +1145,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000   7.325   6.856
-.N_H90H_       0     193   0.000   6.648
-.N_H90H_       0     195     195   0.000
+.0ZjG4G_       0   0.000   7.325   6.856
+.0ZjG4G_       0     193   0.000   6.648
+.0ZjG4G_       0     195     195   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1159,11 +1159,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000  16.217  13.672
-.N_H90H_       0      82   0.000  14.520
-.N_H90H_       0      93      82   0.000
+.0ZjG4G_       0   0.000  16.217  13.672
+.0ZjG4G_       0      82   0.000  14.520
+.0ZjG4G_       0      93      82   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1173,11 +1173,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000  14.488  24.634  15.331
-.N_H90H_       8   0.000  21.739  22.350
-.N_H90H_      11      70   0.000  21.892
-.N_H90H_      11      83      72   0.000
+.0ZjG4G_       8   0.000  21.739  22.350
+.0ZjG4G_      11      70   0.000  21.892
+.0ZjG4G_      11      83      72   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1187,11 +1187,11 @@ model_ca   0.000  14.488  24.634  15.331
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000  34.335  44.405  34.278
-.N_H90H_       2   0.000  33.094  25.597
-.N_H90H_       5      30   0.000  27.637
-.N_H90H_       4      33      42   0.000
+.0ZjG4G_       2   0.000  33.094  25.597
+.0ZjG4G_       5      30   0.000  27.637
+.0ZjG4G_       4      33      42   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1201,11 +1201,11 @@ model_ca   0.000  34.335  44.405  34.278
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000  34.044  25.907
-.N_H90H_       0      11   0.000  41.164
-.N_H90H_       0       7      10   0.000
+.0ZjG4G_       0   0.000  34.044  25.907
+.0ZjG4G_       0      11   0.000  41.164
+.0ZjG4G_       0       7      10   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1215,11 +1215,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.N_H90H_.N_H90H_.N_H90H_
+        model_ca.0ZjG4G_.0ZjG4G_.0ZjG4G_
 model_ca   0.000   0.000   0.000   0.000
-.N_H90H_       0   0.000   0.000   0.000
-.N_H90H_       0       0   0.000   0.000
-.N_H90H_       0       0       0   0.000
+.0ZjG4G_       0   0.000   0.000   0.000
+.0ZjG4G_       0       0   0.000   0.000
+.0ZjG4G_       0       0       0   0.000
 
 
 
@@ -1465,7 +1465,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .N_H90 .N_H90 .N_H90 
+#  N av ds st dv   model_ .0ZjG4 .0ZjG4 .0ZjG4 
 # =============================================
    1 0.368 0.159 * W  91  W   1  W   1  W   1  
    2 0.289 0.141 * P  92  P   2  P   2  P   2  

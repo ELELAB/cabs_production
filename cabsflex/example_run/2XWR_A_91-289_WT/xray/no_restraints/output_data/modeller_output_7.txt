@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.kfnlU@1
+         model_@1.DFcPT@1
 model_@1      199     199
-.kfnlU@1      100     199
+.DFcPT@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -165,7 +165,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .kfnlUz.V99990001
+# Heavy relative violation of each residue is written to: .DFcPT8.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31241.6895
@@ -493,7 +493,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .kfnlUz.V99990002
+# Heavy relative violation of each residue is written to: .DFcPT8.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31796.8125
@@ -831,7 +831,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .kfnlUz.V99990003
+# Heavy relative violation of each residue is written to: .DFcPT8.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   32109.1602
@@ -1058,9 +1058,9 @@ FREQUENCY:     0    0    0    0    0   15   28  109  107  170  203  189  206  21
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.kfnlUz.B99990001.pdb         1647.97314   -16643.63672
-.kfnlUz.B99990002.pdb         1626.70618   -16396.19336
-.kfnlUz.B99990003.pdb         1794.83569   -16167.65430
+.DFcPT8.B99990001.pdb         1647.97314   -16643.63672
+.DFcPT8.B99990002.pdb         1626.70618   -16396.19336
+.DFcPT8.B99990003.pdb         1794.83569   -16167.65430
 
 
 
@@ -1071,10 +1071,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.kfnlUz.pdb
-  2  .kfnlUz_9999000  .kfnlUz.B99990001.pdb
-  3  .kfnlUz_9999000  .kfnlUz.B99990002.pdb
-  4  .kfnlUz_9999000  .kfnlUz.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.DFcPT8.pdb
+  2  .DFcPT8_9999000  .DFcPT8.B99990001.pdb
+  3  .DFcPT8_9999000  .DFcPT8.B99990002.pdb
+  4  .DFcPT8_9999000  .DFcPT8.B99990003.pdb
 
 
 
@@ -1096,11 +1096,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.393   0.405   0.410
-.kfnlUz_     199   0.000   0.433   0.437
-.kfnlUz_     199     199   0.000   0.448
-.kfnlUz_     199     199     199   0.000
+.DFcPT8_     199   0.000   0.433   0.437
+.DFcPT8_     199     199   0.000   0.448
+.DFcPT8_     199     199     199   0.000
 
 
 
@@ -1110,22 +1110,22 @@ model_ca   0.000   0.393   0.405   0.410
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.285   0.292   0.298
-.kfnlUz_   19701   0.000   0.299   0.313
-.kfnlUz_   19701   19701   0.000   0.305
-.kfnlUz_   19701   19701   19701   0.000
+.DFcPT8_   19701   0.000   0.299   0.313
+.DFcPT8_   19701   19701   0.000   0.305
+.DFcPT8_   19701   19701   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+         model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca      199     199     199     199
-.kfnlUz_      100     199     199     199
-.kfnlUz_      100     100     199     199
-.kfnlUz_      100     100     100     199
+.DFcPT8_      100     199     199     199
+.DFcPT8_      100     100     199     199
+.DFcPT8_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1135,11 +1135,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000  11.796  12.122  14.127
-.kfnlUz_     186   0.000  13.242  14.070
-.kfnlUz_     185     187   0.000  12.661
-.kfnlUz_     184     188     185   0.000
+.DFcPT8_     186   0.000  13.242  14.070
+.DFcPT8_     185     187   0.000  12.661
+.DFcPT8_     184     188     185   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1149,11 +1149,11 @@ model_ca   0.000  11.796  12.122  14.127
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000  18.741  18.563
-.kfnlUz_       0     166   0.000  20.129
-.kfnlUz_       0     165     169   0.000
+.DFcPT8_       0   0.000  18.741  18.563
+.DFcPT8_       0     166   0.000  20.129
+.DFcPT8_       0     165     169   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1163,11 +1163,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000   6.956   7.310
-.kfnlUz_       0     113   0.000   6.912
-.kfnlUz_       0     109     108   0.000
+.DFcPT8_       0   0.000   6.956   7.310
+.DFcPT8_       0     113   0.000   6.912
+.DFcPT8_       0     109     108   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1177,11 +1177,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000   5.825   6.575
-.kfnlUz_       0     195   0.000   6.495
-.kfnlUz_       0     195     194   0.000
+.DFcPT8_       0   0.000   5.825   6.575
+.DFcPT8_       0     195   0.000   6.495
+.DFcPT8_       0     195     194   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1191,11 +1191,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000  16.214  15.188
-.kfnlUz_       0      86   0.000  14.619
-.kfnlUz_       0      93     101   0.000
+.DFcPT8_       0   0.000  16.214  15.188
+.DFcPT8_       0      86   0.000  14.619
+.DFcPT8_       0      93     101   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1205,11 +1205,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000  23.720  18.010  15.642
-.kfnlUz_       6   0.000  23.958  25.522
-.kfnlUz_      12      64   0.000  20.387
-.kfnlUz_       7      66      83   0.000
+.DFcPT8_       6   0.000  23.958  25.522
+.DFcPT8_      12      64   0.000  20.387
+.DFcPT8_       7      66      83   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1219,11 +1219,11 @@ model_ca   0.000  23.720  18.010  15.642
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000  39.478  23.422  41.572
-.kfnlUz_       5   0.000  30.279  32.129
-.kfnlUz_       4      36   0.000  25.234
-.kfnlUz_       6      35      37   0.000
+.DFcPT8_       5   0.000  30.279  32.129
+.DFcPT8_       4      36   0.000  25.234
+.DFcPT8_       6      35      37   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1233,11 +1233,11 @@ model_ca   0.000  39.478  23.422  41.572
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000  13.073  32.732
-.kfnlUz_       0       9   0.000  32.986
-.kfnlUz_       0       8       6   0.000
+.DFcPT8_       0   0.000  13.073  32.732
+.DFcPT8_       0       9   0.000  32.986
+.DFcPT8_       0       8       6   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1247,11 +1247,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.kfnlUz_.kfnlUz_.kfnlUz_
+        model_ca.DFcPT8_.DFcPT8_.DFcPT8_
 model_ca   0.000   0.000   0.000   0.000
-.kfnlUz_       0   0.000   0.000   0.000
-.kfnlUz_       0       0   0.000   0.000
-.kfnlUz_       0       0       0   0.000
+.DFcPT8_       0   0.000   0.000   0.000
+.DFcPT8_       0       0   0.000   0.000
+.DFcPT8_       0       0       0   0.000
 
 
 
@@ -1497,7 +1497,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .kfnlU .kfnlU .kfnlU 
+#  N av ds st dv   model_ .DFcPT .DFcPT .DFcPT 
 # =============================================
    1 0.194 0.113 * W  91  W   1  W   1  W   1  
    2 0.261 0.070 * P  92  P   2  P   2  P   2  

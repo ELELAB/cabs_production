@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.lgrlI@1
+         model_@1.ShiGH@1
 model_@1      199     199
-.lgrlI@1      100     199
+.ShiGH@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -161,7 +161,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .lgrlI_.V99990001
+# Heavy relative violation of each residue is written to: .ShiGHS.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31072.9473
@@ -496,7 +496,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .lgrlI_.V99990002
+# Heavy relative violation of each residue is written to: .ShiGHS.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29152.1387
@@ -807,7 +807,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .lgrlI_.V99990003
+# Heavy relative violation of each residue is written to: .ShiGHS.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29195.6621
@@ -1005,9 +1005,9 @@ FREQUENCY:     0    0    0    0    0   14   42   88  123  172  176  191  188  25
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.lgrlI_.B99990001.pdb         1713.47766   -16777.27539
-.lgrlI_.B99990002.pdb         1569.42139   -17116.50586
-.lgrlI_.B99990003.pdb         1561.88928   -17367.86914
+.ShiGHS.B99990001.pdb         1713.47766   -16777.27539
+.ShiGHS.B99990002.pdb         1569.42139   -17116.50586
+.ShiGHS.B99990003.pdb         1561.88928   -17367.86914
 
 
 
@@ -1018,10 +1018,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_H168R/xray/no_restraints/.lgrlI_.pdb
-  2  .lgrlI__9999000  .lgrlI_.B99990001.pdb
-  3  .lgrlI__9999000  .lgrlI_.B99990002.pdb
-  4  .lgrlI__9999000  .lgrlI_.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_H168R/xray/no_restraints/.ShiGHS.pdb
+  2  .ShiGHS_9999000  .ShiGHS.B99990001.pdb
+  3  .ShiGHS_9999000  .ShiGHS.B99990002.pdb
+  4  .ShiGHS_9999000  .ShiGHS.B99990003.pdb
 
 
 
@@ -1043,11 +1043,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.426   0.425   0.354
-.lgrlI__     199   0.000   0.406   0.359
-.lgrlI__     199     199   0.000   0.326
-.lgrlI__     198     198     198   0.000
+.ShiGHS_     199   0.000   0.406   0.359
+.ShiGHS_     199     199   0.000   0.326
+.ShiGHS_     198     198     198   0.000
 
 
 
@@ -1057,22 +1057,22 @@ model_ca   0.000   0.426   0.425   0.354
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.335   0.317   0.313
-.lgrlI__   19701   0.000   0.318   0.320
-.lgrlI__   19701   19701   0.000   0.310
-.lgrlI__   19588   19634   19621   0.000
+.ShiGHS_   19701   0.000   0.318   0.320
+.ShiGHS_   19701   19701   0.000   0.310
+.ShiGHS_   19588   19634   19621   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.lgrlI__.lgrlI__.lgrlI__
+         model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca      199     199     199     199
-.lgrlI__      100     199     199     199
-.lgrlI__      100     100     199     199
-.lgrlI__      100     100     100     199
+.ShiGHS_      100     199     199     199
+.ShiGHS_      100     100     199     199
+.ShiGHS_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1082,11 +1082,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000  13.245   9.586  10.234
-.lgrlI__     193   0.000  11.703  11.161
-.lgrlI__     193     192   0.000   7.986
-.lgrlI__     193     192     195   0.000
+.ShiGHS_     193   0.000  11.703  11.161
+.ShiGHS_     193     192   0.000   7.986
+.ShiGHS_     193     192     195   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1096,11 +1096,11 @@ model_ca   0.000  13.245   9.586  10.234
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000  20.286  17.394
-.lgrlI__       0     164   0.000  17.839
-.lgrlI__       0     166     179   0.000
+.ShiGHS_       0   0.000  20.286  17.394
+.ShiGHS_       0     164   0.000  17.839
+.ShiGHS_       0     166     179   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1110,11 +1110,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000   7.434   7.195
-.lgrlI__       0     106   0.000   6.927
-.lgrlI__       0     118     122   0.000
+.ShiGHS_       0   0.000   7.434   7.195
+.ShiGHS_       0     106   0.000   6.927
+.ShiGHS_       0     118     122   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1124,11 +1124,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000   5.665   5.749
-.lgrlI__       0     189   0.000   5.841
-.lgrlI__       0     193     192   0.000
+.ShiGHS_       0   0.000   5.665   5.749
+.ShiGHS_       0     189   0.000   5.841
+.ShiGHS_       0     193     192   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1138,11 +1138,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000  12.941  15.644
-.lgrlI__       0      85   0.000  14.592
-.lgrlI__       0      97      93   0.000
+.ShiGHS_       0   0.000  12.941  15.644
+.ShiGHS_       0      85   0.000  14.592
+.ShiGHS_       0      97      93   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1152,11 +1152,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000  24.136  16.680   9.788
-.lgrlI__      10   0.000  18.216  24.614
-.lgrlI__      10      73   0.000  22.347
-.lgrlI__      10      77      69   0.000
+.ShiGHS_      10   0.000  18.216  24.614
+.ShiGHS_      10      73   0.000  22.347
+.ShiGHS_      10      77      69   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1166,11 +1166,11 @@ model_ca   0.000  24.136  16.680   9.788
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000  31.033  41.431  35.269
-.lgrlI__       3   0.000  24.605  27.413
-.lgrlI__       3      46   0.000  26.864
-.lgrlI__       3      41      41   0.000
+.ShiGHS_       3   0.000  24.605  27.413
+.ShiGHS_       3      46   0.000  26.864
+.ShiGHS_       3      41      41   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1180,11 +1180,11 @@ model_ca   0.000  31.033  41.431  35.269
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000  28.884  17.804
-.lgrlI__       0      10   0.000  29.525
-.lgrlI__       0       9      10   0.000
+.ShiGHS_       0   0.000  28.884  17.804
+.ShiGHS_       0      10   0.000  29.525
+.ShiGHS_       0       9      10   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1194,11 +1194,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.lgrlI__.lgrlI__.lgrlI__
+        model_ca.ShiGHS_.ShiGHS_.ShiGHS_
 model_ca   0.000   0.000   0.000   0.000
-.lgrlI__       0   0.000   0.000   0.000
-.lgrlI__       0       0   0.000   0.000
-.lgrlI__       0       0       0   0.000
+.ShiGHS_       0   0.000   0.000   0.000
+.ShiGHS_       0       0   0.000   0.000
+.ShiGHS_       0       0       0   0.000
 
 
 
@@ -1444,7 +1444,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .lgrlI .lgrlI .lgrlI 
+#  N av ds st dv   model_ .ShiGH .ShiGH .ShiGH 
 # =============================================
    1 0.436 0.079 * W  91  W   1  W   1  W   1  
    2 0.276 0.101 * P  92  P   2  P   2  P   2  

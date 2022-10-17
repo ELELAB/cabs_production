@@ -1,0 +1,46 @@
+Building DAG of jobs...
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/theseus/theseus_sup.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_WT/xray/no_restraints/theseus/theseus_sup.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_0.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_1.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_2.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_3.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_4.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_5.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_6.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_7.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_8.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_9.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_10.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_11.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_12.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_13.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_14.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_15.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_16.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_17.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_18.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_19.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+Relative file path './2XWR_A_91-289_H168R/xray/no_restraints/theseus/theseus_sup.pdb' starts with './'. This is redundant and strongly discouraged. It can also lead to inconsistent results of the file-matching approach used by Snakemake. You can simply omit the './' for relative file paths.
+MissingInputException in line 196 of /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/snakefile:
+Missing input files for rule make_ensemble:
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_14.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_9.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_13.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_8.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_11.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_19.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_15.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_18.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_2.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_7.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_6.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_12.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_16.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_4.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_1.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_5.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_10.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_0.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_3.pdb
+./2XWR_A_91-289_H168R/xray/no_restraints/output_pdbs/cluster_17.pdb
