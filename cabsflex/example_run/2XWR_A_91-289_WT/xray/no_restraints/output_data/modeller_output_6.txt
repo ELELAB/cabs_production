@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.sL5Ov@1
+         model_@1.HmvaP@1
 model_@1      199     199
-.sL5Ov@1      100     199
+.HmvaP@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -161,7 +161,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .sL5Ovp.V99990001
+# Heavy relative violation of each residue is written to: .HmvaPe.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31552.0000
@@ -500,7 +500,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .sL5Ovp.V99990002
+# Heavy relative violation of each residue is written to: .HmvaPe.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   33409.6328
@@ -838,7 +838,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .sL5Ovp.V99990003
+# Heavy relative violation of each residue is written to: .HmvaPe.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31842.6992
@@ -1076,9 +1076,9 @@ FREQUENCY:     0    0    0    0    0   12   26  115  104  192  142  198  227  23
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.sL5Ovp.B99990001.pdb         1729.18372   -16914.19141
-.sL5Ovp.B99990002.pdb         1725.19165   -16154.98535
-.sL5Ovp.B99990003.pdb         1710.08228   -16193.76367
+.HmvaPe.B99990001.pdb         1729.18372   -16914.19141
+.HmvaPe.B99990002.pdb         1725.19165   -16154.98535
+.HmvaPe.B99990003.pdb         1710.08228   -16193.76367
 
 
 
@@ -1089,10 +1089,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.sL5Ovp.pdb
-  2  .sL5Ovp_9999000  .sL5Ovp.B99990001.pdb
-  3  .sL5Ovp_9999000  .sL5Ovp.B99990002.pdb
-  4  .sL5Ovp_9999000  .sL5Ovp.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.HmvaPe.pdb
+  2  .HmvaPe_9999000  .HmvaPe.B99990001.pdb
+  3  .HmvaPe_9999000  .HmvaPe.B99990002.pdb
+  4  .HmvaPe_9999000  .HmvaPe.B99990003.pdb
 
 
 
@@ -1114,11 +1114,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.490   0.499   0.483
-.sL5Ovp_     198   0.000   0.457   0.445
-.sL5Ovp_     199     197   0.000   0.460
-.sL5Ovp_     199     197     199   0.000
+.HmvaPe_     198   0.000   0.457   0.445
+.HmvaPe_     199     197   0.000   0.460
+.HmvaPe_     199     197     199   0.000
 
 
 
@@ -1128,22 +1128,22 @@ model_ca   0.000   0.490   0.499   0.483
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.380   0.367   0.339
-.sL5Ovp_   19686   0.000   0.400   0.375
-.sL5Ovp_   19701   19686   0.000   0.340
-.sL5Ovp_   19701   19693   19701   0.000
+.HmvaPe_   19686   0.000   0.400   0.375
+.HmvaPe_   19701   19686   0.000   0.340
+.HmvaPe_   19701   19693   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+         model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca      199     199     199     199
-.sL5Ovp_      100     199     199     199
-.sL5Ovp_      100     100     199     199
-.sL5Ovp_      100     100     100     199
+.HmvaPe_      100     199     199     199
+.HmvaPe_      100     100     199     199
+.HmvaPe_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1153,11 +1153,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000  11.672  13.366  15.627
-.sL5Ovp_     180   0.000  12.505  12.864
-.sL5Ovp_     180     186   0.000  13.544
-.sL5Ovp_     182     182     186   0.000
+.HmvaPe_     180   0.000  12.505  12.864
+.HmvaPe_     180     186   0.000  13.544
+.HmvaPe_     182     182     186   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1167,11 +1167,11 @@ model_ca   0.000  11.672  13.366  15.627
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000  16.527  14.325
-.sL5Ovp_       0     162   0.000  17.914
-.sL5Ovp_       0     164     164   0.000
+.HmvaPe_       0   0.000  16.527  14.325
+.HmvaPe_       0     162   0.000  17.914
+.HmvaPe_       0     164     164   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1181,11 +1181,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000   7.103   7.402
-.sL5Ovp_       0     112   0.000   6.833
-.sL5Ovp_       0     121     113   0.000
+.HmvaPe_       0   0.000   7.103   7.402
+.HmvaPe_       0     112   0.000   6.833
+.HmvaPe_       0     121     113   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1195,11 +1195,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000   7.036   5.738
-.sL5Ovp_       0     197   0.000   6.915
-.sL5Ovp_       0     196     197   0.000
+.HmvaPe_       0   0.000   7.036   5.738
+.HmvaPe_       0     197   0.000   6.915
+.HmvaPe_       0     196     197   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1209,11 +1209,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000  13.865  12.100
-.sL5Ovp_       0      91   0.000  12.964
-.sL5Ovp_       0      99      96   0.000
+.HmvaPe_       0   0.000  13.865  12.100
+.HmvaPe_       0      91   0.000  12.964
+.HmvaPe_       0      99      96   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1223,11 +1223,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000  26.551  11.655   9.173
-.sL5Ovp_      11   0.000  21.871  18.258
-.sL5Ovp_       9      66   0.000  22.457
-.sL5Ovp_       8      70      71   0.000
+.HmvaPe_      11   0.000  21.871  18.258
+.HmvaPe_       9      66   0.000  22.457
+.HmvaPe_       8      70      71   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1237,11 +1237,11 @@ model_ca   0.000  26.551  11.655   9.173
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000  24.292  23.222  22.796
-.sL5Ovp_       4   0.000  33.363  22.857
-.sL5Ovp_       3      34   0.000  28.249
-.sL5Ovp_       3      37      32   0.000
+.HmvaPe_       4   0.000  33.363  22.857
+.HmvaPe_       3      34   0.000  28.249
+.HmvaPe_       3      37      32   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1251,11 +1251,11 @@ model_ca   0.000  24.292  23.222  22.796
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000  28.288  28.456
-.sL5Ovp_       0      13   0.000  32.565
-.sL5Ovp_       0      17      11   0.000
+.HmvaPe_       0   0.000  28.288  28.456
+.HmvaPe_       0      13   0.000  32.565
+.HmvaPe_       0      17      11   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1265,11 +1265,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.sL5Ovp_.sL5Ovp_.sL5Ovp_
+        model_ca.HmvaPe_.HmvaPe_.HmvaPe_
 model_ca   0.000   0.000   0.000   0.000
-.sL5Ovp_       0   0.000   0.000   0.000
-.sL5Ovp_       0       0   0.000   0.000
-.sL5Ovp_       0       0       0   0.000
+.HmvaPe_       0   0.000   0.000   0.000
+.HmvaPe_       0       0   0.000   0.000
+.HmvaPe_       0       0       0   0.000
 
 
 
@@ -1515,7 +1515,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .sL5Ov .sL5Ov .sL5Ov 
+#  N av ds st dv   model_ .HmvaP .HmvaP .HmvaP 
 # =============================================
    1 0.179 0.046 * W  91  W   1  W   1  W   1  
    2 0.457 0.158 * P  92  P   2  P   2  P   2  

@@ -1,7 +1,7 @@
         
         This directory contains a CABSflex run to model the flexibility of a structure.
 
-        Structure: /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run//input_structures/2XWR_A_HIS168ARG.pdb
+        Structure: ./input_structures/2XWR_A_HIS168ARG.pdb
         Run type: no_restraints
 
         This has been performed by running run.sh script, command: bash run.sh 

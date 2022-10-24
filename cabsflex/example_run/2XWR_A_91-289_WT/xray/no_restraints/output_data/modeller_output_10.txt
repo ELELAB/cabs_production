@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.t_gnd@1
+         model_@1.Ht37n@1
 model_@1      199     199
-.t_gnd@1      100     199
+.Ht37n@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -163,7 +163,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .t_gndX.V99990001
+# Heavy relative violation of each residue is written to: .Ht37n_.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   32195.6445
@@ -500,7 +500,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .t_gndX.V99990002
+# Heavy relative violation of each residue is written to: .Ht37n_.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   32262.8398
@@ -838,7 +838,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .t_gndX.V99990003
+# Heavy relative violation of each residue is written to: .Ht37n_.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31324.0547
@@ -1065,9 +1065,9 @@ FREQUENCY:     0    0    0    0    0   16   29  110  116  179  174  211  231  24
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.t_gndX.B99990001.pdb         1748.12927   -16475.65234
-.t_gndX.B99990002.pdb         1891.00378   -16158.92090
-.t_gndX.B99990003.pdb         1799.07104   -16484.23438
+.Ht37n_.B99990001.pdb         1748.12927   -16475.65234
+.Ht37n_.B99990002.pdb         1891.00378   -16158.92090
+.Ht37n_.B99990003.pdb         1799.07104   -16484.23438
 
 
 
@@ -1078,10 +1078,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.t_gndX.pdb
-  2  .t_gndX_9999000  .t_gndX.B99990001.pdb
-  3  .t_gndX_9999000  .t_gndX.B99990002.pdb
-  4  .t_gndX_9999000  .t_gndX.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.Ht37n_.pdb
+  2  .Ht37n__9999000  .Ht37n_.B99990001.pdb
+  3  .Ht37n__9999000  .Ht37n_.B99990002.pdb
+  4  .Ht37n__9999000  .Ht37n_.B99990003.pdb
 
 
 
@@ -1103,11 +1103,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.458   0.508   0.480
-.t_gndX_     199   0.000   0.468   0.371
-.t_gndX_     199     199   0.000   0.481
-.t_gndX_     199     199     199   0.000
+.Ht37n__     199   0.000   0.468   0.371
+.Ht37n__     199     199   0.000   0.481
+.Ht37n__     199     199     199   0.000
 
 
 
@@ -1117,22 +1117,22 @@ model_ca   0.000   0.458   0.508   0.480
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.312   0.360   0.327
-.t_gndX_   19701   0.000   0.328   0.277
-.t_gndX_   19701   19701   0.000   0.321
-.t_gndX_   19701   19701   19701   0.000
+.Ht37n__   19701   0.000   0.328   0.277
+.Ht37n__   19701   19701   0.000   0.321
+.Ht37n__   19701   19701   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.t_gndX_.t_gndX_.t_gndX_
+         model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca      199     199     199     199
-.t_gndX_      100     199     199     199
-.t_gndX_      100     100     199     199
-.t_gndX_      100     100     100     199
+.Ht37n__      100     199     199     199
+.Ht37n__      100     100     199     199
+.Ht37n__      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1142,11 +1142,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000  15.075  16.056  13.662
-.t_gndX_     185   0.000  13.627  11.916
-.t_gndX_     185     189   0.000  13.464
-.t_gndX_     184     189     186   0.000
+.Ht37n__     185   0.000  13.627  11.916
+.Ht37n__     185     189   0.000  13.464
+.Ht37n__     184     189     186   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1156,11 +1156,11 @@ model_ca   0.000  15.075  16.056  13.662
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000  18.964  18.923
-.t_gndX_       0     167   0.000  19.761
-.t_gndX_       0     166     161   0.000
+.Ht37n__       0   0.000  18.964  18.923
+.Ht37n__       0     167   0.000  19.761
+.Ht37n__       0     166     161   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1170,11 +1170,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000   7.426   7.779
-.t_gndX_       0     107   0.000   7.223
-.t_gndX_       0     107     100   0.000
+.Ht37n__       0   0.000   7.426   7.779
+.Ht37n__       0     107   0.000   7.223
+.Ht37n__       0     107     100   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1184,11 +1184,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000   7.101   6.252
-.t_gndX_       0     197   0.000   6.762
-.t_gndX_       0     198     197   0.000
+.Ht37n__       0   0.000   7.101   6.252
+.Ht37n__       0     197   0.000   6.762
+.Ht37n__       0     198     197   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1198,11 +1198,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000  16.511  15.672
-.t_gndX_       0      89   0.000  17.394
-.t_gndX_       0      88      92   0.000
+.Ht37n__       0   0.000  16.511  15.672
+.Ht37n__       0      89   0.000  17.394
+.Ht37n__       0      88      92   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1212,11 +1212,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000  17.440  13.766  16.022
-.t_gndX_       7   0.000  24.449  22.969
-.t_gndX_       9      76   0.000  26.677
-.t_gndX_       9      72      78   0.000
+.Ht37n__       7   0.000  24.449  22.969
+.Ht37n__       9      76   0.000  26.677
+.Ht37n__       9      72      78   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1226,11 +1226,11 @@ model_ca   0.000  17.440  13.766  16.022
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000  18.176  57.534  35.876
-.t_gndX_       1   0.000  32.408  29.911
-.t_gndX_       1      29   0.000  30.203
-.t_gndX_       2      45      38   0.000
+.Ht37n__       1   0.000  32.408  29.911
+.Ht37n__       1      29   0.000  30.203
+.Ht37n__       2      45      38   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1240,11 +1240,11 @@ model_ca   0.000  18.176  57.534  35.876
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000  31.694  27.783
-.t_gndX_       0      15   0.000  27.221
-.t_gndX_       0      10      11   0.000
+.Ht37n__       0   0.000  31.694  27.783
+.Ht37n__       0      15   0.000  27.221
+.Ht37n__       0      10      11   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1254,11 +1254,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.t_gndX_.t_gndX_.t_gndX_
+        model_ca.Ht37n__.Ht37n__.Ht37n__
 model_ca   0.000   0.000   0.000   0.000
-.t_gndX_       0   0.000   0.000   0.000
-.t_gndX_       0       0   0.000   0.000
-.t_gndX_       0       0       0   0.000
+.Ht37n__       0   0.000   0.000   0.000
+.Ht37n__       0       0   0.000   0.000
+.Ht37n__       0       0       0   0.000
 
 
 
@@ -1504,7 +1504,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .t_gnd .t_gnd .t_gnd 
+#  N av ds st dv   model_ .Ht37n .Ht37n .Ht37n 
 # =============================================
    1 0.170 0.043 * W  91  W   1  W   1  W   1  
    2 0.195 0.072 * P  92  P   2  P   2  P   2  

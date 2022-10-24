@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.MzEKO@1
+         model_@1.wNkeP@1
 model_@1      199     199
-.MzEKO@1      100     199
+.wNkeP@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -163,7 +163,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .MzEKOq.V99990001
+# Heavy relative violation of each residue is written to: .wNkePA.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29319.5762
@@ -490,7 +490,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .MzEKOq.V99990002
+# Heavy relative violation of each residue is written to: .wNkePA.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30239.5156
@@ -823,7 +823,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .MzEKOq.V99990003
+# Heavy relative violation of each residue is written to: .wNkePA.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   29747.2617
@@ -1039,9 +1039,9 @@ FREQUENCY:     0    0    0    0    0   14   24  111   93  138  135  148  184  19
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.MzEKOq.B99990001.pdb         1565.23108   -16462.22852
-.MzEKOq.B99990002.pdb         1668.45728   -16276.77441
-.MzEKOq.B99990003.pdb         1566.21533   -17286.35547
+.wNkePA.B99990001.pdb         1565.23108   -16462.22852
+.wNkePA.B99990002.pdb         1668.45728   -16276.77441
+.wNkePA.B99990003.pdb         1566.21533   -17286.35547
 
 
 
@@ -1052,10 +1052,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_H168R/xray/no_restraints/.MzEKOq.pdb
-  2  .MzEKOq_9999000  .MzEKOq.B99990001.pdb
-  3  .MzEKOq_9999000  .MzEKOq.B99990002.pdb
-  4  .MzEKOq_9999000  .MzEKOq.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_H168R/xray/no_restraints/.wNkePA.pdb
+  2  .wNkePA_9999000  .wNkePA.B99990001.pdb
+  3  .wNkePA_9999000  .wNkePA.B99990002.pdb
+  4  .wNkePA_9999000  .wNkePA.B99990003.pdb
 
 
 
@@ -1077,11 +1077,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.383   0.467   0.477
-.MzEKOq_     199   0.000   0.342   0.387
-.MzEKOq_     199     199   0.000   0.437
-.MzEKOq_     199     199     199   0.000
+.wNkePA_     199   0.000   0.342   0.387
+.wNkePA_     199     199   0.000   0.437
+.wNkePA_     199     199     199   0.000
 
 
 
@@ -1091,22 +1091,22 @@ model_ca   0.000   0.383   0.467   0.477
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.281   0.347   0.355
-.MzEKOq_   19701   0.000   0.261   0.294
-.MzEKOq_   19701   19701   0.000   0.318
-.MzEKOq_   19701   19701   19701   0.000
+.wNkePA_   19701   0.000   0.261   0.294
+.wNkePA_   19701   19701   0.000   0.318
+.wNkePA_   19701   19701   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+         model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca      199     199     199     199
-.MzEKOq_      100     199     199     199
-.MzEKOq_      100     100     199     199
-.MzEKOq_      100     100     100     199
+.wNkePA_      100     199     199     199
+.wNkePA_      100     100     199     199
+.wNkePA_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1116,11 +1116,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   9.965  13.380  10.725
-.MzEKOq_     196   0.000  10.719  12.426
-.MzEKOq_     196     195   0.000  12.929
-.MzEKOq_     196     195     194   0.000
+.wNkePA_     196   0.000  10.719  12.426
+.wNkePA_     196     195   0.000  12.929
+.wNkePA_     196     195     194   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1130,11 +1130,11 @@ model_ca   0.000   9.965  13.380  10.725
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000  17.399  19.221
-.MzEKOq_       0     166   0.000  16.822
-.MzEKOq_       0     168     168   0.000
+.wNkePA_       0   0.000  17.399  19.221
+.wNkePA_       0     166   0.000  16.822
+.wNkePA_       0     168     168   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1144,11 +1144,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000   6.591   7.223
-.MzEKOq_       0     121   0.000   7.147
-.MzEKOq_       0     128     119   0.000
+.wNkePA_       0   0.000   6.591   7.223
+.wNkePA_       0     121   0.000   7.147
+.wNkePA_       0     128     119   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1158,11 +1158,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000   7.665   8.185
-.MzEKOq_       0     194   0.000   6.600
-.MzEKOq_       0     196     194   0.000
+.wNkePA_       0   0.000   7.665   8.185
+.wNkePA_       0     194   0.000   6.600
+.wNkePA_       0     196     194   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1172,11 +1172,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000  15.857  14.696
-.MzEKOq_       0      85   0.000  17.195
-.MzEKOq_       0      89      85   0.000
+.wNkePA_       0   0.000  15.857  14.696
+.wNkePA_       0      85   0.000  17.195
+.wNkePA_       0      89      85   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1186,11 +1186,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000  14.576   9.817  15.706
-.MzEKOq_      12   0.000  22.147  20.991
-.MzEKOq_      10      80   0.000  24.830
-.MzEKOq_       8      72      75   0.000
+.wNkePA_      12   0.000  22.147  20.991
+.wNkePA_      10      80   0.000  24.830
+.wNkePA_       8      72      75   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1200,11 +1200,11 @@ model_ca   0.000  14.576   9.817  15.706
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   7.265  29.098  15.556
-.MzEKOq_       1   0.000  29.310  29.843
-.MzEKOq_       6      40   0.000  28.678
-.MzEKOq_       3      35      41   0.000
+.wNkePA_       1   0.000  29.310  29.843
+.wNkePA_       6      40   0.000  28.678
+.wNkePA_       3      35      41   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1214,11 +1214,11 @@ model_ca   0.000   7.265  29.098  15.556
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000  21.450  29.199
-.MzEKOq_       0       8   0.000  24.577
-.MzEKOq_       0      11      11   0.000
+.wNkePA_       0   0.000  21.450  29.199
+.wNkePA_       0       8   0.000  24.577
+.wNkePA_       0      11      11   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1228,11 +1228,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.MzEKOq_.MzEKOq_.MzEKOq_
+        model_ca.wNkePA_.wNkePA_.wNkePA_
 model_ca   0.000   0.000   0.000   0.000
-.MzEKOq_       0   0.000   0.000   0.000
-.MzEKOq_       0       0   0.000   0.000
-.MzEKOq_       0       0       0   0.000
+.wNkePA_       0   0.000   0.000   0.000
+.wNkePA_       0       0   0.000   0.000
+.wNkePA_       0       0       0   0.000
 
 
 
@@ -1478,7 +1478,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .MzEKO .MzEKO .MzEKO 
+#  N av ds st dv   model_ .wNkeP .wNkeP .wNkeP 
 # =============================================
    1 0.374 0.211 * W  91  W   1  W   1  W   1  
    2 0.404 0.102 * P  92  P   2  P   2  P   2  

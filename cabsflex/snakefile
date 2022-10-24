@@ -1,5 +1,5 @@
-# cabsflexa - A pipeline to perform CABSflex jobs
-# Copyright (C) 2021 Kristine Degn, Matteo Tiberti, Elena Papaleo
+# cabsflex - A pipeline to perform CABSflex jobs
+# Copyright (C) 2021, 2022 Kristine Degn, Matteo Tiberti, Elena Papaleo
 # Computational Structural Biology Lab, Danish Cancer Society Research Center
 #
 # This program is free software: you can redistribute it and/or modify
@@ -165,7 +165,8 @@ EOF
         cat <<EOF > run.sh
         
         ln -s $(basename {input}) input.pdb
-        
+        set +u; {config[cabsflex][env]}; set -u
+
         CABSflex\\
             -i input.pdb\\
             -k {config[cabsflex][k-medoids]}\\

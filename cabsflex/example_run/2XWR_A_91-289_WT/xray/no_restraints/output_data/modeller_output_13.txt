@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.ptjBC@1
+         model_@1.5JV6H@1
 model_@1      199     199
-.ptjBC@1      100     199
+.5JV6H@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -158,7 +158,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .ptjBCS.V99990001
+# Heavy relative violation of each residue is written to: .5JV6HX.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31021.7188
@@ -492,7 +492,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .ptjBCS.V99990002
+# Heavy relative violation of each residue is written to: .5JV6HX.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31553.9883
@@ -836,7 +836,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .ptjBCS.V99990003
+# Heavy relative violation of each residue is written to: .5JV6HX.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31589.5020
@@ -1067,9 +1067,9 @@ FREQUENCY:     0    0    0    0    0   14   27  106  117  169  174  174  235  20
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.ptjBCS.B99990001.pdb         1740.31091   -16177.33496
-.ptjBCS.B99990002.pdb         1785.49438   -16288.67285
-.ptjBCS.B99990003.pdb         1832.79785   -16300.71289
+.5JV6HX.B99990001.pdb         1740.31091   -16177.33496
+.5JV6HX.B99990002.pdb         1785.49438   -16288.67285
+.5JV6HX.B99990003.pdb         1832.79785   -16300.71289
 
 
 
@@ -1080,10 +1080,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.ptjBCS.pdb
-  2  .ptjBCS_9999000  .ptjBCS.B99990001.pdb
-  3  .ptjBCS_9999000  .ptjBCS.B99990002.pdb
-  4  .ptjBCS_9999000  .ptjBCS.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.5JV6HX.pdb
+  2  .5JV6HX_9999000  .5JV6HX.B99990001.pdb
+  3  .5JV6HX_9999000  .5JV6HX.B99990002.pdb
+  4  .5JV6HX_9999000  .5JV6HX.B99990003.pdb
 
 
 
@@ -1105,11 +1105,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.451   0.452   0.481
-.ptjBCS_     199   0.000   0.514   0.520
-.ptjBCS_     199     199   0.000   0.443
-.ptjBCS_     199     199     198   0.000
+.5JV6HX_     199   0.000   0.514   0.520
+.5JV6HX_     199     199   0.000   0.443
+.5JV6HX_     199     199     198   0.000
 
 
 
@@ -1119,22 +1119,22 @@ model_ca   0.000   0.451   0.452   0.481
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.334   0.346   0.347
-.ptjBCS_   19701   0.000   0.361   0.341
-.ptjBCS_   19701   19701   0.000   0.381
-.ptjBCS_   19701   19701   19681   0.000
+.5JV6HX_   19701   0.000   0.361   0.341
+.5JV6HX_   19701   19701   0.000   0.381
+.5JV6HX_   19701   19701   19681   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+         model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca      199     199     199     199
-.ptjBCS_      100     199     199     199
-.ptjBCS_      100     100     199     199
-.ptjBCS_      100     100     100     199
+.5JV6HX_      100     199     199     199
+.5JV6HX_      100     100     199     199
+.5JV6HX_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1144,11 +1144,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000  13.193  13.913  13.908
-.ptjBCS_     183   0.000  14.730  12.692
-.ptjBCS_     188     186   0.000  14.948
-.ptjBCS_     185     183     188   0.000
+.5JV6HX_     183   0.000  14.730  12.692
+.5JV6HX_     188     186   0.000  14.948
+.5JV6HX_     185     183     188   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1158,11 +1158,11 @@ model_ca   0.000  13.193  13.913  13.908
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000  20.318  19.130
-.ptjBCS_       0     159   0.000  18.638
-.ptjBCS_       0     172     154   0.000
+.5JV6HX_       0   0.000  20.318  19.130
+.5JV6HX_       0     159   0.000  18.638
+.5JV6HX_       0     172     154   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1172,11 +1172,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000   6.966   7.586
-.ptjBCS_       0     102   0.000   7.422
-.ptjBCS_       0     113      96   0.000
+.5JV6HX_       0   0.000   6.966   7.586
+.5JV6HX_       0     102   0.000   7.422
+.5JV6HX_       0     113      96   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1186,11 +1186,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000   6.986   5.765
-.ptjBCS_       0     194   0.000   8.345
-.ptjBCS_       0     193     196   0.000
+.5JV6HX_       0   0.000   6.986   5.765
+.5JV6HX_       0     194   0.000   8.345
+.5JV6HX_       0     193     196   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1200,11 +1200,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000  17.790  17.713
-.ptjBCS_       0      87   0.000  17.485
-.ptjBCS_       0      80      86   0.000
+.5JV6HX_       0   0.000  17.790  17.713
+.5JV6HX_       0      87   0.000  17.485
+.5JV6HX_       0      80      86   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1214,11 +1214,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000  10.065  17.377  14.413
-.ptjBCS_       8   0.000  22.035  21.893
-.ptjBCS_       5      73   0.000  24.798
-.ptjBCS_       9      64      68   0.000
+.5JV6HX_       8   0.000  22.035  21.893
+.5JV6HX_       5      73   0.000  24.798
+.5JV6HX_       9      64      68   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1228,11 +1228,11 @@ model_ca   0.000  10.065  17.377  14.413
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000  28.483  23.379  24.256
-.ptjBCS_       3   0.000  27.460  27.827
-.ptjBCS_       2      38   0.000  38.875
-.ptjBCS_       4      31      32   0.000
+.5JV6HX_       3   0.000  27.460  27.827
+.5JV6HX_       2      38   0.000  38.875
+.5JV6HX_       4      31      32   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1242,11 +1242,11 @@ model_ca   0.000  28.483  23.379  24.256
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000  20.502  23.427
-.ptjBCS_       0       9   0.000  25.831
-.ptjBCS_       0      11      13   0.000
+.5JV6HX_       0   0.000  20.502  23.427
+.5JV6HX_       0       9   0.000  25.831
+.5JV6HX_       0      11      13   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1256,11 +1256,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.ptjBCS_.ptjBCS_.ptjBCS_
+        model_ca.5JV6HX_.5JV6HX_.5JV6HX_
 model_ca   0.000   0.000   0.000   0.000
-.ptjBCS_       0   0.000   0.000   0.000
-.ptjBCS_       0       0   0.000   0.000
-.ptjBCS_       0       0       0   0.000
+.5JV6HX_       0   0.000   0.000   0.000
+.5JV6HX_       0       0   0.000   0.000
+.5JV6HX_       0       0       0   0.000
 
 
 
@@ -1506,7 +1506,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .ptjBC .ptjBC .ptjBC 
+#  N av ds st dv   model_ .5JV6H .5JV6H .5JV6H 
 # =============================================
    1 0.305 0.087 * W  91  W   1  W   1  W   1  
    2 0.443 0.216 * P  92  P   2  P   2  P   2  

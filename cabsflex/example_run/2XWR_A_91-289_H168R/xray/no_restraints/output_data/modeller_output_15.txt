@@ -22,9 +22,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.QPj1T@1
+         model_@1.TlkeX@1
 model_@1      199     199
-.QPj1T@1      100     199
+.TlkeX@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -157,7 +157,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .QPj1T4.V99990001
+# Heavy relative violation of each residue is written to: .TlkeXV.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31064.4629
@@ -496,7 +496,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .QPj1T4.V99990002
+# Heavy relative violation of each residue is written to: .TlkeXV.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30013.5898
@@ -842,7 +842,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .QPj1T4.V99990003
+# Heavy relative violation of each residue is written to: .TlkeXV.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30782.0039
@@ -1060,9 +1060,9 @@ FREQUENCY:     0    0    0    0    0   14   32  100  108  185  149  176  200  22
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.QPj1T4.B99990001.pdb         1728.98682   -16373.69922
-.QPj1T4.B99990002.pdb         2997.51221   -16052.53223
-.QPj1T4.B99990003.pdb         1686.47656   -16211.71582
+.TlkeXV.B99990001.pdb         1728.98682   -16373.69922
+.TlkeXV.B99990002.pdb         2997.51221   -16052.53223
+.TlkeXV.B99990003.pdb         1686.47656   -16211.71582
 
 
 
@@ -1073,10 +1073,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_H168R/xray/no_restraints/.QPj1T4.pdb
-  2  .QPj1T4_9999000  .QPj1T4.B99990001.pdb
-  3  .QPj1T4_9999000  .QPj1T4.B99990002.pdb
-  4  .QPj1T4_9999000  .QPj1T4.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_H168R/xray/no_restraints/.TlkeXV.pdb
+  2  .TlkeXV_9999000  .TlkeXV.B99990001.pdb
+  3  .TlkeXV_9999000  .TlkeXV.B99990002.pdb
+  4  .TlkeXV_9999000  .TlkeXV.B99990003.pdb
 
 
 
@@ -1098,11 +1098,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.434   0.434   0.473
-.QPj1T4_     199   0.000   0.453   0.496
-.QPj1T4_     199     199   0.000   0.421
-.QPj1T4_     199     199     199   0.000
+.TlkeXV_     199   0.000   0.453   0.496
+.TlkeXV_     199     199   0.000   0.421
+.TlkeXV_     199     199     199   0.000
 
 
 
@@ -1112,22 +1112,22 @@ model_ca   0.000   0.434   0.434   0.473
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.327   0.327   0.346
-.QPj1T4_   19701   0.000   0.324   0.366
-.QPj1T4_   19701   19701   0.000   0.292
-.QPj1T4_   19701   19701   19701   0.000
+.TlkeXV_   19701   0.000   0.324   0.366
+.TlkeXV_   19701   19701   0.000   0.292
+.TlkeXV_   19701   19701   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+         model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca      199     199     199     199
-.QPj1T4_      100     199     199     199
-.QPj1T4_      100     100     199     199
-.QPj1T4_      100     100     100     199
+.TlkeXV_      100     199     199     199
+.TlkeXV_      100     100     199     199
+.TlkeXV_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1137,11 +1137,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000  15.756  14.189  13.319
-.QPj1T4_     187   0.000  13.135  13.239
-.QPj1T4_     190     187   0.000  12.405
-.QPj1T4_     184     182     183   0.000
+.TlkeXV_     187   0.000  13.135  13.239
+.TlkeXV_     190     187   0.000  12.405
+.TlkeXV_     184     182     183   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1151,11 +1151,11 @@ model_ca   0.000  15.756  14.189  13.319
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000  17.652  19.637
-.QPj1T4_       0     172   0.000  19.615
-.QPj1T4_       0     172     172   0.000
+.TlkeXV_       0   0.000  17.652  19.637
+.TlkeXV_       0     172   0.000  19.615
+.TlkeXV_       0     172     172   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1165,11 +1165,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000   6.337   7.165
-.QPj1T4_       0     121   0.000   6.473
-.QPj1T4_       0     117     122   0.000
+.TlkeXV_       0   0.000   6.337   7.165
+.TlkeXV_       0     121   0.000   6.473
+.TlkeXV_       0     117     122   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1179,11 +1179,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000   6.479   6.276
-.QPj1T4_       0     194   0.000   6.231
-.QPj1T4_       0     191     193   0.000
+.TlkeXV_       0   0.000   6.479   6.276
+.TlkeXV_       0     194   0.000   6.231
+.TlkeXV_       0     191     193   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1193,11 +1193,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000  12.880  15.788
-.QPj1T4_       0      88   0.000  13.049
-.QPj1T4_       0      84     102   0.000
+.TlkeXV_       0   0.000  12.880  15.788
+.TlkeXV_       0      88   0.000  13.049
+.TlkeXV_       0      84     102   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1207,11 +1207,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   8.029  21.574  27.479
-.QPj1T4_       7   0.000  21.974  20.021
-.QPj1T4_      11      73   0.000  20.414
-.QPj1T4_      12      75      77   0.000
+.TlkeXV_       7   0.000  21.974  20.021
+.TlkeXV_      11      73   0.000  20.414
+.TlkeXV_      12      75      77   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1221,11 +1221,11 @@ model_ca   0.000   8.029  21.574  27.479
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000  35.895  45.245  46.147
-.QPj1T4_       3   0.000  22.757  30.156
-.QPj1T4_       3      35   0.000  20.646
-.QPj1T4_       5      42      38   0.000
+.TlkeXV_       3   0.000  22.757  30.156
+.TlkeXV_       3      35   0.000  20.646
+.TlkeXV_       5      42      38   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1235,11 +1235,11 @@ model_ca   0.000  35.895  45.245  46.147
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000  22.591  21.854
-.QPj1T4_       0       9   0.000  24.371
-.QPj1T4_       0      11      11   0.000
+.TlkeXV_       0   0.000  22.591  21.854
+.TlkeXV_       0       9   0.000  24.371
+.TlkeXV_       0      11      11   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1249,11 +1249,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.QPj1T4_.QPj1T4_.QPj1T4_
+        model_ca.TlkeXV_.TlkeXV_.TlkeXV_
 model_ca   0.000   0.000   0.000   0.000
-.QPj1T4_       0   0.000   0.000   0.000
-.QPj1T4_       0       0   0.000   0.000
-.QPj1T4_       0       0       0   0.000
+.TlkeXV_       0   0.000   0.000   0.000
+.TlkeXV_       0       0   0.000   0.000
+.TlkeXV_       0       0       0   0.000
 
 
 
@@ -1499,7 +1499,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .QPj1T .QPj1T .QPj1T 
+#  N av ds st dv   model_ .TlkeX .TlkeX .TlkeX 
 # =============================================
    1 0.421 0.148 * W  91  W   1  W   1  W   1  
    2 0.244 0.097 * P  92  P   2  P   2  P   2  

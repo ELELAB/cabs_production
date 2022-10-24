@@ -1,10 +1,10 @@
 
-                         MODELLER 10.1, 2021/03/12, r12156
+                         MODELLER 10.3, 2022/07/08, r12388
 
      PROTEIN STRUCTURE MODELLING BY SATISFACTION OF SPATIAL RESTRAINTS
 
 
-                     Copyright(c) 1989-2021 Andrej Sali
+                     Copyright(c) 1989-2022 Andrej Sali
                             All Rights Reserved
 
                              Written by A. Sali
@@ -21,9 +21,9 @@
 
 
 Kind, OS, HostName, Kernel, Processor: 4, Linux kb-bioinfo01 4.15.0-161-generic x86_64
-Date and time of compilation         : 2021/03/12 00:18:43
+Date and time of compilation         : 2022/07/08 22:21:48
 MODELLER executable type             : x86_64-intel8
-Job starting time (YY/MM/DD HH:MM:SS): 2022/05/17 14:15:11
+Job starting time (YY/MM/DD HH:MM:SS): 2022/10/16 14:44:17
 
 environ____W> The class 'environ' is deprecated; use 'Environ' instead
 automodel__W> The class 'automodel' is deprecated; use 'AutoModel' instead
@@ -49,9 +49,9 @@ Sequence identity comparison (ID_TABLE):
    Upper triangle ... number of identical residues;
    Lower triangle ... % sequence identity, id/min(length).
 
-         model_@1.xLsMY@1
+         model_@1.l9OMp@1
 model_@1      199     199
-.xLsMY@1      100     199
+.l9OMp@1      100     199
 
 check_ali___> Checking the sequence-structure alignment. 
 
@@ -185,7 +185,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .xLsMYl.V99990001
+# Heavy relative violation of each residue is written to: .l9OMpW.V99990001
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   31964.6055
@@ -526,7 +526,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .xLsMYl.V99990002
+# Heavy relative violation of each residue is written to: .l9OMpW.V99990002
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30502.5137
@@ -853,7 +853,7 @@ Summary of the restraint violations:
 
 
 
-# Heavy relative violation of each residue is written to: .xLsMYl.V99990003
+# Heavy relative violation of each residue is written to: .l9OMpW.V99990003
 # The profile is NOT normalized by the number of restraints.
 # The profiles are smoothed over a window of residues:    1
 # The sum of all numbers in the file:   30385.1504
@@ -1077,9 +1077,9 @@ FREQUENCY:     0    0    0    0    0   25   21  100  137  153  149  197  199  22
 >> Summary of successfully produced models:
 Filename                          molpdf     DOPE score
 -------------------------------------------------------
-.xLsMYl.B99990001.pdb         1726.31323   -16060.33203
-.xLsMYl.B99990002.pdb         1566.37622   -16924.95508
-.xLsMYl.B99990003.pdb         1678.91162   -16598.34375
+.l9OMpW.B99990001.pdb         1726.31323   -16060.33203
+.l9OMpW.B99990002.pdb         1566.37622   -16924.95508
+.l9OMpW.B99990003.pdb         1678.91162   -16598.34375
 
 
 
@@ -1090,10 +1090,10 @@ COMPARISON OF SEVERAL 3D STRUCTURES:
 
   #  ALGNMT CODE      ATOM FILE                          
 
-  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run/2XWR_A_91-289_WT/xray/no_restraints/.xLsMYl.pdb
-  2  .xLsMYl_9999000  .xLsMYl.B99990001.pdb
-  3  .xLsMYl_9999000  .xLsMYl.B99990002.pdb
-  4  .xLsMYl_9999000  .xLsMYl.B99990003.pdb
+  1  model_ca         /data/user/krde/CABSflex_snakemake/cabs_production/cabsflex/example_run_1/2XWR_A_91-289_WT/xray/no_restraints/.l9OMpW.pdb
+  2  .l9OMpW_9999000  .l9OMpW.B99990001.pdb
+  3  .l9OMpW_9999000  .l9OMpW.B99990002.pdb
+  4  .l9OMpW_9999000  .l9OMpW.B99990003.pdb
 
 
 
@@ -1115,11 +1115,11 @@ sum runs over all pairs of proteins with residues present.
 
        Upper = RMS, Lower = numb equiv positions
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.465   0.405   0.436
-.xLsMYl_     199   0.000   0.408   0.390
-.xLsMYl_     199     199   0.000   0.453
-.xLsMYl_     199     198     199   0.000
+.l9OMpW_     199   0.000   0.408   0.390
+.l9OMpW_     199     199   0.000   0.453
+.l9OMpW_     199     198     199   0.000
 
 
 
@@ -1129,22 +1129,22 @@ model_ca   0.000   0.465   0.405   0.436
 
        Upper = Distance RMS, Lower = numb equiv distances
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.342   0.311   0.333
-.xLsMYl_   19698   0.000   0.292   0.341
-.xLsMYl_   19701   19700   0.000   0.331
-.xLsMYl_   19701   19690   19701   0.000
+.l9OMpW_   19698   0.000   0.292   0.341
+.l9OMpW_   19701   19700   0.000   0.331
+.l9OMpW_   19701   19690   19701   0.000
 
 >> Sequence comparison: 
 
        Diag=numb res, Upper=numb equiv res, Lower = % seq ID
 
 
-         model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+         model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca      199     199     199     199
-.xLsMYl_      100     199     199     199
-.xLsMYl_      100     100     199     199
-.xLsMYl_      100     100     100     199
+.l9OMpW_      100     199     199     199
+.l9OMpW_      100     100     199     199
+.l9OMpW_      100     100     100     199
 
 
 >> Dihedral angle comparison: Alph
@@ -1154,11 +1154,11 @@ model_ca      199     199     199     199
 
        Upper = RMS Alph, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000  14.013  12.303  12.116
-.xLsMYl_     184   0.000  13.727  12.121
-.xLsMYl_     186     190   0.000  11.719
-.xLsMYl_     184     182     184   0.000
+.l9OMpW_     184   0.000  13.727  12.121
+.l9OMpW_     186     190   0.000  11.719
+.l9OMpW_     184     182     184   0.000
 
 
 >> Dihedral angle comparison: Phi 
@@ -1168,11 +1168,11 @@ model_ca   0.000  14.013  12.303  12.116
 
        Upper = RMS Phi , Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000  17.895  18.444
-.xLsMYl_       0     172   0.000  19.158
-.xLsMYl_       0     176     173   0.000
+.l9OMpW_       0   0.000  17.895  18.444
+.l9OMpW_       0     172   0.000  19.158
+.l9OMpW_       0     176     173   0.000
 
 
 >> Dihedral angle comparison: Psi 
@@ -1182,11 +1182,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Psi , Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000   6.969   6.995
-.xLsMYl_       0     113   0.000   6.448
-.xLsMYl_       0     128     117   0.000
+.l9OMpW_       0   0.000   6.969   6.995
+.l9OMpW_       0     113   0.000   6.448
+.l9OMpW_       0     128     117   0.000
 
 
 >> Dihedral angle comparison: Omeg
@@ -1196,11 +1196,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS Omeg, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000   5.830   6.752
-.xLsMYl_       0     193   0.000   7.251
-.xLsMYl_       0     194     193   0.000
+.l9OMpW_       0   0.000   5.830   6.752
+.l9OMpW_       0     193   0.000   7.251
+.l9OMpW_       0     194     193   0.000
 
 
 >> Dihedral angle comparison: chi1
@@ -1210,11 +1210,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi1, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000  14.962  14.240
-.xLsMYl_       0      89   0.000  16.932
-.xLsMYl_       0      79     100   0.000
+.l9OMpW_       0   0.000  14.962  14.240
+.l9OMpW_       0      89   0.000  16.932
+.l9OMpW_       0      79     100   0.000
 
 
 >> Dihedral angle comparison: chi2
@@ -1224,11 +1224,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi2, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000  18.713  25.649  11.621
-.xLsMYl_      13   0.000  18.987  18.474
-.xLsMYl_      11      70   0.000  18.913
-.xLsMYl_      10      68      65   0.000
+.l9OMpW_      13   0.000  18.987  18.474
+.l9OMpW_      11      70   0.000  18.913
+.l9OMpW_      10      68      65   0.000
 
 
 >> Dihedral angle comparison: chi3
@@ -1238,11 +1238,11 @@ model_ca   0.000  18.713  25.649  11.621
 
        Upper = RMS chi3, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000  32.669  20.259  33.455
-.xLsMYl_       5   0.000  27.027  24.070
-.xLsMYl_       3      40   0.000  24.759
-.xLsMYl_       5      41      40   0.000
+.l9OMpW_       5   0.000  27.027  24.070
+.l9OMpW_       3      40   0.000  24.759
+.l9OMpW_       5      41      40   0.000
 
 
 >> Dihedral angle comparison: chi4
@@ -1252,11 +1252,11 @@ model_ca   0.000  32.669  20.259  33.455
 
        Upper = RMS chi4, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000  23.476  36.418
-.xLsMYl_       0       7   0.000  29.286
-.xLsMYl_       0       9      13   0.000
+.l9OMpW_       0   0.000  23.476  36.418
+.l9OMpW_       0       7   0.000  29.286
+.l9OMpW_       0       9      13   0.000
 
 
 >> Dihedral angle comparison: chi5
@@ -1266,11 +1266,11 @@ model_ca   0.000   0.000   0.000   0.000
 
        Upper = RMS chi5, Lower = numb of equiv angles
 
-        model_ca.xLsMYl_.xLsMYl_.xLsMYl_
+        model_ca.l9OMpW_.l9OMpW_.l9OMpW_
 model_ca   0.000   0.000   0.000   0.000
-.xLsMYl_       0   0.000   0.000   0.000
-.xLsMYl_       0       0   0.000   0.000
-.xLsMYl_       0       0       0   0.000
+.l9OMpW_       0   0.000   0.000   0.000
+.l9OMpW_       0       0   0.000   0.000
+.l9OMpW_       0       0       0   0.000
 
 
 
@@ -1516,7 +1516,7 @@ Least-squares dynamic programming alignment:
 # [average distance and standard deviation are with respect
 #  to the framework (i.e., average structure)]
 #
-#  N av ds st dv   model_ .xLsMY .xLsMY .xLsMY 
+#  N av ds st dv   model_ .l9OMp .l9OMp .l9OMp 
 # =============================================
    1 0.332 0.028 * W  91  W   1  W   1  W   1  
    2 0.294 0.054 * P  92  P   2  P   2  P   2  
