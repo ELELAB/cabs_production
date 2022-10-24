@@ -107,6 +107,7 @@ The following options and parameters must be set within the configuration file:
 
 |CABS-flex options|Meaning|
 |---|---|
+|`env`|This is the command used to set up the environment right before running CABSflex, so that the CABSflex executable is available. Most of the times, this will be activating a virtual environment (see example)|
 |`k-medoids`|Number of medoids in k-medoids clustering algorithm|
 |`dssp_location`|Path for the DSSP program|
 |`verbose`|Controls how explicit the program output is. It ranges from 0 (only critical messages) to 4 (maximum verbosity)|
