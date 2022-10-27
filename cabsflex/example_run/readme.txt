@@ -1,7 +1,8 @@
 #Readme for the example run. 
 
-module load module load python/3.7/modulefile
-module load cabs
+module load python/3.7/modulefile
+module load cabs/0.9.18/modulefile
+
 snakemake --cores 1
 
 #This example is run on three variants and the wildtype of 2XWR chain A. A structure covering the 
