@@ -9,7 +9,7 @@ out_dir: "."
 theseus_location: "/usr/local/theseus-3.3.0/theseus"
 
 cabsflex:
-   env: "source /usr/local/envs/cabsflex/bin/activate"
+   env: "source /etc/profile.d/modules.sh && module load cabs"
    k-medoids: 20
    verbose: 3
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
