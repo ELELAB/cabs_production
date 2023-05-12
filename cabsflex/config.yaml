@@ -12,6 +12,7 @@ cabsflex:
    env: "source /etc/profile.d/modules.sh && module load cabs"
    k-medoids: 20
    verbose: 3
+   mode: "ss2 3 3.8 8.0"
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
    run_types:
            no_restraints:
