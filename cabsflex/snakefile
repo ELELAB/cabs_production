@@ -22,6 +22,7 @@ import os
 from Bio.PDB.Polypeptide import three_to_one, one_to_three
 import MDAnalysis as mda
 from MDAnalysis.analysis import align
+from biopandas.pdb import PandasPdb
 
 
 def get_ss(wildcards):
@@ -58,7 +59,6 @@ def select_final_structures(wildcards):
         model_fname = "model"
 
     return [ f"{config['out_dir']}/{wildcards.name}_{wildcards.chain}_{wildcards.start}-{wildcards.end}_{wildcards.wt}{wildcards.resnum}{wildcards.alt}/{wildcards.source}/{wildcards.runtype}/output_pdbs/{model_fname}_{n}.pdb" for n in range(config['cabsflex']['k-medoids']) ]
-
 
 def select_final_structures_wt(wildcards):
     if config['cabsflex']['run_types'][wildcards.runtype]['ligand']['place_ligand'] == True:
@@ -100,6 +100,24 @@ for v in variants['source_structure'].index:
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
     
+    targets.extend(
+        expand(
+            expand(
+                f"{config['out_dir']}/" +
+                 "{name}_{chain}_" + 
+                f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_" +
+                 "{wt}{resnum}{alt}/" +
+                f"{variants.loc[v, 'source_type']}/" +
+                 "{runtype}/model_quality/DSSP_models.csv",
+                 zip,
+                 name=wcs.name,
+                 chain=wcs.chain,
+                 wt=wt_sl,
+                 resnum=wcs.resnum,
+                 alt=alt_sl,
+                 allow_missing=True),
+            runtype=list(config['cabsflex']['run_types'].keys())))
+    
     #for WT
     targets.extend(
         expand(
@@ -117,6 +135,23 @@ for v in variants['source_structure'].index:
                  alt=alt_sl,
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
+    
+    targets.extend(
+        expand(
+            expand(
+                f"{config['out_dir']}/" +
+                 "{name}_{chain}_" +
+                f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_WT/" +
+                f"{variants.loc[v, 'source_type']}/" +
+                 "{runtype}/model_quality/DSSP_models.csv",
+                 zip,
+                 name=wcs.name,
+                 chain=wcs.chain,
+                 wt=wt_sl,
+                 resnum=wcs.resnum,
+                 alt=alt_sl,
+                 allow_missing=True),
+            runtype=list(config['cabsflex']['run_types'].keys())))
 
 variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
 
@@ -128,7 +163,8 @@ rule run_cabsflex:
     input:
         lambda wcs: f"{config['pdb_input_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_{one_to_three(wcs.wt)}{wcs.resnum}{one_to_three(wcs.alt)}.pdb"
     output:
-        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+        models = expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True),
+        pdb = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/input.pdb"
         
     wildcard_constraints:
         wt="[A-Z]",
@@ -144,7 +180,7 @@ rule run_cabsflex:
         
     shell:
         """
-        working_dir=$(dirname $(dirname {output[0]}))
+        working_dir=$(dirname $(dirname {output.models[0]}))
         
         cp {input} $working_dir/
         
@@ -176,8 +212,9 @@ EOF
             -a {params.mc_annealing}\\
             {params.rebuild_models}\\
             -z {params.random_seed}\\
-            -C \\
+            -g {config[cabsflex][mode]}\\
             --dssp-command {config[cabsflex][dssp_location]}\\
+            -C\\
             {params.restraints}\\
             --log
 EOF
@@ -189,7 +226,8 @@ use rule run_cabsflex as run_cabsflex_wt with:
     input:
         lambda wcs: f"{config['pdb_input_dir']}/{variants.loc[(wcs.name, wcs.chain, int(wcs.start), int(wcs.end), wcs.source), 'pdb_dir']}/{wcs.name}_{wcs.chain}_WT.pdb"
     output:
-        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+        models = expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True),
+        pdb = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/input.pdb"
 
 
 rule make_ensemble:
@@ -210,11 +248,18 @@ rule make_ensemble:
 
          {config[theseus_location]} $(for i in {input}; do echo ../output_pdbs/$(basename $i); done)
          """
-use rule make_ensemble as make_ensemble_wt with:
+rule make_ensemble_wt:
     input:
         select_final_structures_wt
     output:
          f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/theseus/theseus_sup.pdb"
+
+    shell:
+         """
+         cd $(dirname {output})
+
+         {config[theseus_location]} $(for i in {input}; do echo ../output_pdbs/$(basename $i); done)
+         """
 
 rule add_ligand:
     input:
@@ -260,3 +305,186 @@ use rule add_ligand as rule_add_ligand_wt with:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_ligand_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+        
+## ADDITION 
+rule input_dssp:
+    input:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/input.pdb"
+    output:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/input.dssp"
+
+    shell:
+        """
+        {config[cabsflex][dssp_location]} -i {input} -o {output}
+        
+        """
+
+use rule input_dssp as input_dssp_wt with:
+    input:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/input.pdb"
+    output:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.dssp"
+
+
+
+rule model_dssp:
+    input:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb"
+    output:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/model_{n}.dssp"
+    shell:
+        """
+        {config[cabsflex][dssp_location]} -i {input} -o {output}
+        
+        """
+        
+use rule model_dssp as model_dssp_wt with:
+    input:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb"
+    output:
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/model_{n}.dssp"
+
+
+rule report_SS:
+    input:
+        input_dssp = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/input.dssp",
+        models_dssp = expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/model_{n}.dssp", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+
+    output:
+         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/DSSP_models.csv"
+         
+    run:
+        #DSSP SS for each position
+        
+        #List of valid DSSP categories
+        dssp_letters = ["H", "B", "E", "G", "I", "T", "S"]
+        
+        #Open the dssp file for the input structure,
+        #the input structure is the reference
+        with open(input.input_dssp) as f: 
+            lines = f.readlines()
+        
+        #identify the starting line of the site assigned values
+        for line in enumerate(lines): 
+            if "#  RESIDUE" in line[1]: 
+                s = line[0]
+        
+        #prepare an empty dataframe for population
+        df = pd.DataFrame(columns=['RESIDUE', 'CHAIN', 'AA', 'input_SS'])
+        
+        #in each site specific line the the data genrated by the dssp
+        #is reduced. The dssp file formating is not tab, comma or 
+        #space seperated, however the dirst four coulmns are the relevant
+        #for secondary structure assigning.
+        for line in range(s+1, len(lines)): 
+            values = [] 
+            l = lines[line].split(" ") 
+            l = [x for x in l if x] 
+            l = l[1:5] 
+            #if a site is categorized as a coil, the column is empty. 
+            #hence, the value from the "BP1" can be present in the fourth
+            #position.
+            #to covercome this, a check of the dssp_letters is made.
+            #BP1 is a numberical value. 
+            if l[-1] not in dssp_letters: 
+                l[-1] = "-" 
+            #addition of the residue to the prepared dataframe. 
+            df.loc[len(df), ['RESIDUE', 'CHAIN', 'AA', 'input_SS']] = l
+        
+        #this generates a dataframe for the input structure with the original
+        #assigned secondary structure. 
+        
+        #additionally, we need to have a quality measurement for each site, 
+        #as reported in the b-factor of solved structures and pLDDT scores 
+        #of alphafold structures. To assign a value, the input structure 
+        #is analyzed.     
+        ppdb = PandasPdb()
+        pdb = ppdb.read_pdb(input.input_dssp)
+        residue_numbers = list(pdb.df['ATOM']['residue_number'])
+        b_factor = pdb.df['ATOM']['b_factor']
+        b_df = pd.DataFrame({'RESIDUE':residue_numbers,'SITE_QUALITY':b_factor})
+        b_df = b_df.drop_duplicates()
+        q_category = []
+        
+        #in an effort to compare across predictive and solved structures, the b-factor
+        #of the solved structure is transformed according the the pLDDT nomenclature.
+        #strategy: normalizing the b-fcator to a score between 0-1, multiply with 100
+        #to follow the same scale and subtract the value from 100 to have the best 
+        #b-factor scoring residues have a high value - mirror of the pLDDT. 
+        #An experimental structure may therefore have a super high estimated pLDDT score,
+        #but one should remember to take the overall resolution of the structure 
+        #into account. Hence, the best quality this structure can provide.
+        #alo remember that the b-factor is stretched from 0-100 whereas the pLDDT score
+        #often is within the 30-95 range.
+        
+        source = str(input.input_dssp).split("/")[-4]
+        
+        if source != 'af2db': 
+            pLDDT_est = 100-(b_df.site_quality-b_df.site_quality.min())/(b_df.site_quality.max()-b_df.site_quality.min())*100
+            b_df['SITE_QUALITY'] = pLDDT_est
+        
+        #merge to the original site specific dataframe
+        df = df.merge(b_df, on=['RESIDUE'])        
+        
+        #each of the models generated by CABSflex is added to the dataframe with
+        #their respective site secondart structure assignments, following the 
+        #same stategy as above.
+        models_list = list(input.models_dssp)      
+        
+        for model in models_list: 
+            m = model.split("/")[-1].split(".")[0]
+        
+            with open(model) as f:
+                mlines = f.readlines()
+           
+            for line in enumerate(mlines): 
+                if "#  RESIDUE" in line[1]:
+                    s = line[0]
+        
+            m_df = pd.DataFrame(columns=['RESIDUE', 'CHAIN', 'AA', m])
+           
+            for line in range(s+1, len(mlines)): 
+                values = []
+                l = mlines[line].split(" ")
+                l = [x for x in l if x]
+                l = l[1:5]
+                if l[-1] not in dssp_letters:
+                    l[-1] = "-"      
+                m_df.loc[len(m_df), ['RESIDUE', 'CHAIN', 'AA', m]] = l
+           
+            df = df.merge(m_df, on=['RESIDUE', 'CHAIN', 'AA'])
+            df = df.reset_index(keep=False)
+        
+        #We now have a dataframe with the sequence, chain, amino acid, input SS,
+        #a site quality score, and each SS of the models. 
+        
+        #Calculating agreement fraction of the Secondary structure to the input. 
+        #this provides a simple fraction indicating how many sites are in agreement, 
+        #e.g. 0.5 would indicate that 50% of the sites retain the same DSSP assigned
+        #SS between the model and the input.
+        model_score = ['MODEL_SS_AGREEMENT_ALL', "-", "-", "-", "-"] 
+        d = df.drop(['RESIDUE', 'CHAIN', 'AA', 'input_SS', 'SITE_QUALITY'], axis=1)
+        for model in d.columns:
+            model_score.append(df['input_SS'].eq(df[model]).mean())
+        df.loc[len(df), list(df.columns)] = model_score
+        
+        #When the secondary structure is different, it may be an artifact of 
+        #low quality regions, such as loops or sections of disorder, to check this
+        #we implement a similar score that only checks the confident sections.
+        #high quality == pLDDT > 70
+        model_score = ['MODEL_SS_AGREEMENT_highQ', "-", "-", "-", "-"] 
+        d1 = df[df.site_quality >= 70]
+        d2 = d1.drop(['RESIDUE', 'CHAIN', 'AA', 'input_SS', 'SITE_QUALITY'], axis=1)
+        for model in d2.columns:
+            model_score.append(d1['input_SS'].eq(d1[model]).mean())
+        df.loc[len(df), list(df.columns)] = model_score
+        
+        df.to_csv(str(output), index=False)
+
+use rule report_SS as report_SS_wt with:
+    input:
+        input_dssp = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.dssp",
+        models_dssp = expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/model_{n}.dssp", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+
+    output:
+         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/DSSP_models.csv"
