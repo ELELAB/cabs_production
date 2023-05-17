@@ -90,24 +90,6 @@ for v in variants['source_structure'].index:
                 f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_" +
                  "{wt}{resnum}{alt}/" +
                 f"{variants.loc[v, 'source_type']}/" +
-                 "{runtype}/theseus/theseus_sup.pdb",
-                 zip,
-                 name=wcs.name,
-                 chain=wcs.chain,
-                 wt=wt_sl,
-                 resnum=wcs.resnum,
-                 alt=alt_sl,
-                 allow_missing=True),
-            runtype=list(config['cabsflex']['run_types'].keys())))
-    
-    targets.extend(
-        expand(
-            expand(
-                f"{config['out_dir']}/" +
-                 "{name}_{chain}_" + 
-                f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_" +
-                 "{wt}{resnum}{alt}/" +
-                f"{variants.loc[v, 'source_type']}/" +
                  "{runtype}/model_quality/DSSP_models.csv",
                  zip,
                  name=wcs.name,
@@ -118,24 +100,7 @@ for v in variants['source_structure'].index:
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
     
-    #for WT
-    targets.extend(
-        expand(
-            expand(
-                f"{config['out_dir']}/" +
-                 "{name}_{chain}_" +
-                f"{variants.loc[v, 'aa_num_start']}-{variants.loc[v, 'aa_num_end']}_WT/" +
-                f"{variants.loc[v, 'source_type']}/" +
-                 "{runtype}/theseus/theseus_sup.pdb",
-                 zip,
-                 name=wcs_wt.name,
-                 chain=wcs_wt.chain,
-                 wt=wt_sl,
-                 resnum=wcs.resnum,
-                 alt=alt_sl,
-                 allow_missing=True),
-            runtype=list(config['cabsflex']['run_types'].keys())))
-    
+    #for WT    
     targets.extend(
         expand(
             expand(
@@ -152,7 +117,7 @@ for v in variants['source_structure'].index:
                  alt=alt_sl,
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
-
+    
 variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
 
 rule all:
@@ -306,7 +271,7 @@ use rule add_ligand as rule_add_ligand_wt with:
     output:
         expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_ligand_{n}.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
         
-## ADDITION 
+
 rule input_dssp:
     input:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/input.pdb"
@@ -316,9 +281,8 @@ rule input_dssp:
     shell:
         """
         {config[cabsflex][dssp_location]} -i {input} -o {output}
-        
         """
-
+        
 use rule input_dssp as input_dssp_wt with:
     input:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/input.pdb"
@@ -326,24 +290,62 @@ use rule input_dssp as input_dssp_wt with:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.dssp"
 
 
+rule prepare_models:
+    input:
+        pdb = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/theseus/theseus_sup.pdb",
+        path = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/input.dssp"
+    output:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/{n}_model_split.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
+    run:
+        #export path is choosen, -10 since len(input.dssp)=10 and input cannot be a path.
+        path = (input.path)[:-10]
+        
+        #open the combined theseus_sup file
+        with open(input.pdb) as f: 
+            lines = f.readlines()
+        
+        #identification of each model:
+        n_list = []
+        start_list = []
+        end_list = []
+        for line in enumerate(lines): 
+            if line[1].startswith("MODEL"): 
+                n = ''.join(x for x in line[1] if x.isdigit())
+                n_list.append(int(n)-1)
+                start_list.append(line[0])
+            if line[1].startswith('ENDMDL\n'):
+                end_list.append(line[0])
+        
+        #export of each model in theseus_sup file
+        for n in n_list: 
+            with open(f'{path}/{n}_model_split.pdb', 'w') as f:
+                for line in lines[start_list[n]:end_list[n]]:
+                    f.write(line)
+        
+use rule prepare_models as prepare_models_wt with:
+    input:
+        pdb = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/theseus/theseus_sup.pdb",
+        path = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.dssp"
+    output:
+        expand(f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/{n}_model_split.pdb", n=range(config['cabsflex']['k-medoids']), allow_missing=True)
 
 rule model_dssp:
     input:
-        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/output_pdbs/model_{n}.pdb"
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/{n}_model_split.pdb"
     output:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/model_{n}.dssp"
     shell:
         """
         {config[cabsflex][dssp_location]} -i {input} -o {output}
         
-        """
+        rm {input}
         
+        """
 use rule model_dssp as model_dssp_wt with:
     input:
-        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/output_pdbs/model_{n}.pdb"
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/{n}_model_split.pdb"
     output:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/model_{n}.dssp"
-
 
 rule report_SS:
     input:
@@ -461,7 +463,6 @@ rule report_SS:
         
         #We now have a dataframe with the sequence, chain, amino acid, input SS,
         #a site quality score, and each SS of the models. 
-
         #When the secondary structure is different, it may be an artifact of 
         #low quality regions, such as loops or sections of disorder, to check this
         #we implement a similar score that only checks the confident sections.
