@@ -110,8 +110,8 @@ for v in variants['source_structure'].index:
                 f"{variants.loc[v, 'source_type']}/" +
                  "{runtype}/model_quality/DSSP_models.csv",
                  zip,
-                 name=wcs.name,
-                 chain=wcs.chain,
+                 name=wcs_wt.name,
+                 chain=wcs_wt.chain,
                  wt=wt_sl,
                  resnum=wcs.resnum,
                  alt=alt_sl,
@@ -177,9 +177,8 @@ EOF
             -a {params.mc_annealing}\\
             {params.rebuild_models}\\
             -z {params.random_seed}\\
-            -g {config[cabsflex][mode]}\\
-            --dssp-command {config[cabsflex][dssp_location]}\\
             -C\\
+            --dssp-command {config[cabsflex][dssp_location]}\\
             {params.restraints}\\
             --log
 EOF
