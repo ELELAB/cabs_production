@@ -100,7 +100,7 @@ for v in variants['source_structure'].index:
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
     
-    #for WT    
+    #for WT
     targets.extend(
         expand(
             expand(
@@ -117,7 +117,7 @@ for v in variants['source_structure'].index:
                  alt=alt_sl,
                  allow_missing=True),
             runtype=list(config['cabsflex']['run_types'].keys())))
-    
+
 variants = variants.set_index(['source_structure', 'chain_in_source', 'aa_num_start', 'aa_num_end', 'source_type'])
 
 rule all:
