@@ -176,7 +176,7 @@ EOF
             -a {params.mc_annealing}\\
             {params.rebuild_models}\\
             -z {params.random_seed}\\
-            -g {config[cabsflex][mode]}\\
+            -g {config[cabsflex][modelling_restraint]}\\
             -C \\
             --dssp-command {config[cabsflex][dssp_location]}\\
             {params.restraints}\\
