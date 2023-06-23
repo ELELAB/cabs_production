@@ -123,6 +123,7 @@ for each runtype are:
 |`mc-annealing`| This option, (-a, --mc-annealing NUM) sets number of Monte Carlo temperature annealing cycles to NUM (NUM > 0, default value = 20, changing default value is recommended only for advanced users). |
 |`rebuild-models`| Rebuild final models to all-atom representation (requires MODELLER installed), the default value is true |
 |`random_seed`| Setting a random seed for the run. As a default all random seeds are set to 10, which ensures reproducibility of runs. |
+|`modelling_restraint`| This option allow the user to restrain how flexible residues in secondary structures should be, the default value is "ss2 3 3.8 8.0". The options are ss2; where residues in contact are restrained if they are both in structured SS. ss1; where a residue in a secondary structure is restrained to stay in that secondary structure. all; where all residues are restrained to remain in their original secondary structure assignment. The numerical values describe the gap between restrained pairs (3), the minimum distance of restraining (3.8 Å) the maximim distance of restraint (8.0 Å)|
 
 #### Specifying run types
 
