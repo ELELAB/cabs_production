@@ -140,7 +140,8 @@ rule run_cabsflex:
         mc_steps = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-steps'],
         mc_annealing = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['mc-annealing'],
         rebuild_models = get_rebuild_models,
-        random_seed = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['random-seed']
+        random_seed = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['random-seed'],
+        ss_restraint = lambda wcs: config['cabsflex']['run_types'][wcs.runtype]['modelling_restraint']
         
     shell:
         """
@@ -176,6 +177,7 @@ EOF
             -a {params.mc_annealing}\\
             {params.rebuild_models}\\
             -z {params.random_seed}\\
+            -g {params.ss_restraint}\\\
             -C \\
             --dssp-command {config[cabsflex][dssp_location]}\\
             {params.restraints}\\
