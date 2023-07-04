@@ -319,12 +319,9 @@ rule secondary_structure_reference:
         model = structure[0]
         dssp = DSSP(model, str(input), dssp=config['cabsflex']['dssp_location'])
         keys = list(dssp.keys())
-        #there must be a better way to get the chain wildcard, but it keeps telling me
-        #that the wildcard is unknown regardless of what I try. 
-        chain = str(input).split("/")[-4].split("_")[1]
         with open(str(output), "w") as fp:
             for key in keys:
-                if key[0] == chain:
+                if key[0] == wildcards.chain:
                     ss = dssp[key][2]
                     if ss in ["+", "-", "<", ">", ">>", "0"]:
                         fp.write("C")
@@ -350,12 +347,9 @@ rule secondary_structure_models:
             model = structure[0]
             dssp = DSSP(model, str(f), dssp=config['cabsflex']['dssp_location'])
             keys = list(dssp.keys())
-            #there must be a better way to get the chain wildcard, but it keeps telling me
-            #that the wildcard is unknown regardless of what I try. 
-            chain = str(f).split("/")[-5].split("_")[1]
             with open(str(o), "w") as fp:
                 for key in keys:
-                    if key[0] == chain:
+                    if key[0] == wildcards.chain:
                         ss = dssp[key][2]
                         if ss in ["+", "-", "<", ">", ">>", "0"]:
                             fp.write("C")
