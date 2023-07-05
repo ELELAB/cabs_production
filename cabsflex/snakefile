@@ -1,5 +1,5 @@
 # cabsflex - A pipeline to perform CABSflex jobs
-# Copyright (C) 2021, 2022 Kristine Degn, Matteo Tiberti, Elena Papaleo
+# Copyright (C) 2021-2023 Kristine Degn, Matteo Tiberti, Elena Papaleo
 # Computational Structural Biology Lab, Danish Cancer Society Research Center
 #
 # This program is free software: you can redistribute it and/or modify
@@ -312,7 +312,7 @@ rule secondary_structure_reference:
     input:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/input.pdb"
     output:
-        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/input.ss"
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/reference_structure.ss"
     run:
         p = PDBParser()
         structure = p.get_structure("ref", str(input))
@@ -332,7 +332,7 @@ use rule secondary_structure_reference as secondary_structure_reference_wt with:
     input:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/input.pdb"
     output:
-        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.ss"
+        f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/reference_structure.ss"
         
 rule secondary_structure_models:
     input:
@@ -364,7 +364,7 @@ use rule secondary_structure_models as secondary_structure_models_wt with:
 
 rule SOV_score:
     input:
-        ref = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/input.ss",
+        ref = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/reference_structure.ss",
         models = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/model_{n}.ss"
     output:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_{wt}{resnum}{alt}/{source}/{runtype}/model_quality/model_{n}.sov"
@@ -375,7 +375,7 @@ rule SOV_score:
 
 use rule SOV_score as SOV_score_wt with:
     input:
-        ref = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/input.ss",
+        ref = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/reference_structure.ss",
         models = f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/model_{n}.ss"
     output:
         f"{config['out_dir']}/" + "{name}_{chain}_{start}-{end}_WT/{source}/{runtype}/model_quality/model_{n}.sov"
@@ -400,11 +400,8 @@ rule summarize_SS:
                 sov_99 = lines[1].split("\t")[-1]
                 sov_refine = lines[2].split("\t")[-1]
         
-            df = df.append({"Model": model_name, "Accuracy": accuracy, "SOV_99": sov_99, "SOV_refine": sov_refine}, ignore_index=True)
-        
-        #since for some reason it does not give a f* about the order i put it in.
-        df = df[["Model", "Accuracy", "SOV_99", "SOV_refine"]]
-        df.to_csv(str(output))
+            df = df.append({"Model": model_name, "Accuracy": accuracy, "SOV_99": sov_99, "SOV_refine": sov_refine}, ignore_index=True)        
+        df.to_csv(str(output), index=False)
 
 use rule summarize_SS as summarize_SS_wt with:
         input:
