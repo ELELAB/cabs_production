@@ -19,7 +19,7 @@ The input to this CABSflex pipeline is a comma-separated file, variants.csv, con
 
 ## Requirements
 
-The user must have `Snakemake` [^Mölder2021], `python` v3.7 or higher, `CABS-flex` [^Kurcinski2019], `Modeller` [^Webb2016], `DSSP` [^Kabsch1983] and THESEUS [^Theobald2006] installed. This pipeline also uses the BioPython, MDAnalysis and Pandas Python packages.
+The user must have `Snakemake` [^Mölder2021], `python` v3.7 or higher, `CABS-flex` [^Kurcinski2019], `Modeller` [^Webb2016], `DSSP` [^Kabsch1983] and `THESEUS` [^Theobald2006] installed, additonally the pearlscript `SOV_refine.pl` should also be available. This pipeline also uses the BioPython, MDAnalysis and Pandas Python packages.
 
 The user will also need to provide:
 
@@ -124,6 +124,11 @@ for each runtype are:
 |`rebuild-models`| Rebuild final models to all-atom representation (requires MODELLER installed), the default value is true |
 |`random_seed`| Setting a random seed for the run. As a default all random seeds are set to 10, which ensures reproducibility of runs. |
 
+|File Availability|Meaning|
+|`theseus_location`| The placement and name of the theseus program: e.g. "/usr/local/theseus-3.3.0/theseus"
+|`dssp_location`| The placement and name of the dssp program: e.g. "/usr/local/dssp-3.0.10/bin/mkdssp"|
+|`sov_location`| The placement and name of the SOV script, e.g. "./SOV_refine.pl"|
+
 #### Specifying run types
 
 A run type is a specific combination of CABSflex restraints and input secondary structure definition. One or more runtypes
@@ -206,9 +211,14 @@ Example:
         │   ├── model_ligand_10.pdb
         │   ├── model_ligand_11.pdb
         │   └── ...
-        ├── plots
-        │   ├── E_RMSD_A_total.csv
-        │   ├── E_RMSD_A_total.svg
+        ├── model_quality
+        │   ├── model_0.sov
+        │   ├── model_0.ss
+        │   ├── ...
+        │   ├── model_19.sov
+        │   ├── model_19.ss
+        │   ├── reference_structure.ss
+        │   ├── model_SS_summary.csv
         │   └── ...
         └── theseus
             ├── theseus_ave.pdb
