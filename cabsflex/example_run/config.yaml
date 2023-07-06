@@ -14,6 +14,7 @@ cabsflex:
    k-medoids: 20
    verbose: 3
    dssp_location: "/usr/local/dssp-3.0.10/bin/mkdssp"
+   sov_location: "../SOV_refine.pl"
    run_types:
            no_restraints:
              mc-cycles: 50
