@@ -20,20 +20,29 @@ cabsflex:
              mc-steps: 50
              mc-annealing: 20
              random-seed: 10 
+             modelling_restraint: "ss2 3 3.8 8.0"
              ss_def: null
              restraints: null
              rebuild-models: true
              ligand:
                 place_ligand: false
-                ligand_structure: '2XWR.pdb'
-                model_fit_selection: "protein and name CA and segid A"
-                ligand_fit_selection: "protein and name CA and segid A"
-                ligand_selection: "segid A and resname ZN"
+           ss_restraints:
+             mc-cycles: 50
+             mc-steps: 50
+             mc-annealing: 20
+             random-seed: 10 
+             modelling_restraint: "all 3 3.8 8.0"
+             ss_def: null
+             restraints: null
+             rebuild-models: true
+             ligand:
+                place_ligand: false           
            ca_rest_zinc_bs:
             mc-cycles: 50
             mc-steps: 50
             mc-annealing: 20
             random-seed: 10 
+            modelling_restraint: "ss2 3 3.8 8.0"
             ss_def: null
             rebuild-models: true
             restraints: 
@@ -54,6 +63,7 @@ cabsflex:
             mc-steps: 50
             mc-annealing: 20
             random-seed: 10
+            modelling_restraint: "ss2 3 3.8 8.0"
             ss_def: null
             rebuild-models: true
             restraints:
@@ -75,4 +85,3 @@ cabsflex:
                 model_fit_selection: "protein and name CA and segid A"
                 ligand_fit_selection: "protein and name CA and segid A"
                 ligand_selection: "segid A and resname ZN"
-
